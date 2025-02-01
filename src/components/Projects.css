@@ -1,0 +1,16 @@
+#projects {
+    padding: 2rem;
+  }
+  
+  .project-item {
+    margin-bottom: 2rem;
+  }
+  
+  .project-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .project-item p {
+    line-height: 1.6;
+  }
