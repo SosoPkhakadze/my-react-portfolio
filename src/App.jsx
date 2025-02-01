@@ -1,38 +1,46 @@
 import React, { useState, useEffect } from 'react';
-import Header from './components/Header';
-import Welcome from './components/Welcome';
-import WorkExperience from './components/WorkExperience';
-import Education from './components/Education';
-import Projects from './components/Projects';
-import Skills from './components/Skills';
-import Footer from './components/Footer';
+import Header from './components/Header/Header';
+import Welcome from './components/Welcome/Welcome';
+import Experience from './components/Experience/Experience';
+import Projects from './components/Projects/Projects';
+import Skills from './components/Skills/Skills';
+import Education from './components/Education/Education';
+import Contact from './components/Contact/Contact';
 import './App.css';
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const toggleDarkMode = () => {
+
+  useEffect(() => {
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    setIsDarkMode(prefersDarkScheme.matches);
+  }, []);
+
+  const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
   };
 
-  const applyAppTheme = (isDarkMode) => {
-    const body = document.body;
-    body.classList.toggle('dark-mode', isDarkMode);
-    body.classList.toggle('light-mode', !isDarkMode);
-  };
-
   useEffect(() => {
-    applyAppTheme(isDarkMode);
-  }, [isDarkMode]);
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth',
+        });
+      });
+    });
+  }, []);
 
   return (
-    <div>
-      <Header isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
+    <div className={`App ${isDarkMode ? 'dark-theme' : ''}`}>
+      <Header isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
       <Welcome />
-      <WorkExperience />
-      <Education />
+      <Experience />
       <Projects />
       <Skills />
-      <Footer />
+      <Education />
+      <Contact />
     </div>
   );
 }
