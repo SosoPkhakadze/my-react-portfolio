@@ -6,6 +6,7 @@ import Projects from './components/Projects/Projects';
 import Skills from './components/Skills/Skills';
 import Education from './components/Education/Education';
 import Contact from './components/Contact/Contact';
+import CursorTrail from './components/CursorTrail/CursorTrail';
 import './App.css';
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
       <Skills />
       <Education />
       <Contact />
+      <CursorTrail isDarkMode={isDarkMode} />
     </div>
   );
 }

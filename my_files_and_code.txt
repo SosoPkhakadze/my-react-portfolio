@@ -2,27 +2,27 @@ File Path: C:\Users\admin\Desktop\portfolio\my-react-portfolio\src\App.css
 File Name: App.css
 Code:
 :root {
-  --bg-color-light: #ffffff;
-  --bg-color-dark: #1a1a1a;
-  --text-color-light: #333333;
-  --text-color-dark: #f5f5f5;
-  --accent-color-light: #ff6b6b;
-  --accent-color-dark: #ff4757;
-  --orbit-color-light: #ff6b6b;
-  --orbit-color-dark: #ff4757;
-  --orbit-color-hover-light: #ff4757;
-  --orbit-color-hover-dark: #ff6b6b;
-}
+  --bg-color-light: #ffffff; /* White background */
+  --text-color-light: #1a237e; /* Indigo dark blue text */
+  --accent-color-light: #004aad; /* Royal blue accent */
+  --orbit-color-light: #6a6acd; /* Light-blue/purplish orbit */
+  --orbit-color-hover-light: #002171; /* Darker blue on hover */
+  --toggle-bg-light: #f0f0f0; /* Light gray toggle background */
+  --toggle-icon-light: #ffcc66; /* Yellow sun icon */
 
-.dark-theme {
-  background-color: var(--bg-color-dark);
-  color: var(--text-color-dark);
-}
+ --bg-color-dark: #000000; 
+  --text-color-dark: #ffcc80; 
+  --accent-color-dark: #ff9800; 
+  --orbit-color-dark: #ffcc80; 
+  --orbit-color-hover-dark: #e65100; 
+  --toggle-bg-dark: #333333; 
+  --toggle-icon-dark: #fbc02d;  
 
+}
 /* Global styles */
 body {
   margin: 0;
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
   transition: background-color 0.3s, color 0.3s;
   overflow: hidden; /* Hide vertical scrollbar on the body */
 }
@@ -52,6 +52,7 @@ section {
   justify-content: center;
   background-color: var(--bg-color-light);
 }
+
 .dark-theme .welcome-section {
   background-color: var(--bg-color-dark);
 }
@@ -60,6 +61,7 @@ section {
 .experience-section {
   background-color: var(--bg-color-light);
 }
+
 .dark-theme .experience-section {
   background-color: var(--bg-color-dark);
 }
@@ -68,6 +70,7 @@ section {
 .projects-section {
   background-color: var(--bg-color-light);
 }
+
 .dark-theme .projects-section {
   background-color: var(--bg-color-dark);
 }
@@ -76,6 +79,7 @@ section {
 .skills-section {
   background-color: var(--bg-color-light);
 }
+
 .dark-theme .skills-section {
   background-color: var(--bg-color-dark);
 }
@@ -84,6 +88,7 @@ section {
 .education-section {
   background-color: var(--bg-color-light);
 }
+
 .dark-theme .education-section {
   background-color: var(--bg-color-dark);
 }
@@ -92,6 +97,7 @@ section {
 .contact-section {
   background-color: var(--bg-color-light);
 }
+
 .dark-theme .contact-section {
   background-color: var(--bg-color-dark);
 }
@@ -141,8 +147,8 @@ section {
   background-color: var(--accent-color-dark);
 }
 
+/* Other dark theme styles... */
 .dark-theme {
-  /* Other dark theme styles... */
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE and Edge */
 }
@@ -151,10 +157,10 @@ section {
   display: none; /* Chrome, Safari, and Opera */
 }
 
-/* App.css or a global stylesheet */
 .dark-theme .bg-initials {
   filter: drop-shadow(0 0 2px white);
 }
+
 --------------------
 File Path: C:\Users\admin\Desktop\portfolio\my-react-portfolio\src\App.jsx
 File Name: App.jsx
@@ -296,122 +302,6 @@ const Contact = () => {
 };
 
 export default Contact;
---------------------
-File Path: C:\Users\admin\Desktop\portfolio\my-react-portfolio\src\components\CursorTrail\CursorTrail.css
-File Name: CursorTrail.css
-Code:
-/* src/components/CursorTrail/CursorTrail.css */
-.cursor-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 9999;
-  }
-  
-  .cursor-trail {
-    position: fixed;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    pointer-events: none;
-    transform-origin: center;
-  }
-  
-  .cursor-particle {
-    position: fixed;
-    border-radius: 50%;
-    pointer-events: none;
-    transition: transform 0.6s ease-out, opacity 0.6s ease-out;
-    z-index: 9999;
-  }
-  
-  @media (max-width: 768px) {
-    .cursor-container {
-      display: none;
-    }
-  }
---------------------
-File Path: C:\Users\admin\Desktop\portfolio\my-react-portfolio\src\components\CursorTrail\CursorTrail.jsx
-File Name: CursorTrail.jsx
-Code:
-// src/components/CursorTrail/CursorTrail.jsx
-import { useEffect, useState } from 'react';
-import { useTheme } from '../../context/ThemeContext';
-import './CursorTrail.css';
-
-const CursorTrail = () => {
-  const { isDarkMode } = useTheme();
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const trailLength = 15;
-
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-
-      // Create splash particles
-      createSplashParticles(e);
-    };
-
-    document.addEventListener('mousemove', handleMouseMove);
-    return () => document.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
-  const createSplashParticles = (e) => {
-    for (let i = 0; i < 5; i++) {
-      const particle = document.createElement('div');
-      particle.classList.add('cursor-particle');
-      document.body.appendChild(particle);
-
-      const size = Math.random() * 3 + 2;
-      particle.style.width = `${size}px`;
-      particle.style.height = `${size}px`;
-      particle.style.backgroundColor = isDarkMode ? 
-        'var(--accent-color-dark)' : 
-        'var(--accent-color-light)';
-
-      const angle = Math.random() * Math.PI * 2;
-      const speed = Math.random() * 15 + 5;
-      const velocityX = Math.cos(angle) * speed;
-      const velocityY = Math.sin(angle) * speed;
-
-      particle.style.left = `${e.clientX}px`;
-      particle.style.top = `${e.clientY}px`;
-
-      requestAnimationFrame(() => {
-        particle.style.transform = `translate(${velocityX}px, ${velocityY}px) scale(0)`;
-        particle.style.opacity = '0';
-      });
-
-      setTimeout(() => particle.remove(), 600);
-    }
-  };
-
-  return (
-    <div className="cursor-container">
-      {[...Array(trailLength)].map((_, index) => (
-        <div
-          key={index}
-          className="cursor-trail"
-          style={{
-            left: `${mousePosition.x}px`,
-            top: `${mousePosition.y}px`,
-            opacity: (trailLength - index) / trailLength,
-            transform: `scale(${(trailLength - index) / trailLength})`,
-            transition: `all ${index * 0.015}s ease`,
-            backgroundColor: isDarkMode ? 
-              'var(--accent-color-dark)' : 
-              'var(--accent-color-light)',
-          }}
-        />
-      ))}
-    </div>
-  );
-};
-
-export default CursorTrail;
 --------------------
 File Path: C:\Users\admin\Desktop\portfolio\my-react-portfolio\src\components\Education\Education.css
 File Name: Education.css
@@ -610,8 +500,6 @@ export default Experience;
 File Path: C:\Users\admin\Desktop\portfolio\my-react-portfolio\src\components\Header\Header.css
 File Name: Header.css
 Code:
-/* Header.css */
-
 /* Base Header Styles */
 .header {
   position: fixed;
@@ -641,6 +529,10 @@ Code:
 .logo {
   height: 40px;
   margin-right: 1rem;
+  filter: drop-shadow(0 0 5px var(--text-color-light));
+}
+.dark-theme .logo {
+  filter: drop-shadow(0 0 2px var(--text-color-dark));
 }
 
 .nav-list {
@@ -648,6 +540,8 @@ Code:
   display: flex;
   margin: 0;
   padding: 0;
+  flex-grow: 1; /* Allow nav-list to grow */
+  justify-content: center; /* Center the nav items */
 }
 
 .nav-list li {
@@ -670,9 +564,9 @@ Code:
   color: var(--text-color-dark);
 }
 
-/* Hover Effect */
+/* Hover Effect Light Mode */
 .nav-list li a::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
@@ -681,27 +575,38 @@ Code:
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.2),
-    rgba(255, 255, 255, 0.8),
-    rgba(255, 255, 255, 0.2),
+    rgba(0, 0, 0, 0.1),
+    var(--accent-color-light),
+    rgba(0, 0, 0, 0.1),
     transparent
   );
   transform: skewX(-25deg);
   transition: left 0.5s ease;
   z-index: -1;
 }
+
+/* Hover Effect Dark Mode */
+.dark-theme .nav-list li a::before {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    var(--accent-color-dark),
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+}
+
 .nav-list li a:hover::before {
   left: 100%;
 }
 
 .nav-list li a:hover {
   transform: scale(1.1); /* Slightly enlarge the link */
-  color: var(--accent-color-light); /* Change text color on hover */
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Add a subtle glow */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a subtle glow */
 }
 .dark-theme .nav-list li a:hover {
-  color: var(--accent-color-dark);
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3); /* Adjust glow for dark theme */
+  box-shadow: 0 0 10px var(--accent-color-dark); /* Adjust glow for dark theme */
 }
 
 /* Active State Styles */
@@ -747,57 +652,59 @@ Code:
   transform: translateY(-8px) rotate(-45deg);
 }
 
-/* Enhanced Theme Toggle Button */
+/* Theme Toggle Button */
 #theme-toggle {
-  position: relative;
+  position: relative; /* Keep relative positioning */
   width: 50px;
-  height: 25px;
-  background: var(--bg-color-light);
+  height: 50px;
+  border-radius: 50%;
+  background-color: transparent;
   border: 2px solid var(--accent-color-light);
-  border-radius: 25px;
   cursor: pointer;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 5px;
-  transition: background 0.3s ease, border 0.3s ease;
+  justify-content: center;
+  transition: transform 0.3s ease;
+  margin-right: 50px; /* Add some margin from the right edge */
 }
+
 .dark-theme #theme-toggle {
-  background: var(--bg-color-dark);
   border-color: var(--accent-color-dark);
 }
 
-#theme-toggle::before {
-  content: '☀️';
-  font-size: 1.2rem;
-  color: var(--text-color-light);
-  transition: transform 0.3s ease, color 0.3s ease;
-}
-.dark-theme #theme-toggle::before {
-  content: '🌙';
-  color: var(--text-color-dark);
-}
-
-#theme-toggle::after {
-  content: '';
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background: var(--accent-color-light);
-  border-radius: 50%;
-  left: 3px;
-  transition: transform 0.3s ease, background 0.3s ease;
-}
-.dark-theme #theme-toggle::after {
-  background: var(--accent-color-dark);
-  transform: translateX(25px);
-}
-
 #theme-toggle:hover {
-  border-color: var(--orbit-color-hover-light);
+  transform: rotate(45deg);
 }
-.dark-theme #theme-toggle:hover {
-  border-color: var(--orbit-color-hover-dark);
+
+.toggle-icon {
+  font-size: 28px;
+  color: var(--accent-color-light);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.dark-theme .toggle-icon {
+  color: var(--accent-color-dark);
+}
+
+.sun-icon {
+  position: absolute;
+  opacity: 1;
+}
+
+.dark-theme .sun-icon {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+.moon-icon {
+  position: absolute;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.dark-theme .moon-icon {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Media Query for Mobile Responsiveness */
@@ -841,35 +748,26 @@ Code:
     text-align: center;
     display: block;
   }
-}
 
-/* Custom Variable Light Theme Colors */
-:root {
-  --bg-color-light: #ffffff; /* Background color for light theme */
-  --text-color-light: #333333; /* Text color for light theme */
-  --accent-color-light: #6a1b9a; /* Accent color for light theme */
-  --orbit-color-light: #c88fd7; /* Color of the rotating rings - light */
-  --orbit-color-hover-light: #9000ff; /* Color of the rotating rings on hover - light */
-}
+  .theme-toggle {
+    position: relative;
+    top: 0;
+    right: 0;
+    margin-right: 10px;
+  }
 
-/* Custom Variable Dark Theme Colors */
-.dark-theme {
-  --bg-color-dark: #121212; /* Background color for dark theme */
-  --text-color-dark: #eeeeee; /* Text color for dark theme */
-  --accent-color-dark: #b964f9; /* Accent color for dark theme */
-  --orbit-color-dark: #804ab9; /* Color of the rotating rings - dark */
-  --orbit-color-hover-dark: #6d2df6; /* Color of the rotating rings on hover - dark */
+  
 }
 --------------------
 File Path: C:\Users\admin\Desktop\portfolio\my-react-portfolio\src\components\Header\Header.jsx
 File Name: Header.jsx
 Code:
-import React, { useState, useEffect, useRef } from 'react';
-import './Header.css';
+import React, { useState, useEffect, useRef } from "react";
+import "./Header.css";
 
 const Header = ({ isDarkMode, toggleTheme }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
+  const [activeSection, setActiveSection] = useState("home");
   const headerRef = useRef(null);
 
   // Toggle mobile menu
@@ -880,29 +778,43 @@ const Header = ({ isDarkMode, toggleTheme }) => {
   // Handle scroll to detect active section
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'experience', 'projects', 'skills', 'education', 'contact'];
-      const currentSection = sections.find(section => {
+      const sections = [
+        "home",
+        "experience",
+        "projects",
+        "skills",
+        "education",
+        "contact",
+      ];
+      const currentSection = sections.find((section) => {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
-          return rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2;
+          return (
+            rect.top <= window.innerHeight / 2 &&
+            rect.bottom >= window.innerHeight / 2
+          );
         }
         return false;
       });
-      setActiveSection(currentSection || 'home');
+      setActiveSection(currentSection || "home");
     };
 
     // Intersection Observer for smooth active link updates
     const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          const link = headerRef.current.querySelector(`a[href="#${entry.target.id}"]`);
+      (entries) => {
+        entries.forEach((entry) => {
+          const link = headerRef.current.querySelector(
+            `a[href="#${entry.target.id}"]`
+          );
           if (link) {
             if (entry.isIntersecting) {
               // Remove active class from all links
-              headerRef.current.querySelectorAll('.nav-list li').forEach(li => li.classList.remove('active'));
+              headerRef.current
+                .querySelectorAll(".nav-list li")
+                .forEach((li) => li.classList.remove("active"));
               // Add active class to the current link
-              link.closest('li').classList.add('active');
+              link.closest("li").classList.add("active");
             }
           }
         });
@@ -912,37 +824,56 @@ const Header = ({ isDarkMode, toggleTheme }) => {
       }
     );
 
-    const sections = document.querySelectorAll('section');
-    sections.forEach(section => observer.observe(section));
+    const sections = document.querySelectorAll("section");
+    sections.forEach((section) => observer.observe(section));
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      sections.forEach(section => observer.unobserve(section));
+      window.removeEventListener("scroll", handleScroll);
+      sections.forEach((section) => observer.unobserve(section));
     };
   }, []);
 
   return (
-    <header className={`header ${isDarkMode ? 'dark-theme' : ''}`} ref={headerRef}>
+    <header className={`header ${isDarkMode ? "dark-theme" : ""}`} ref={headerRef}>
       <div className="nav">
         {/* Logo Container */}
         <div className="logo-container">
-          <img src="/logo.png" alt="Logo" className="logo" />
+          <img
+            src={`${import.meta.env.BASE_URL}SP.png`}
+            alt="Logo"
+            className="logo"
+          />
         </div>
 
         {/* Navigation List */}
         <nav>
-          <button id="hamburger-btn" onClick={toggleMenu} className={isMenuOpen ? 'active' : ''}>
+          <button
+            id="hamburger-btn"
+            onClick={toggleMenu}
+            className={isMenuOpen ? "active" : ""}
+          >
             <span className="bar"></span>
             <span className="bar"></span>
             <span className="bar"></span>
           </button>
-          <ul className={`nav-list ${isMenuOpen ? 'active' : ''}`}>
-            {['Home', 'Experience', 'Projects', 'Skills', 'Education', 'Contact'].map(item => {
-              const sectionId = item.toLowerCase() === 'home' ? 'welcome' : item.toLowerCase();
+          <ul className={`nav-list ${isMenuOpen ? "active" : ""}`}>
+            {[
+              "Home",
+              "Experience",
+              "Projects",
+              "Skills",
+              "Education",
+              "Contact",
+            ].map((item) => {
+              const sectionId =
+                item.toLowerCase() === "home" ? "welcome" : item.toLowerCase();
               return (
-                <li key={item} className={activeSection === sectionId ? 'active' : ''}>
+                <li
+                  key={item}
+                  className={activeSection === sectionId ? "active" : ""}
+                >
                   <a href={`#${sectionId}`}>{item}</a>
                 </li>
               );
@@ -951,8 +882,9 @@ const Header = ({ isDarkMode, toggleTheme }) => {
         </nav>
 
         {/* Theme Toggle Button */}
-        <button id="theme-toggle" onClick={toggleTheme} className={isDarkMode ? 'dark-mode' : ''}>
-          <span className="theme-toggle-icon">{isDarkMode ? '☀️' : '🌙'}</span>
+        <button id="theme-toggle" onClick={toggleTheme}>
+          <i className={`toggle-icon sun-icon bx bxs-sun`}></i>
+          <i className={`toggle-icon moon-icon bx bxs-moon`}></i>
         </button>
       </div>
     </header>
@@ -1084,6 +1016,7 @@ export default Skills;
 File Path: C:\Users\admin\Desktop\portfolio\my-react-portfolio\src\components\Welcome\Welcome.css
 File Name: Welcome.css
 Code:
+/* Welcome Section */
 .welcome-section {
   position: relative;
   min-height: 100vh;
@@ -1093,11 +1026,11 @@ Code:
   align-items: center;
   justify-content: center;
 }
-
 .dark-theme .welcome-section {
   background: var(--bg-color-dark);
 }
 
+/* Background Initials */
 .bg-initials {
   position: absolute;
   top: 0;
@@ -1112,8 +1045,10 @@ Code:
   filter: blur(10px);
   pointer-events: none;
   z-index: -1;
+  transition: transform 0.5s ease-in-out;
 }
 
+/* Intro Content */
 .intro-content {
   position: relative;
   z-index: 3;
@@ -1124,6 +1059,7 @@ Code:
   justify-content: space-around;
 }
 
+/* Orbit System */
 .orbit-system {
   position: relative;
   width: 350px;
@@ -1135,47 +1071,75 @@ Code:
   transition: transform 0.5s ease;
 }
 
-.orbit-system:hover .profile-orbit {
-  animation-play-state: running;
-}
-
-.orbit-system:active {
-  cursor: default;
-}
-
 .profile-orbit {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
   border: 2px dashed var(--orbit-color-light);
   border-radius: 50%;
-  animation: orbit 20s linear infinite;
   transform-style: preserve-3d;
 }
-
 .dark-theme .profile-orbit {
   border-color: var(--orbit-color-dark);
 }
 
-.profile-orbit:nth-child(2) {
-  animation-duration: 15s;
+.orbit-one {
+  width: 100%;
+  height: 100%;
+  animation: orbit-one-anim 20s linear infinite;
+}
+
+.orbit-two {
   width: 85%;
   height: 85%;
   top: 7.5%;
   left: 7.5%;
+  animation: orbit-two-anim 15s linear infinite;
 }
 
-.profile-orbit:nth-child(3) {
-  animation-duration: 10s;
+.orbit-three {
   width: 70%;
   height: 70%;
   top: 15%;
   left: 15%;
+  animation: orbit-three-anim 10s linear infinite;
 }
 
-.orbit-glow {
+/* Rotating Circles */
+.orbit-circle {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background-color: var(--accent-color-light);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--accent-color-light);
+  animation: orbit-circle-anim 10s linear infinite;
+}
+.dark-theme .orbit-circle {
+  background-color: var(--accent-color-dark);
+  box-shadow: 0 0 10px var(--accent-color-dark);
+}
+
+.circle-one {
+  top: 0;
+  left: 50%;
+  transform-origin: 50% 150px;
+  animation-duration: 10s;
+}
+
+.circle-two {
+  top: 50%;
+  right: 0;
+  transform-origin: -150px 50%;
+  animation-duration: 15s;
+}
+
+.circle-three {
+  bottom: 0;
+  left: 50%;
+  transform-origin: 50% -150px;
+  animation-duration: 20s;
+}
+
+#orbit-glow {
   position: absolute;
   top: 0;
   left: 0;
@@ -1191,8 +1155,7 @@ Code:
   pointer-events: none;
   animation: glow-pulse 3s infinite ease-in-out;
 }
-
-.dark-theme .orbit-glow {
+.dark-theme #orbit-glow {
   background: radial-gradient(
     circle at center,
     var(--accent-color-dark),
@@ -1211,7 +1174,6 @@ Code:
   padding: 10px;
   box-shadow: 0 0 15px var(--accent-color-light);
 }
-
 .dark-theme .central-logo {
   background-color: var(--accent-color-dark);
   box-shadow: 0 0 15px var(--accent-color-dark);
@@ -1223,285 +1185,288 @@ Code:
   object-fit: contain;
 }
 
+/* Name and Tagline */
 .name-title {
   animation: fadeInUp 1.5s ease-out forwards;
   color: var(--text-color-light);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  text-shadow: none;
   text-align: left;
   margin-right: 5rem;
 }
-
 .dark-theme .name-title {
   color: var(--text-color-dark);
 }
 
 .name {
-  font-size: 4rem;
-  margin: 0;
-  font-weight: 800;
+  font-size: 3.5rem;
+  margin: 0 0 10px 0;
+  font-weight: 900;
   letter-spacing: 2px;
   background: linear-gradient(
-    45deg,
+    90deg,
     var(--accent-color-light),
     var(--orbit-color-hover-light)
   );
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  line-height: 1.2;
+  animation: shimmer 3s infinite alternate;
 }
-
 .dark-theme .name {
   background: linear-gradient(
-    45deg,
+    90deg,
     var(--accent-color-dark),
     var(--orbit-color-hover-dark)
   );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* Remove the text-shadow in dark mode */
+  text-shadow: none; 
 }
 
 .tagline-wrapper {
   position: relative;
-  margin-top: 1rem;
-  display: inline-block;
-  padding: 0.5rem 0.5rem;
+  margin-top: 0.5rem;
+  padding: 0.3rem 0.6rem;
   overflow: hidden;
-  background: rgba(var(--accent-color-light), 0.05);
   border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
 .dark-theme .tagline-wrapper {
-  background: rgba(var(--accent-color-dark), 0.05);
+  background: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }
 
 .tagline {
-  font-size: 1.8rem;
-  margin: 0;
-  color: var(--text-color-light);
-  letter-spacing: 3px;
-  font-weight: 600;
-  text-shadow: 0 0 5px var(--accent-color-light);
-  animation: glowPulse 3s infinite;
-  background: linear-gradient(
-    45deg,
-    var(--text-color-light) 0%,
-    var(--accent-color-light) 50%,
-    var(--text-color-light) 100%
-  );
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shine 3s linear infinite;
-}
-
-.tagline-decoration {
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--accent-color-light),
-    transparent
-  );
-  animation: shimmer 2s infinite;
-}
-
-.tagline-wrapper::before,
-.tagline-wrapper::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-}
-
-.tagline-wrapper::before {
-  background: radial-gradient(
-    circle at 30% 107%,
-    var(--accent-color-light) 0%,
-    transparent 45%
-  );
-  opacity: 0.1;
-  animation: rotate 5s linear infinite;
-}
-
-.tagline-wrapper::after {
-  border: 1px solid var(--accent-color-light);
-  opacity: 0.3;
-  border-radius: 8px;
-  transform: scale(1.05);
-  animation: pulseScale 2s ease-in-out infinite;
+    /* Font Improvements */
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--accent-color-light);
+    text-shadow: 0 0 5px var(--accent-color-light);
+    animation: fadeIn 1s ease-in-out forwards;
 }
 
 .dark-theme .tagline {
-  text-shadow: 0 0 5px var(--accent-color-dark);
-  background: linear-gradient(
-    45deg,
-    var(--text-color-dark) 0%,
-    var(--accent-color-dark) 50%,
-    var(--text-color-dark) 100%
-  );
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
+    color: var(--accent-color-dark);
+    text-shadow: 0 0 5px var(--accent-color-dark);
 }
 
-.dark-theme .tagline-decoration {
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--accent-color-dark),
-    transparent
-  );
-}
-
-.dark-theme .tagline-wrapper::before {
-  background: radial-gradient(
-    circle at 30% 107%,
-    var(--accent-color-dark) 0%,
-    transparent 45%
-  );
-}
-
-.dark-theme .tagline-wrapper::after {
-  border-color: var(--accent-color-dark);
-}
-
-@keyframes shine {
-  to {
-    background-position: 200% center;
+/* Responsive Design */
+@media (max-width: 768px) {
+  .intro-content {
+    flex-direction: column;
+    align-items: center;
+  }
+  .name-title {
+    text-align: center;
+    margin: 0;
+  }
+  .name {
+    font-size: 3rem;
+  }
+  .tagline {
+    font-size: 1.4rem;
+  }
+  .orbit-system {
+    width: 250px;
+    height: 250px;
+  }
+  .central-logo {
+    width: 80px;
+    height: 80px;
   }
 }
 
-@keyframes shimmer {
+/* Animations */
+@keyframes orbit-one-anim {
   0% {
-    transform: translateX(-100%);
+    transform: rotateZ(0deg) rotateX(60deg) rotateY(-20deg) translateX(0) translateY(0);
+  }
+  50% {
+    transform: rotateZ(180deg) rotateX(60deg) rotateY(-20deg) translateX(5px) translateY(5px);
   }
   100% {
-    transform: translateX(100%);
+    transform: rotateZ(360deg) rotateX(60deg) rotateY(-20deg) translateX(0) translateY(0);
   }
 }
 
-@keyframes rotate {
-  from {
+@keyframes orbit-two-anim {
+  0% {
+    transform: rotateZ(0deg) rotateX(45deg) rotateY(10deg) translateX(0) translateY(0);
+  }
+  50% {
+    transform: rotateZ(-180deg) rotateX(45deg) rotateY(10deg) translateX(-5px) translateY(-5px);
+  }
+  100% {
+    transform: rotateZ(-360deg) rotateX(45deg) rotateY(10deg) translateX(0) translateY(0);
+  }
+}
+
+@keyframes orbit-three-anim {
+  0% {
+    transform: rotateZ(0deg) rotateX(15deg) rotateY(-45deg) translateX(0) translateY(0);
+  }
+  50% {
+    transform: rotateZ(180deg) rotateX(15deg) rotateY(-45deg) translateX(5px) translateY(-5px);
+  }
+  100% {
+    transform: rotateZ(360deg) rotateX(15deg) rotateY(-45deg) translateX(0) translateY(0);
+  }
+}
+
+@keyframes orbit-circle-anim {
+  0% {
     transform: rotate(0deg);
   }
-  to {
+  100% {
     transform: rotate(360deg);
   }
 }
 
-@keyframes pulseScale {
-  0%,
-  100% {
-    transform: scale(1.05);
+@keyframes glow-pulse {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
   }
   50% {
     transform: scale(1.1);
   }
 }
 
-@keyframes glowPulse {
-  0%,
-  100% {
-    filter: drop-shadow(0 0 2px var(--accent-color-light));
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  50% {
-    filter: drop-shadow(0 0 8px var(--accent-color-light));
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@media (max-width: 768px) {
-  .intro-content {
-    flex-direction: column;
-    align-items: center;
+@keyframes shimmer {
+  0% {
+    background-position: 0%;
   }
-
-  .name-title {
-    text-align: center;
-    margin: 0;
+  100% {
+    background-position: 200%;
   }
+}
 
-  .name {
-    font-size: 2.8rem;
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
   }
-
-  .tagline {
-    font-size: 1.4rem;
-  }
-
-  .orbit-system {
-    width: 250px;
-    height: 250px;
-  }
-
-  .central-logo {
-    width: 80px;
-    height: 80px;
+  100% {
+    opacity: 1;
   }
 }
 --------------------
 File Path: C:\Users\admin\Desktop\portfolio\my-react-portfolio\src\components\Welcome\Welcome.jsx
 File Name: Welcome.jsx
 Code:
-import React, { useEffect } from 'react';
-import './Welcome.css';
+import React, { useEffect, useRef } from "react";
+import "./Welcome.css";
+import { ReactTyped } from "react-typed";
 
 const Welcome = () => {
-  useEffect(() => {
-    const orbitSystem = document.querySelector('.orbit-system');
-    const bgInitials = document.querySelector('.bg-initials');
+  const orbitSystemRef = useRef(null);
+  const bgInitialsRef = useRef(null);
 
+  useEffect(() => {
+    const orbitSystem = orbitSystemRef.current;
+    const bgInitials = bgInitialsRef.current;
+
+    // Mouse Move Effect for Orbit System
     const handleMouseMove = (e) => {
       const rect = orbitSystem.getBoundingClientRect();
       const x = e.clientX - rect.left - rect.width / 2;
       const y = e.clientY - rect.top - rect.height / 2;
-      orbitSystem.style.transform = `rotateX(${-y / 10}deg) rotateY(${x / 10}deg)`;
+      orbitSystem.style.transform = `rotateX(${-y / 8}deg) rotateY(${x / 8}deg) rotateZ(0deg)`;
     };
 
     const handleMouseLeave = () => {
-      orbitSystem.style.transform = 'rotateX(0deg) rotateY(0deg)';
+      orbitSystem.style.transform = "rotateX(0deg) rotateY(0deg) rotateZ(0deg)";
     };
 
+    // Parallax Scroll Effect for Background Initials
     const handleScroll = () => {
       const scrollValue = window.scrollY;
       bgInitials.style.transform = `translateY(${scrollValue * 0.4}px) scale(1.1)`;
     };
 
-    orbitSystem.addEventListener('mousemove', handleMouseMove);
-    orbitSystem.addEventListener('mouseleave', handleMouseLeave);
-    window.addEventListener('scroll', handleScroll);
+    // Event Listeners
+    orbitSystem.addEventListener("mousemove", handleMouseMove);
+    orbitSystem.addEventListener("mouseleave", handleMouseLeave);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      orbitSystem.removeEventListener('mousemove', handleMouseMove);
-      orbitSystem.removeEventListener('mouseleave', handleMouseLeave);
-      window.removeEventListener('scroll', handleScroll);
+      orbitSystem.removeEventListener("mousemove", handleMouseMove);
+      orbitSystem.removeEventListener("mouseleave", handleMouseLeave);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   return (
     <section id="welcome" className="welcome-section">
-      <div className="bg-initials"></div>
+      {/* Background Initials */}
+      <div className="bg-initials" ref={bgInitialsRef}></div>
+
+      {/* Intro Content */}
       <div className="intro-content">
-        <div className="orbit-system">
-          <div className="profile-orbit"></div>
-          <div className="profile-orbit"></div>
-          <div className="profile-orbit"></div>
-          <div className="orbit-glow"></div>
+        {/* Orbit System */}
+        <div className="orbit-system" ref={orbitSystemRef}>
+          {/* Orbits */}
+          <div className="profile-orbit orbit-one"></div>
+          <div className="profile-orbit orbit-two"></div>
+          <div className="profile-orbit orbit-three"></div>
+
+          {/* Central Logo */}
           <div className="central-logo">
-            <img src="public\SP.png" alt="Profile Logo" className="profile-logo" />
+            <img
+              src={`${import.meta.env.BASE_URL}SP.png`}
+              alt="Profile Logo"
+              className="profile-logo"
+            />
           </div>
+
+          {/* Rotating Circles */}
+          <div className="orbit-circle circle-one"></div>
+          <div className="orbit-circle circle-two"></div>
+          <div className="orbit-circle circle-three"></div>
+
+          {/* Glow Effect */}
+          <div id="orbit-glow"></div>
         </div>
+
+        {/* Name and Tagline */}
         <div className="name-title">
-          <h1 className="name">Your Name</h1>
+          <h1 className="name">Soso Pkhakadze</h1>
           <div className="tagline-wrapper">
-            <p className="tagline">Your Tagline</p>
-            <span className="tagline-decoration"></span>
+            <ReactTyped
+              strings={[
+                "Passionate Software Engineer",
+                "Experienced Django Developer",
+                "Enthusiastic Learner",
+                "Creative Problem Solver",
+              ]}
+              typeSpeed={60}
+              backSpeed={30}
+              loop
+              className="tagline"
+            />
           </div>
         </div>
       </div>
