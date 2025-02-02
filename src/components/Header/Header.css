@@ -1,3 +1,4 @@
+/* Base Header Styles */
 .header {
   position: fixed;
   top: 0;
@@ -7,7 +8,6 @@
   padding: 1rem 2rem;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
-
 .dark-theme .header {
   background-color: rgba(26, 26, 26, 0.9);
 }
@@ -18,71 +18,199 @@
   align-items: center;
 }
 
+.logo-container {
+  display: flex;
+  align-items: center;
+  z-index: 1001;
+}
+
+.logo {
+  height: 40px;
+  margin-right: 1rem;
+  filter: drop-shadow(0 0 5px var(--text-color-light));
+}
+.dark-theme .logo {
+  filter: drop-shadow(0 0 2px var(--text-color-dark));
+}
+
 .nav-list {
   list-style: none;
   display: flex;
-  gap: 2rem;
   margin: 0;
   padding: 0;
+  flex-grow: 1; /* Allow nav-list to grow */
+  justify-content: center; /* Center the nav items */
 }
 
-.nav-list a {
+.nav-list li {
+  position: relative;
+  margin: 0 2rem;
+}
+
+.nav-list li a {
   text-decoration: none;
-  color: var(--text-color-light);
+  position: relative;
+  display: block;
+  overflow: hidden;
   font-weight: 600;
-  transition: color 0.3s, transform 0.3s;
+  padding: 0.5rem 1rem;
+  color: var(--text-color-light);
+  transition: all 0.3s ease-in-out;
+  border-radius: 5px;
 }
-
-.dark-theme .nav-list a {
+.dark-theme .nav-list li a {
   color: var(--text-color-dark);
 }
 
-.nav-list a:hover {
-  color: var(--accent-color-light);
-  transform: translateY(-2px);
+/* Hover Effect Light Mode */
+.nav-list li a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 0, 0, 0.1),
+    var(--accent-color-light),
+    rgba(0, 0, 0, 0.1),
+    transparent
+  );
+  transform: skewX(-25deg);
+  transition: left 0.5s ease;
+  z-index: -1;
 }
 
-.dark-theme .nav-list a:hover {
+/* Hover Effect Dark Mode */
+.dark-theme .nav-list li a::before {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    var(--accent-color-dark),
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+}
+
+.nav-list li a:hover::before {
+  left: 100%;
+}
+
+.nav-list li a:hover {
+  transform: scale(1.1); /* Slightly enlarge the link */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a subtle glow */
+}
+.dark-theme .nav-list li a:hover {
+  box-shadow: 0 0 10px var(--accent-color-dark); /* Adjust glow for dark theme */
+}
+
+/* Active State Styles */
+.nav-list li.active a {
+  color: var(--accent-color-light);
+  border: none;
+}
+.dark-theme .nav-list li.active a {
   color: var(--accent-color-dark);
 }
 
-#theme-toggle {
-  background-color: var(--accent-color-light);
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  cursor: pointer;
-  color: white;
-  font-weight: 600;
-  transition: background-color 0.3s;
-}
-
-.dark-theme #theme-toggle {
-  background-color: var(--accent-color-dark);
-}
-
-#theme-toggle:hover {
-  background-color: var(--orbit-color-hover-light);
-}
-
-.dark-theme #theme-toggle:hover {
-  background-color: var(--orbit-color-hover-dark);
-}
-
+/* Hamburger Menu */
 #hamburger-btn {
   display: none;
   background: none;
   border: none;
-  font-size: 1.5rem;
   cursor: pointer;
-  color: var(--text-color-light);
+  padding: 0;
+  z-index: 1001;
 }
 
-.dark-theme #hamburger-btn {
-  color: var(--text-color-dark);
+.bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  background-color: var(--text-color-light);
+  transition: 0.3s;
+}
+.dark-theme .bar {
+  background-color: var(--text-color-dark);
 }
 
+#hamburger-btn.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+#hamburger-btn.active .bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+#hamburger-btn.active .bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Theme Toggle Button */
+#theme-toggle {
+  position: relative; /* Keep relative positioning */
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 2px solid var(--accent-color-light);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+  margin-right: 50px; /* Add some margin from the right edge */
+}
+
+.dark-theme #theme-toggle {
+  border-color: var(--accent-color-dark);
+}
+
+#theme-toggle:hover {
+  transform: rotate(45deg);
+}
+
+.toggle-icon {
+  font-size: 28px;
+  color: var(--accent-color-light);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.dark-theme .toggle-icon {
+  color: var(--accent-color-dark);
+}
+
+.sun-icon {
+  position: absolute;
+  opacity: 1;
+}
+
+.dark-theme .sun-icon {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+.moon-icon {
+  position: absolute;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.dark-theme .moon-icon {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Media Query for Mobile Responsiveness */
 @media (max-width: 768px) {
+  .nav {
+    justify-content: space-between;
+  }
+
   #hamburger-btn {
     display: block;
   }
@@ -94,20 +222,37 @@
     top: 100%;
     left: 0;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.95);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem 0;
+    z-index: 1000;
+    gap: 2rem;
   }
 
   .dark-theme .nav-list {
-    background-color: rgba(26, 26, 26, 0.9);
+    background-color: rgba(26, 26, 26, 0.95);
   }
 
   .nav-list.active {
     display: flex;
   }
 
+  .nav-list li {
+    width: 100%;
+  }
+
   .nav-list a {
     padding: 1rem;
     text-align: center;
+    display: block;
   }
+
+  .theme-toggle {
+    position: relative;
+    top: 0;
+    right: 0;
+    margin-right: 10px;
+  }
+
+  
 }

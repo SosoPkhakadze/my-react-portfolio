@@ -43,7 +43,7 @@ const Welcome = () => {
           <div className="profile-orbit"></div>
           <div className="orbit-glow"></div>
           <div className="central-logo">
-            <img src="/SP.png" alt="Profile Logo" className="profile-logo" />
+            <img src="public\SP.png" alt="Profile Logo" className="profile-logo" />
           </div>
         </div>
         <div className="name-title">

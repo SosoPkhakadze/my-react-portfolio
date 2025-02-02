@@ -45,10 +45,10 @@ const Experience = () => {
       <div className="experience-container">
         <div className="company-logos">
           <div className="company-logo active" data-company="company1">
-            <img src="/devsdata.png" alt="Company 1" />
+            <img src="public/devsdata.png" alt="Company 1" />
           </div>
           <div className="company-logo" data-company="company2">
-            <img src="/netex.png" alt="Company 2" />
+            <img src="public/netex.png" alt="Company 2" />
           </div>
         </div>
         <div className="experience-info">
