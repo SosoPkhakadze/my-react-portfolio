@@ -2,14 +2,18 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './Experience.css';
 
-const Experience = () => {
+import {useAnimationControls } from 'framer-motion';
+
+  const Experience = () => {
+    const controls = useAnimationControls(); // Initialize animation controls
+
   const [activeCompanyId, setActiveCompanyId] = useState('netex');
   const [logoAnimation, setLogoAnimation] = useState(null);
 
   const experienceData = [
     {
       id: 'netex',
-      logo: 'public/netex.png',
+      logo: 'netex.png',
       alt: 'Netex Consulting LLC',
       title: 'Data Engineer & AI Training Support Specialist',
       duration: 'Apr 2022 - Aug 2023',
@@ -22,7 +26,7 @@ const Experience = () => {
     },
     {
       id: 'devsdata',
-      logo: 'public/devsdata.png',
+      logo: 'devsdata.png',
       alt: 'DevsData',
       title: 'QA Engineer',
       duration: 'Jul 2024 - Present',
@@ -37,19 +41,63 @@ const Experience = () => {
 
   const activeCompany = experienceData.find((company) => company.id === activeCompanyId);
 
+    // Update handleCompanyClick to include return animation
   const handleCompanyClick = (companyId) => {
+    // Get coordinates relative to the viewport
+    const fromCoords = document.getElementById(`logo-${companyId}`).getBoundingClientRect();
+    const toCoords = document.querySelector('.company-logo-main').getBoundingClientRect();
+
+    // Animation for moving the logo to the active slot
     setLogoAnimation({
       id: companyId,
-      // Get coordinates relative to the viewport
-      from: document.getElementById(`logo-${companyId}`).getBoundingClientRect(),
-      to: document.querySelector('.company-logo-main').getBoundingClientRect(),
+      from: fromCoords,
+      to: toCoords,
+      isReturning: false,
     });
 
-    // Wait for the logo to travel up before switching
-    setTimeout(() => {
+    // Animate the move up to the active slot
+    controls.start({
+      x: toCoords.x - fromCoords.x,
+      y: toCoords.y - fromCoords.y,
+      width: toCoords.width,
+      height: toCoords.height,
+      transition: { duration: 0.3, ease: "easeInOut" },
+    }).then(() => {
+      // Once the logo has moved up, switch the active company id
       setActiveCompanyId(companyId);
-      setLogoAnimation(null); // Reset for next animation
-    }, 300);
+
+      // Get coordinates for the return trip
+      const returnFromCoords = document.querySelector('.company-logo-main').getBoundingClientRect();
+      const returnToCoords = document.getElementById(`logo-${companyId}`).getBoundingClientRect();
+
+      // Reset position to start from the top
+      controls.set({
+        x: 0,
+        y: 0,
+        width: returnFromCoords.width,
+        height: returnFromCoords.height,
+      });
+
+      // Animation for moving the logo back to its original slot
+      setLogoAnimation({
+        id: companyId,
+        from: returnFromCoords,
+        to: returnToCoords,
+        isReturning: true,
+      });
+
+      // Animate the return to the original position
+      controls.start({
+        x: returnToCoords.x - returnFromCoords.x,
+        y: returnToCoords.y - returnFromCoords.y,
+        width: returnToCoords.width,
+        height: returnToCoords.height,
+        transition: { duration: 0.3, ease: "easeInOut" },
+      }).then(() => {
+        // After the animation completes, reset the animation state
+        setLogoAnimation(null);
+      });
+    });
   };
 
   return (
@@ -104,8 +152,8 @@ const Experience = () => {
             >
               <div className="company-logo" id={`logo-${company.id}`}>
                 <AnimatePresence>
-                  {/* Hide logo on the right if it's traveling to the top */}
-                  {logoAnimation?.id !== company.id && (
+                  {/* Render the company logo if not actively animating or if it's the one returning */}
+                  {(logoAnimation === null || (logoAnimation.id !== company.id || logoAnimation.isReturning)) && (
                     <motion.img
                       key={company.id}
                       src={company.logo}
@@ -133,12 +181,7 @@ const Experience = () => {
                 width: logoAnimation.from.width,
                 height: logoAnimation.from.height,
               }}
-              animate={{
-                x: logoAnimation.to.x,
-                y: logoAnimation.to.y,
-                width: logoAnimation.to.width,
-                height: logoAnimation.to.height,
-              }}
+              animate={controls} // Use animation controls for the animation
               transition={{ duration: 0.3 }}
             />
           )}

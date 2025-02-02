@@ -113,3 +113,20 @@ section {
 .dark-theme .bg-initials {
   filter: drop-shadow(0 0 2px white);
 }
+
+section {
+  padding: 4rem 2rem;
+}
+
+/* Section Title Styles (applied to all sections) */
+.section-title {
+  font-size: 2.5rem; /* Adjust as needed */
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 5rem; /* Adjust as needed */
+  color: var(--accent-color-light); /* Use accent color for title */
+}
+
+.dark-theme .section-title {
+  color: var(--accent-color-dark);
+}

@@ -1,6 +1,6 @@
 /* Experience Section */
 .experience-section {
-  padding: 4rem 2rem;
+  padding: 6rem 2rem; /* Increased padding */
   background-color: var(--bg-color-light);
   color: var(--text-color-light);
 }
@@ -11,10 +11,11 @@
 }
 
 .section-title {
-  font-size: 2rem;
+  font-size: 2.5rem; /* Slightly larger title */
+  font-weight: bold;
   text-align: center;
-  margin-bottom: 4rem;
-  color: var(--accent-color-light); /* Use accent color for title */
+  margin-bottom: 5rem; /* Increased margin */
+  color: var(--accent-color-light);
 }
 
 .dark-theme .section-title {
@@ -24,31 +25,42 @@
 /* Experience Container */
 .experience-container {
   display: flex;
-  gap: 2rem;
+  gap: 3rem; /* Increased gap */
   align-items: flex-start;
+  max-width: 1200px; /* Limit container width for better readability */
+  margin: 0 auto; /* Center the container */
 }
 
 /* Left Side: Experience Info Card */
 .experience-info-card {
-  flex: 1;
-  border-radius: 12px;
-  background: rgba(0, 74, 173, 0.1); /* Use a lighter shade of accent color */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  flex: 1.5; /* Adjusted flex for better balance */
+  border-radius: 16px; /* More rounded corners */
+  background: rgba(0, 74, 173, 0.2); /* More transparency */
+  backdrop-filter: blur(10px); /* Glassmorphism blur */
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); /* More pronounced shadow */
+  border: 1px solid rgba(255, 255, 255, 0.18); /* Subtle border */
   position: relative;
+  padding: 2.5rem; /* Consistent padding */
 }
 
 .dark-theme .experience-info-card {
-  background: rgba(255, 152, 0, 0.1); /* Lighter shade of dark accent */
+  background: rgba(255, 152, 0, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
 .experience-info {
-  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content vertically */
+  height: 100%;
 }
 
 .experience-info h3 {
-  font-size: 1.5rem;
+  font-size: 1.7rem; /* Larger title */
   margin-bottom: 0.5rem;
-  color: var(--text-color-light); /* Text color for contrast */
+  color: var(--text-color-light);
+  font-weight: 600; /* Bolder title */
 }
 
 .dark-theme .experience-info h3 {
@@ -56,10 +68,10 @@
 }
 
 .experience-info h4 {
-  font-size: 1.2rem;
-  font-weight: 600;
+  font-size: 1.3rem; /* Slightly larger company name */
+  font-weight: 500;
   margin-bottom: 0.5rem;
-  color: var(--accent-color-light); /* Use accent color for company name */
+  color: var(--accent-color-light);
 }
 
 .dark-theme .experience-info h4 {
@@ -68,8 +80,8 @@
 
 .experience-info h5 {
   font-size: 1rem;
-  color: var(--orbit-color-light); /* Lighter text for duration */
-  margin-bottom: 1rem;
+  color: var(--orbit-color-light);
+  margin-bottom: 1.5rem; /* Increased margin */
 }
 
 .dark-theme .experience-info h5 {
@@ -79,27 +91,29 @@
 .experience-info ul {
   list-style-type: disc;
   padding-left: 1.5rem;
+  text-align: left; /* Align list to the left */
+  width: 100%; /* Make list take full width */
 }
 
 .experience-info li {
-  margin-bottom: 0.5rem;
-  line-height: 1.6;
+  margin-bottom: 0.8rem; /* Increased margin */
+  line-height: 1.7; /* Adjusted line height */
 }
 
 /* Company Logo Holder (Main) */
 .company-logo-main {
-  width: 80px;
-  height: 80px;
+  width: 100px; /* Larger logo */
+  height: 100px; /* Larger logo */
   border-radius: 50%;
   background: var(--bg-color-light);
-  /* Border effect for better visual separation */
   border: 3px solid var(--accent-color-light);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4), /* Outer shadow */ 
+              inset 0 0 5px rgba(0, 0, 0, 0.2); /* Inner shadow */
   display: flex;
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: -40px;
+  top: -50px; /* Adjust based on new logo size */
   left: 50%;
   transform: translateX(-50%);
   overflow: hidden;
@@ -112,19 +126,22 @@
 }
 
 .company-logo-main img {
-  width: 70%;
-  height: 70%;
+  width: 75%; /* Adjusted image size */
+  height: 75%; /* Adjusted image size */
   object-fit: contain;
   border-radius: 50%;
 }
 
 /* Right Side: Company Logos and Position Names in a Card */
 .company-logos-card {
-  width: 300px;
-  padding: 1.5rem;
-  border-radius: 12px;
-  background: rgba(0, 74, 173, 0.1); /* Match left card background */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 320px; /* Slightly wider */
+  padding: 1rem; /* Consistent padding */
+  border-radius: 16px; /* More rounded corners */
+  background: rgba(0, 74, 173, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -132,17 +149,18 @@
 }
 
 .dark-theme .company-logos-card {
-  background: rgba(255, 152, 0, 0.1);
+  background: rgba(255, 152, 0, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); /* Shadow for dark mode */
 }
 
 .company-logo-wrapper {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.2rem; /* Increased gap */
   cursor: pointer;
-  padding: 0.75rem;
-  border-radius: 8px;
-  transition: all 0.3s ease;
+  padding: 1rem; /* Increased padding */
+  border-radius: 10px; /* More rounded corners */
+  transition: all 0.3s ease; /* For hover effect */
 }
 
 /* Hover and active states for logos on the right */
@@ -164,21 +182,21 @@
 
 .company-logo-wrapper:hover .company-title,
 .company-logo-wrapper.active .company-title {
-  color: var(--bg-color-light); /* Light text on hover/active */
+  color: var(--bg-color-light);
 }
 
 .dark-theme .company-logo-wrapper:hover .company-title,
 .dark-theme .company-logo-wrapper.active .company-title {
-  color: var(--bg-color-dark); /* Dark text on hover/active in dark mode */
+  color: var(--bg-color-dark);
 }
 
 .company-logo {
-  width: 50px;
-  height: 50px;
+  width: 55px; /* Slightly larger */
+  height: 55px; /* Slightly larger */
   border-radius: 50%;
   overflow: hidden;
   flex-shrink: 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
 }
 
 .company-logo img {
@@ -188,7 +206,7 @@
 }
 
 .company-title {
-  font-size: 0.9rem;
+  font-size: 1rem; /* Slightly larger */
   font-weight: 500;
   white-space: nowrap;
   overflow: hidden;
@@ -208,12 +226,37 @@
   pointer-events: none;
 }
 
-/* Dark Theme Logo Visibility */
-.dark-theme .company-logo img {
-  filter: brightness(1.1);
-}
+/* Responsive Design */
+@media (max-width: 768px) {
+  .experience-container {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
 
-/* Additional specificity for dark theme */
-.dark-theme .company-logos-card .company-logo-wrapper:not(.active):hover {
-  background-color: var(--orbit-color-hover-dark);
+  .company-logos-card {
+    width: 100%; /* Take full width on small screens */
+  }
+
+  .experience-info-card {
+    padding: 2rem; /* Adjust padding for smaller screens */
+  }
+
+  .company-logo-main {
+    width: 80px;
+    height: 80px;
+    top: -40px;
+  }
+
+  .company-logo-main img {
+    width: 70%;
+    height: 70%;
+  }
+
+  .experience-info h3 {
+    font-size: 1.5rem;
+  }
+
+  .experience-info h4 {
+    font-size: 1.2rem;
+  }
 }
