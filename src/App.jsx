@@ -7,6 +7,7 @@ import Skills from './components/Skills/Skills';
 import Education from './components/Education/Education';
 import Contact from './components/Contact/Contact';
 import CursorTrail from './components/CursorTrail/CursorTrail';
+import Particles from './components/Particles/Particles';
 import './App.css';
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
       <Education />
       <Contact />
       <CursorTrail isDarkMode={isDarkMode} />
+      <Particles isDarkMode={isDarkMode} />
     </div>
   );
 }

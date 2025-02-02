@@ -1,0 +1,43 @@
+.particles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0; /* Correct z-index */
+  }
+  .particle {
+    position: absolute;
+    border-radius: 50%;
+    background-color: var(--particle-color); 
+    opacity: 1; 
+    animation: floatParticle 6s ease-in-out infinite; 
+    
+  }
+  
+  /* Dark Mode Styling */
+  .dark-theme .particle,
+  .particle.dark-theme {
+    background-color: #ffcc80; /* Non-transparent light yellow for dark mode */
+    
+  }
+  
+  /* Floating Animation */
+  @keyframes floatParticle {
+    0% {
+      transform: translateY(0) translateX(0); /* Start at original position */
+    }
+    25% {
+      transform: translateY(-5px) translateX(5px); /* Move slightly up and right */
+    }
+    50% {
+      transform: translateY(0) translateX(0); /* Back to origin */
+    }
+    75% {
+      transform: translateY(5px) translateX(-5px); /* Move slightly down and left */
+    }
+    100% {
+      transform: translateY(0) translateX(0); /* End at original position */
+    }
+  }
