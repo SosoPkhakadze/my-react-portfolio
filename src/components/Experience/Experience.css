@@ -1,3 +1,4 @@
+/* Experience Section */
 .experience-section {
   padding: 4rem 2rem;
   background-color: var(--bg-color-light);
@@ -9,25 +10,175 @@
   color: var(--text-color-dark);
 }
 
+.section-title {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 4rem;
+  color: var(--accent-color-light); /* Use accent color for title */
+}
+
+.dark-theme .section-title {
+  color: var(--accent-color-dark);
+}
+
+/* Experience Container */
 .experience-container {
   display: flex;
   gap: 2rem;
-  margin-top: 2rem;
+  align-items: flex-start;
 }
 
-.company-logos {
+/* Left Side: Experience Info Card */
+.experience-info-card {
+  flex: 1;
+  border-radius: 12px;
+  background: rgba(0, 74, 173, 0.1); /* Use a lighter shade of accent color */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.dark-theme .experience-info-card {
+  background: rgba(255, 152, 0, 0.1); /* Lighter shade of dark accent */
+}
+
+.experience-info {
+  padding: 2rem;
+}
+
+.experience-info h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-color-light); /* Text color for contrast */
+}
+
+.dark-theme .experience-info h3 {
+  color: var(--text-color-dark);
+}
+
+.experience-info h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--accent-color-light); /* Use accent color for company name */
+}
+
+.dark-theme .experience-info h4 {
+  color: var(--accent-color-dark);
+}
+
+.experience-info h5 {
+  font-size: 1rem;
+  color: var(--orbit-color-light); /* Lighter text for duration */
+  margin-bottom: 1rem;
+}
+
+.dark-theme .experience-info h5 {
+  color: var(--orbit-color-dark);
+}
+
+.experience-info ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+}
+
+.experience-info li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+/* Company Logo Holder (Main) */
+.company-logo-main {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--bg-color-light);
+  /* Border effect for better visual separation */
+  border: 3px solid var(--accent-color-light);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  overflow: hidden;
+  z-index: 2;
+}
+
+.dark-theme .company-logo-main {
+  background: var(--bg-color-dark);
+  border-color: var(--accent-color-dark);
+}
+
+.company-logo-main img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+/* Right Side: Company Logos and Position Names in a Card */
+.company-logos-card {
+  width: 300px;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: rgba(0, 74, 173, 0.1); /* Match left card background */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  overflow: hidden;
+}
+
+.dark-theme .company-logos-card {
+  background: rgba(255, 152, 0, 0.1);
+}
+
+.company-logo-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  padding: 0.75rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+/* Hover and active states for logos on the right */
+.company-logo-wrapper:hover {
+  background-color: var(--orbit-color-hover-light);
+}
+
+.company-logo-wrapper.active {
+  background-color: var(--accent-color-light);
+}
+
+.dark-theme .company-logo-wrapper:hover {
+  background-color: var(--orbit-color-hover-dark);
+}
+
+.dark-theme .company-logo-wrapper.active {
+  background-color: var(--accent-color-dark);
+}
+
+.company-logo-wrapper:hover .company-title,
+.company-logo-wrapper.active .company-title {
+  color: var(--bg-color-light); /* Light text on hover/active */
+}
+
+.dark-theme .company-logo-wrapper:hover .company-title,
+.dark-theme .company-logo-wrapper.active .company-title {
+  color: var(--bg-color-dark); /* Dark text on hover/active in dark mode */
 }
 
 .company-logo {
-  width: 100px;
-  height: 100px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.3s, box-shadow 0.3s;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .company-logo img {
@@ -36,22 +187,33 @@
   object-fit: cover;
 }
 
-.company-logo.active {
-  transform: scale(1.1);
-  box-shadow: 0 0 15px var(--accent-color-light);
+.company-title {
+  font-size: 0.9rem;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--accent-color-light);
 }
 
-.experience-info {
-  flex: 1;
-  padding: 1rem;
-  border-radius: 8px;
-  transition: background-color 0.3s;
+.dark-theme .company-title {
+  color: var(--accent-color-dark);
 }
 
-.experience-item {
-  display: none;
+/* Traveling Logo */
+.traveling-logo {
+  position: absolute;
+  border-radius: 50%;
+  z-index: 10;
+  pointer-events: none;
 }
 
-.experience-item.active {
-  display: block;
+/* Dark Theme Logo Visibility */
+.dark-theme .company-logo img {
+  filter: brightness(1.1);
+}
+
+/* Additional specificity for dark theme */
+.dark-theme .company-logos-card .company-logo-wrapper:not(.active):hover {
+  background-color: var(--orbit-color-hover-dark);
 }
