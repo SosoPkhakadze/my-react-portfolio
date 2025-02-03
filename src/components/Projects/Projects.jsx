@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import { motion } from "framer-motion";
 import ProjectModal from "./ProjectModal";
 import "./Projects.css";
 import projectsData from "./projectsData";
@@ -8,6 +9,72 @@ import githubLogoDark from "../assets/github-mark-white.png";
 const Projects = ({ isDarkMode }) => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [activeFilter, setActiveFilter] = useState("all");
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const carouselTrackRef = useRef(null);
+  const [trackWidth, setTrackWidth] = useState(0);
+
+  const filteredProjects =
+    activeFilter === "all"
+      ? projectsData
+      : projectsData.filter((project) =>
+          project.filter.includes(activeFilter)
+        );
+
+  const handleLeftClick = () => {
+    setCurrentIndex((prevIndex) => {
+      let newIndex = prevIndex - 1;
+      return newIndex < 0 ? filteredProjects.length - 1 : newIndex;
+    });
+  };
+
+  const handleRightClick = () => {
+    setCurrentIndex((prevIndex) => {
+      let newIndex = prevIndex + 1;
+      return newIndex >= filteredProjects.length ? 0 : newIndex;
+    });
+  };
+
+  useEffect(() => {
+    const updateTrackWidth = () => {
+      if (carouselTrackRef.current) {
+        const cardWidth =
+          carouselTrackRef.current.children[0]?.offsetWidth || 0;
+        const margin = 32;
+        setTrackWidth((cardWidth + margin) * filteredProjects.length);
+      }
+    };
+
+    updateTrackWidth();
+
+    window.addEventListener("resize", updateTrackWidth);
+    return () => window.removeEventListener("resize", updateTrackWidth);
+  }, [filteredProjects]);
+
+  useEffect(() => {
+    const centerActiveCard = () => {
+      if (carouselTrackRef.current) {
+        const cardWidth =
+          carouselTrackRef.current.children[0]?.offsetWidth || 400;
+        const margin = 32;
+
+        const containerWidth = carouselTrackRef.current.parentElement.offsetWidth;
+        const centerOffset = (containerWidth - cardWidth) / 2 -50;
+
+        const totalOffset = centerOffset - currentIndex * (cardWidth + margin);
+
+        carouselTrackRef.current.style.transform = `translateX(${totalOffset}px)`;
+      }
+    };
+
+    centerActiveCard();
+    window.addEventListener("resize", centerActiveCard);
+    return () => window.removeEventListener("resize", centerActiveCard);
+  }, [currentIndex, filteredProjects, trackWidth]);
+
+  const handleFilterClick = (filter) => {
+    setActiveFilter(filter);
+    setCurrentIndex(0);
+  };
 
   const openModal = (project) => {
     setSelectedProject(project);
@@ -17,20 +84,12 @@ const Projects = ({ isDarkMode }) => {
     setSelectedProject(null);
   };
 
-  const handleFilterClick = (filter) => {
-    setActiveFilter(filter);
-  };
-
-  const filteredProjects =
-    activeFilter === "all"
-      ? projectsData
-      : projectsData.filter((project) => project.filter.includes(activeFilter));
-
   const githubLogo = isDarkMode ? githubLogoDark : githubLogoLight;
 
   return (
     <section id="projects" className="projects-section">
       <h2 className="section-title">Projects</h2>
+
       <div className="filter-container">
         <div className="filter-dropdown">
           <button id="filterBtn" className="filter-btn">
@@ -100,40 +159,52 @@ const Projects = ({ isDarkMode }) => {
           </div>
         </div>
       </div>
-
-      <div className="projects-grid">
-        {filteredProjects.map((project) => (
-          <div className="project-card" key={project.id}>
-            {project.githubLink && (
-              <a
-                href={project.githubLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="github-link"
-              >
-                <img
-                  src={githubLogo}
-                  alt="GitHub Repo"
-                  className="github-logo"
-                />
-              </a>
-            )}
-            <h3 className="project-title">{project.title}</h3>
-            <p className="project-short-description">
-              {project.shortDescription}
-            </p>
-            <div className="project-technologies">
-              {project.technologies.map((tech) => (
-                <span key={tech} className="tech">
-                  {tech}
-                </span>
-              ))}
-            </div>
-            <button className="view-button" onClick={() => openModal(project)}>
-              View
-            </button>
-          </div>
-        ))}
+      <div className="carousel-container">
+        <div className="carousel-track" ref={carouselTrackRef}>
+          {filteredProjects.map((project, index) => (
+            <motion.div
+              key={project.id}
+              className={`project-card ${
+                index === currentIndex ? "center-card" : "side-card"
+              }`}
+            >
+              {project.githubLink && (
+                <a
+                  href={project.githubLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="github-link"
+                >
+                  <img
+                    src={githubLogo}
+                    alt="GitHub Repo"
+                    className="github-logo"
+                  />
+                </a>
+              )}
+              <h3 className="project-title">{project.title}</h3>
+              <p className="project-short-description">
+                {project.shortDescription}
+              </p>
+              <div className="project-technologies">
+                {project.technologies.map((tech) => (
+                  <span key={tech} className="tech">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+              <button className="view-button" onClick={() => openModal(project)}>
+                View
+              </button>
+            </motion.div>
+          ))}
+        </div>
+        <button className="carousel-button prev" onClick={handleLeftClick}>
+        &lt;
+        </button>
+        <button className="carousel-button next" onClick={handleRightClick}>
+          &gt;
+        </button>
       </div>
 
       {selectedProject && (

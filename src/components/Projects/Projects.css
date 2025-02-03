@@ -4,9 +4,9 @@
   background-color: var(--bg-color-light);
   color: var(--text-color-light);
   background-image: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.1) 0%,
-    rgba(0, 74, 173, 0.1) 100%
+          to bottom,
+          rgba(255, 255, 255, 0.1) 0%,
+          rgba(0, 74, 173, 0.1) 100%
   );
 }
 
@@ -14,9 +14,9 @@
   background-color: var(--bg-color-dark);
   color: var(--text-color-dark);
   background-image: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.5) 0%,
-    rgba(255, 152, 0, 0.2) 100%
+          to bottom,
+          rgba(0, 0, 0, 0.5) 0%,
+          rgba(255, 152, 0, 0.2) 100%
   );
 }
 
@@ -89,17 +89,26 @@
   display: block;
 }
 
-/* Projects Grid */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-  margin-bottom: 3rem;
+/* Carousel Container */
+.carousel-container {
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+  padding: 3rem;
 }
-/* Project Card */
+
+/* Track for Project Cards */
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+/* Individual Project Card */
 .project-card {
-  min-width: 300px;
-  flex-shrink: 0;
+  min-width: 400px; /* Set a minimum width for each card */
+  margin: 0 1rem;
   background: rgba(255, 255, 255, 0.25);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(4px);
@@ -107,11 +116,26 @@
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   padding: 2rem;
-  position: relative;
   display: flex;
   flex-direction: column;
-  transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, filter 0.5s ease-in-out;
+  flex-shrink: 0;
+  position: relative; /* Ensure project cards have position relative */
+}
+
+/* Style Adjustments for Center and Side Cards */
+.project-card.center-card {
+  transform: translateY(-15px) scale(1.1) rotate(0deg); /* Lift the center card */
   opacity: 1;
+  filter: brightness(1);
+  z-index: 2;
+}
+
+.project-card.side-card {
+  transform: scale(0.8) rotateY(20deg);
+  opacity: 0.8;
+  filter: brightness(0.8);
+  z-index: 1;
 }
 
 .dark-theme .project-card {
@@ -201,8 +225,6 @@
   background-color: var(--orbit-color-hover-dark);
 }
 
-
-
 /* Project Modal */
 .modal-overlay {
   position: fixed;
@@ -274,3 +296,33 @@
   color: white;
 }
 
+/* Carousel Control Buttons */
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 3;
+  transition: background-color 0.3s ease;
+}
+
+.dark-theme .carousel-button {
+  background-color: rgba(107, 107, 107, 0.5);
+}
+
+.carousel-button:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.carousel-button.prev {
+  left: 2rem;
+}
+
+.carousel-button.next {
+  right: 2rem;
+}
