@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Others
+my_files_and_code.txt
+python.py
+
+problems.txt

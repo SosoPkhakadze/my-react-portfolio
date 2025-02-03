@@ -27,9 +27,12 @@ function App() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth',
-        });
+        const element = document.querySelector(this.getAttribute('href'));
+        if (element) {
+          element.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
       });
     });
   }, []);
