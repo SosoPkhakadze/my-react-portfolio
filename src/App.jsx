@@ -39,7 +39,7 @@ function App() {
       <Header isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
       <Welcome />
       <Experience />
-      <Projects />
+      <Projects isDarkMode={isDarkMode} />
       <Skills />
       <Education />
       <Contact />
