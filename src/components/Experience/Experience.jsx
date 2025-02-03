@@ -102,7 +102,7 @@ import {useAnimationControls } from 'framer-motion';
 
   return (
     <section className="experience-section" aria-labelledby="experience-heading">
-      <h2 id="experience-heading" className="section-title">
+      <h2 id="experience" className="section-title">
         Professional Experience
       </h2>
       <div className="experience-container">
