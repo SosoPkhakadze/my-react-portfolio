@@ -274,3 +274,170 @@
   color: white;
 }
 
+/* Add these new styles to your existing Projects.css file */
+
+/* Update these styles in your Projects.css file */
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+  height: 550px; /* Increased height to accommodate the lift effect */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  perspective: 1000px; /* Add perspective for 3D transforms */
+}
+
+.carousel-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-style: preserve-3d;
+}
+
+.carousel-card {
+  position: absolute;
+  width: 300px;
+  transition: all 0.5s ease;
+}
+
+.carousel-card.position-0 {
+  transform: translateX(0) translateY(-20px); /* Lift the active card up */
+  z-index: 3;
+  opacity: 1;
+  scale: 1.05; /* Slightly larger */
+  box-shadow: 0 12px 32px 0 rgba(31, 38, 135, 0.37); /* Enhanced shadow */
+}
+
+.carousel-card.position-1 {
+  transform: translateX(calc(100% + 2rem)) translateY(0) rotateY(-10deg); /* Rotate inward */
+  transform-origin: left center;
+  z-index: 2;
+  opacity: 0.5; /* More fade */
+}
+
+.carousel-card.position--1 {
+  transform: translateX(calc(-100% - 2rem)) translateY(0) rotateY(10deg); /* Rotate inward */
+  transform-origin: right center;
+  z-index: 2;
+  opacity: 0.5; /* More fade */
+}
+
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--accent-color-light);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 4;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.dark-theme .carousel-button {
+  background-color: var(--accent-color-dark);
+}
+
+.carousel-button:hover {
+  background-color: var(--orbit-color-hover-light);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.dark-theme .carousel-button:hover {
+  background-color: var(--orbit-color-hover-dark);
+}
+
+.carousel-button.prev {
+  left: 1rem;
+}
+
+.carousel-button.next {
+  right: 1rem;
+}
+
+/* Update project card styles */
+.project-card {
+  min-width: 300px;
+  height: 200px;
+  margin: 0;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.5s ease;
+}
+
+.dark-theme .project-card {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+/* Remove the grid styles */
+.projects-grid {
+  display: none;
+}
+
+/* Enhanced hover effect for the active card */
+.carousel-card.position-0:hover {
+  transform: translateX(0) translateY(-25px); /* Lift slightly higher on hover */
+  scale: 1.06;
+}
+
+/* Smooth transition for all transform properties */
+.carousel-card {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Add these new styles to your existing CSS */
+
+.carousel-track {
+  cursor: grab;
+  user-select: none;
+}
+
+.carousel-track.dragging {
+  cursor: grabbing;
+}
+
+/* Update the transition property to exclude transform when dragging */
+.carousel-card {
+  transition: opacity 0.5s ease, box-shadow 0.5s ease;
+}
+
+.carousel-card:not(.dragging) {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Prevent text selection during drag */
+.carousel-track,
+.project-card {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Optional: Add a subtle indicator that the carousel is draggable */
+.carousel-track:hover {
+  cursor: grab;
+}
+
+.carousel-track:active {
+  cursor: grabbing;
+}
