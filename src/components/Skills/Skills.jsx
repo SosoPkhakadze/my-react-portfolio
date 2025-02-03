@@ -206,14 +206,12 @@ const Skills = () => {
                                 <span className="skill-category">{skill.category}</span>
                             </div>
                             <div className="skill-card-details">
-                                <div className="skill-detail">
-                                    <span>Complexity:</span>
-                                    <ComplexityIndicator complexity={skill.complexity} />
-                                </div>
-                                <div className="skill-detail">
-                                    <span>Learning Curve:</span>
-                                    <span className="learning-curve">{skill.learningCurve}</span>
-                                </div>
+                                {skill.level && (
+                                    <div className="skill-level">
+                                        <span>Level:</span>
+                                        <span className="level-text">{skill.level}</span>
+                                    </div>
+                                )}
                                 {skill.projects && (
                                     <div className="skill-projects">
                                         <h4>Featured Projects:</h4>
