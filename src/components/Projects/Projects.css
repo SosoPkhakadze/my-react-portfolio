@@ -285,7 +285,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
   perspective: 1000px; /* Add perspective for 3D transforms */
 }
 
@@ -344,6 +343,7 @@
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
+  opacity: 0.8;
 }
 
 .dark-theme .carousel-button {
@@ -378,7 +378,7 @@
   -webkit-backdrop-filter: blur(4px);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
-  padding: 2rem;
+  padding: 1.3rem;
   display: flex;
   flex-direction: column;
   transition: all 0.5s ease;
