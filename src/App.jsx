@@ -10,6 +10,7 @@ import CursorTrail from './components/CursorTrail/CursorTrail';
 import Particles from './components/Particles/Particles';
 import './App.css';
 
+
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
 

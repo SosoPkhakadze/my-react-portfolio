@@ -125,7 +125,7 @@ const Education = () => {
   }, [isHovered, isPressed]);
 
   return (
-    <section id="education" className="advanced-education-section">
+    <section id="education" className="education-section">
       <div className="education-content">
         <div className="education-header">
           <h2 className="section-title">

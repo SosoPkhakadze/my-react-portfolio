@@ -120,7 +120,7 @@ const Skills = () => {
     }, []);
 
     return (
-        <section id="skills" className="innovative-skills-section" ref={skillsSectionRef}>
+        <section id="skills" className="skills-section" ref={skillsSectionRef}>
             <div className="skills-control-panel">
                 <motion.div
                     className="search-wrapper"

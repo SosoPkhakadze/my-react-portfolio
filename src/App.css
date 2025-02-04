@@ -1,132 +1,148 @@
 :root {
-  --bg-color-light: #ffffff; /* White background */
-  --text-color-light: #1a237e; /* Indigo dark blue text */
-  --accent-color-light: #004aad; /* Royal blue accent */
-  --orbit-color-light: #6a6acd; /* Light-blue/purplish orbit */
-  --orbit-color-hover-light: #002171; /* Darker blue on hover */
-  --toggle-bg-light: #f0f0f0; /* Light gray toggle background */
-  --toggle-icon-light: #ffcc66; /* Yellow sun icon */
+  /* Enhanced Light Theme Colors */
+  --bg-color-light: #f8f8fa;
+  /* Soft white background */
+  --text-color-light: #282c34;
+  /* Dark gray for better readability */
+  --accent-color-light: #007acc;
+  /* Calming blue accent */
+  --accent-color-light-hover: #005fa3;
+  /* Darker blue on hover */
+  --orbit-color-light: #579aff;
+  /* Light blue orbit */
+  --orbit-color-hover-light: #0047ab;
+  /* Darker orbit on hover */
+  --toggle-bg-light: #f0f0f0;
+  /* Light gray toggle background */
+  --toggle-icon-light: #ffcc66;
+  /* Yellow sun icon */
   --particle-color: #000052;
+  /* Dark blue for particles */
 
- --bg-color-dark: #000000; 
-  --text-color-dark: #ffcc80; 
-  --accent-color-dark: #ff9800; 
-  --orbit-color-dark: #ffcc80; 
-  --orbit-color-hover-dark: #e65100; 
-  --toggle-bg-dark: #333333; 
-  --toggle-icon-dark: #fbc02d;  
-
+  /* Enhanced Dark Theme Colors */
+  --bg-color-dark: #181a1b;
+  /* Darker gray background */
+  --text-color-dark: #d1d1cf;
+  /* Off-white text */
+  --accent-color-dark: #ffb74d;
+  /* Warm orange accent */
+  --accent-color-dark-hover: #ff9800;
+  /* Darker orange on hover */
+  --orbit-color-dark: #ffcc80;
+  /* Light orange orbit */
+  --orbit-color-hover-dark: #e65100;
+  /* Darker orbit on hover */
+  --toggle-bg-dark: #282c34;
+  /* Dark gray toggle background */
+  --toggle-icon-dark: #fbc02d;
+  /* Golden moon icon */
+  --particle-color-dark: #ffcc80;
 }
+
 /* Global styles */
 body {
   margin: 0;
-  font-family: "Arial", sans-serif;
+  font-family: "Inter", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   transition: background-color 0.3s, color 0.3s;
-  overflow: hidden; /* Hide vertical scrollbar on the body */
+  overflow-x: hidden;
+  color: var(--text-color-light);
+  background-color: var(--bg-color-light);
+}
+
+.dark-theme {
+  color: var(--text-color-dark);
+  background-color: var(--bg-color-dark);
 }
 
 /* Smooth scroll behavior */
 html {
   scroll-behavior: smooth;
-  overflow-y: scroll; /* Enable scrolling but hide scrollbar */
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
+  overflow-y: scroll;
+  /* Enable scrolling but hide scrollbar */
+  scrollbar-width: thin;
+  /* Firefox */
+  -ms-overflow-style: scrollbar;
+  /* IE and Edge */
+  scroll-padding-top: 65px;
 }
 
 html::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, and Opera */
+  width: 8px;
+}
+
+html::-webkit-scrollbar-track {
+  background: var(--bg-color-light);
+}
+
+.dark-theme ::-webkit-scrollbar-track {
+  background: var(--bg-color-dark);
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: var(--orbit-color-light);
+  /* Color of the scroll thumb */
+  border-radius: 20px;
+  /* Rounded corners on the scroll thumb */
+  border: 3px solid var(--bg-color-light);
+}
+
+.dark-theme ::-webkit-scrollbar-thumb {
+  background-color: var(--orbit-color-dark);
+  border-color: var(--bg-color-dark);
 }
 
 /* Section styles */
 section {
-  padding: 4rem 2rem;
+  padding: 6rem 2rem;
+  /* Increased padding */
+  min-height: 85vh;
+  /* Ensure sections take up full viewport height */
+
+  /* Center content vertically */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  /* Subtle divider */
 }
 
-/* Welcome section */
-.welcome-section {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--bg-color-light);
+.dark-theme section {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.dark-theme .welcome-section {
-  background-color: var(--bg-color-dark);
-}
-
-/* Experience section */
-.experience-section {
-  background-color: var(--bg-color-light);
-}
-
-.dark-theme .experience-section {
-  background-color: var(--bg-color-dark);
-}
-
-/* Projects section */
-.projects-section {
-  background-color: var(--bg-color-light);
-}
-
-.dark-theme .projects-section {
-  background-color: var(--bg-color-dark);
-}
-
-/* Skills section */
-.skills-section {
-  background-color: var(--bg-color-light);
-}
-
-.dark-theme .skills-section {
-  background-color: var(--bg-color-dark);
-}
-
-/* Education section */
-.education-section {
-  background-color: var(--bg-color-light);
-}
-
-.dark-theme .education-section {
-  background-color: var(--bg-color-dark);
-}
-
-/* Contact section */
-.contact-section {
-  background-color: var(--bg-color-light);
-}
-
-.dark-theme .contact-section {
-  background-color: var(--bg-color-dark);
-}
-
-/* Other dark theme styles... */
-.dark-theme {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
-}
-
-.dark-theme::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, and Opera */
-}
-
-.dark-theme .bg-initials {
-  filter: drop-shadow(0 0 2px white);
-}
-
-section {
-  padding: 4rem 2rem;
-}
-
-/* Section Title Styles (applied to all sections) */
+/* Section Title Styles */
 .section-title {
-  font-size: 2.5rem; /* Adjust as needed */
-  font-weight: bold;
+  font-size: 3rem;
+  font-weight: 700;
   text-align: center;
-  margin-bottom: 5rem; /* Adjust as needed */
-  color: var(--accent-color-light); /* Use accent color for title */
+  margin-bottom: 4rem;
+  color: var(--accent-color-light);
+  letter-spacing: 1px;
+  /* Add slight letter spacing */
 }
 
 .dark-theme .section-title {
   color: var(--accent-color-dark);
+}
+
+/* Specific Section Backgrounds with subtle patterns */
+.welcome-section,
+.experience-section,
+.projects-section,
+.skills-section,
+.education-section,
+.contact-section {
+  background-color: var(--bg-color-light);
+  position: relative;
+
+}
+
+.dark-theme .welcome-section,
+.dark-theme .experience-section,
+.dark-theme .projects-section,
+.dark-theme .skills-section,
+.dark-theme .education-section,
+.dark-theme .contact-section {
+  background-color: var(--bg-color-dark);
+}
+
+.dark-theme .bg-initials {
+  filter: drop-shadow(0 0 2px white);
 }

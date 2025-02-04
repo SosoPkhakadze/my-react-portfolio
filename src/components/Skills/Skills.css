@@ -1,71 +1,78 @@
 :root {
   /* Light Theme Colors */
-  --project-tag-bg-light: #e8e8e8; /* Example color */
-  --project-tag-text-light: #333;  /* Example color */
-  --project-tag-bg-hover-light: #c7c7c7; /* Example color */
-  --project-tag-text-hover-light: #222;  /* Example color */
+  --background-color-light: #f5f5f5;
+  --text-color-light: #222222;
+  --accent-color-light: #0077b6;
+  --accent-color-hover-light: #005b96;
+  --secondary-color-light: #4a6572;
+
+  --card-bg-light: #ffffff;
+  --card-border-light: #e0e0e0;
+  --card-shadow-light: rgba(0, 0, 0, 0.1);
+
+  --project-tag-bg-light: #e8f0fe;
+  --project-tag-text-light: #3a3a3a;
+  --project-tag-bg-hover-light: #cce0ff;
+  --project-tag-text-hover-light: #222;
+
+  --toggle-bg-light: var(--card-bg-light);
+  --orbit-color-light: var(--card-border-light);
 
   /* Dark Theme Colors */
-  --project-tag-bg-dark: #333; /* Example color */
-  --project-tag-text-dark: #eee; /* Example color */
-  --project-tag-bg-hover-dark: #555; /* Example color */
-  --project-tag-text-hover-dark: #fff; /* Example color */
+  --background-color-dark: #121212;
+  --text-color-dark: #f0f0f0;
+  --accent-color-dark: #ffa500;
+  --accent-color-hover-dark: #cc8400;
+  --secondary-color-dark: #7285a5;
 
-  /* Other CSS variables */
+  --card-bg-dark: #1e1e1e;
+  --card-border-dark: #404040;
+  --card-shadow-dark: rgba(0, 0, 0, 0.3);
+
+  --project-tag-bg-dark: #282828;
+  --project-tag-text-dark: #eee;
+  --project-tag-bg-hover-dark: #404040;
+  --project-tag-text-hover-dark: #fff;
+
+  --toggle-bg-dark: var(--card-bg-dark);
+  --orbit-color-dark: var(--card-border-dark);
 }
 
-.innovative-skills-section {
-  background: linear-gradient(135deg, 
-      var(--bg-color-light), 
-      var(--orbit-color-light)
-  );
-  min-height: 100vh;
-  padding: 4rem 2rem;
+body {
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
   color: var(--text-color-light);
+  background-color: var(--background-color-light);
+  margin: 0;
 }
 
-.dark-theme .innovative-skills-section {
-  background: linear-gradient(135deg, 
-      var(--bg-color-dark), 
-      var(--orbit-color-dark)
-  );
+.dark-theme {
   color: var(--text-color-dark);
+  background-color: var(--background-color-dark);
 }
 
-.skills-control-panel {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  margin-bottom: 3rem;
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.2;
 }
 
-.search-wrapper {
-  position: relative;
-  max-width: 600px;
-  margin: 0 auto;
+h1 {
+  font-size: 2.5rem;
 }
 
-.search-icon {
-  position: absolute;
-  left: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--accent-color-light);
-  z-index: 10;
+h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
 }
 
-.dark-theme .search-icon {
+h3 {
+  font-size: 1.5rem;
+}
+
+.dark-theme .search-icon,
+.dark-theme .filter-header {
   color: var(--accent-color-dark);
-}
-
-.search-wrapper input {
-  padding: 15px 15px 15px 50px;
-  background: var(--toggle-bg-light);
-  border: 2px solid var(--orbit-color-light);
-  border-radius: 30px;
-  color: var(--text-color-light);
-  font-size: 1rem;
-  transition: all 0.3s ease;
 }
 
 .dark-theme .search-wrapper input {
@@ -74,54 +81,8 @@
   color: var(--text-color-dark);
 }
 
-.search-wrapper input:focus {
-  outline: none;
-  border-color: var(--accent-color-light);
-  box-shadow: 0 0 15px rgba(0, 74, 173, 0.3);
-}
-
 .dark-theme .search-wrapper input:focus {
-  border-color: var(--accent-color-dark);
   box-shadow: 0 0 15px rgba(255, 152, 0, 0.3);
-}
-
-.filter-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-}
-
-.filter-header {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--accent-color-light);
-  font-weight: bold;
-}
-
-.dark-theme .filter-header {
-  color: var(--accent-color-dark);
-}
-
-.filter-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-}
-
-.filter-btn {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 10px 15px;
-  background: var(--toggle-bg-light);
-  border: 2px solid var(--orbit-color-light);
-  border-radius: 25px;
-  color: var(--text-color-light);
-  cursor: pointer;
-  transition: all 0.3s ease;
 }
 
 .dark-theme .filter-btn {
@@ -130,46 +91,10 @@
   color: var(--text-color-dark);
 }
 
-.filter-btn:hover {
-  background: var(--accent-color-light);
-  color: white;
-}
-
-.dark-theme .filter-btn:hover {
-  background: var(--accent-color-dark);
-  color: black;
-}
-
-.filter-btn.active {
-  background: var(--accent-color-light);
-  color: white;
-}
-
+.dark-theme .filter-btn:hover,
 .dark-theme .filter-btn.active {
   background: var(--accent-color-dark);
   color: black;
-}
-
-/* Remove view-mode-toggle completely */
-
-.skills-showcase {
-  display: grid;
-  gap: 2rem;
-}
-
-.grid-view {
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-}
-
-.skill-card {
-  background: var(--toggle-bg-light);
-  border: 2px solid var(--orbit-color-light);
-  border-radius: 15px;
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  transition: all 0.3s ease;
 }
 
 .dark-theme .skill-card {
@@ -177,175 +102,236 @@
   border-color: var(--orbit-color-dark);
 }
 
-.skill-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0, 74, 173, 0.2);
-}
-
 .dark-theme .skill-card:hover {
   box-shadow: 0 15px 30px rgba(255, 152, 0, 0.2);
-}
-
-.skill-card-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  text-align: center;
-}
-
-.skill-icon {
-  font-size: 3rem;
-  color: var(--accent-color-light);
 }
 
 .dark-theme .skill-icon {
   color: var(--accent-color-dark);
 }
 
-.skill-category {
-  background: rgba(0, 74, 173, 0.2);
-  padding: 5px 10px;
-  border-radius: 15px;
-  font-size: 0.8rem;
-}
-
-.dark-theme .skill-category {
+.dark-theme .skill-category,
+.dark-theme .level-text {
   background: rgba(255, 152, 0, 0.2);
-}
-
-.skill-card-details {
-  display: flex;
-  flex-direction: column;
-}
-
-.skill-projects {
-  margin-top: 1rem;
-}
-
-.project-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
-}
-
-.project-tag {
-  background-color: var(--project-tag-bg-light); /* Use a CSS variable */
-  color: var(--project-tag-text-light); /* Use a CSS variable */
-  padding: 5px 10px;
-  border-radius: 15px;
-  font-size: 0.7rem;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.project-tag:hover {
-  background-color: var(--project-tag-bg-hover-light); /* Use a CSS variable */
-  color: var(--project-tag-text-hover-light); /* Use a CSS variable */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .dark-theme .project-tag {
-  background-color: rgba(255, 152, 0, 0.2); /* Use a CSS variable */
-  color: var(--orbit-color-dark); /* Use a CSS variable */
+  background-color: var(--project-tag-bg-dark);
+  color: var(--project-tag-text-dark);
 }
 
 .dark-theme .project-tag:hover {
-  background-color: var(--project-tag-bg-hover-dark); /* Use a CSS variable */
-  color: var(--project-tag-text-hover-dark); /* Use a CSS variable */
+  background-color: var(--project-tag-bg-hover-dark);
+  color: var(--project-tag-text-hover-dark);
 }
 
-.skill-level {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem; /* Add some spacing */
-}
-
-.level-text {
-  background: rgba(0, 74, 173, 0.2); /* Example styling */
-  padding: 5px 10px;
-  border-radius: 15px;
-  font-size: 0.8rem;
-}
-
-.dark-theme .level-text {
-  background: rgba(255, 152, 0, 0.2); /* Dark theme styling */
-}
-
-.skill-other {
-  margin-top: 1rem;
-}
-
-.skill-other h4 {
-  margin-bottom: 0.5rem;
-}
-
-/* Skill level part */
-.skill-detail {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.skill-level {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem; /* Adjust spacing as needed */
-}
-
-.level-text {
-  background: rgba(0, 74, 173, 0.2);
-  padding: 5px 10px;
-  border-radius: 15px;
-  font-size: 0.8rem;
-}
-
-/* Dark theme styling */
-.dark-theme .level-text {
-  background: rgba(255, 152, 0, 0.2);
-}
-
-.scroll-to-top-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 2rem; /* Add some space above the button */
-}
-
-.scroll-to-top {
-  /* position: fixed; */  /* Remove fixed positioning */
-  /* bottom: 2rem; */    /* Remove bottom property */
-  /* right: 2rem; */     /* Remove right property */
-  background-color: var(--accent-color-light); 
-  color: white;
-  border: none;
-  border-radius: 50%;
-  padding: 0.8rem 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  opacity: 0.8; 
-  transition: all 0.3s ease;
-}
-
-.scroll-to-top:hover {
-  opacity: 1;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.scroll-to-top svg {
-  font-size: 1.5rem;
-}
-
-/* Dark theme */
 .dark-theme .scroll-to-top {
-  background-color: var(--accent-color-dark); /* Adjust color as needed */
+  background-color: var(--accent-color-dark);
   color: black;
 }
 
-.dark-theme .scroll-to-top:hover {
+.skills-control-panel {
+display: flex;
+flex-direction: column;
+gap: 2rem;
+margin-bottom: 3rem;
+}
+
+.search-wrapper {
+position: relative;
+max-width: 600px;
+margin: 0 auto;
+}
+
+.search-icon {
+position: absolute;
+left: 15px;
+top: 50%;
+transform: translateY(-50%);
+color: var(--accent-color-light);
+z-index: 10;
+}
+
+.search-wrapper input {
+padding: 15px 15px 15px 50px;
+background: var(--toggle-bg-light);
+border: 2px solid var(--orbit-color-light);
+border-radius: 30px;
+color: var(--text-color-light);
+font-size: 1rem;
+transition: all 0.3s ease;
+}
+
+.search-wrapper input:focus {
+outline: none;
+box-shadow: 0 0 15px rgba(0, 74, 173, 0.3);
+}
+
+.filter-section {
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 1rem;
+}
+
+.filter-header {
+display: flex;
+align-items: center;
+gap: 0.5rem;
+color: var(--accent-color-light);
+font-weight: bold;
+}
+
+.filter-buttons {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 1rem;
+}
+
+.filter-btn {
+display: flex;
+align-items: center;
+gap: 0.5rem;
+padding: 10px 15px;
+background: var(--toggle-bg-light);
+border: 2px solid var(--orbit-color-light);
+border-radius: 25px;
+color: var(--text-color-light);
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+background: var(--accent-color-light);
+color: white;
+}
+
+.skills-showcase {
+display: grid;
+gap: 2rem;
+}
+
+.grid-view {
+grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+.skill-card {
+background: var(--toggle-bg-light);
+border: 2px solid var(--orbit-color-light);
+border-radius: 15px;
+padding: 1.5rem;
+display: flex;
+flex-direction: column;
+gap: 1rem;
+transition: all 0.3s ease;
+}
+
+.skill-card:hover {
+transform: translateY(-10px);
+box-shadow: 0 15px 30px rgba(0, 74, 173, 0.2);
+}
+
+.skill-card-header {
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 1rem;
+text-align: center;
+}
+
+.skill-icon {
+font-size: 3rem;
+color: var(--accent-color-light);
+}
+
+.skill-category {
+background: rgba(0, 74, 173, 0.2);
+padding: 5px 10px;
+border-radius: 15px;
+font-size: 0.8rem;
+}
+
+.skill-card-details {
+display: flex;
+flex-direction: column;
+}
+
+.skill-projects {
+margin-top: 1rem;
+}
+
+.project-tags {
+display: flex;
+flex-wrap: wrap;
+gap: 0.5rem;
+margin-top: 0.5rem;
+}
+
+.project-tag {
+background-color: var(--project-tag-bg-light);
+color: var(--project-tag-text-light);
+padding: 5px 10px;
+border-radius: 15px;
+font-size: 0.7rem;
+text-decoration: none;
+transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.project-tag:hover {
+background-color: var(--project-tag-bg-hover-light);
+color: var(--project-tag-text-hover-light);
+}
+
+.skill-level,
+.skill-detail {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 1rem;
+}
+
+.level-text {
+background: rgba(0, 74, 173, 0.2);
+padding: 5px 10px;
+border-radius: 15px;
+font-size: 0.8rem;
+}
+
+.skill-other {
+margin-top: 1rem;
+}
+
+.skill-other h4 {
+margin-bottom: 0.5rem;
+}
+
+.skill-level {
+gap: 0.5rem;
+}
+
+.scroll-to-top-container {
+display: flex;
+justify-content: center;
+margin-top: 2rem;
+}
+
+.scroll-to-top {
+background-color: var(--accent-color-light);
+color: white;
+border: none;
+border-radius: 50%;
+padding: 0.8rem 1rem;
+display: flex;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+opacity: 0.8;
+transition: all 0.3s ease;
+}
+
+.scroll-to-top:hover {
 opacity: 1;
 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }

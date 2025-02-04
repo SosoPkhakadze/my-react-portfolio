@@ -1,30 +1,10 @@
 /* Projects Section */
-.projects-section {
-  padding: 6rem 2rem;
-  background-color: var(--bg-color-light);
-  color: var(--text-color-light);
-  background-image: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.1) 0%,
-    rgba(0, 74, 173, 0.1) 100%
-  );
-}
 
-.dark-theme .projects-section {
-  background-color: var(--bg-color-dark);
-  color: var(--text-color-dark);
-  background-image: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.5) 0%,
-    rgba(255, 152, 0, 0.2) 100%
-  );
-}
 
 /* Filter Container */
 .filter-container {
   display: flex;
   justify-content: center;
-  margin-bottom: 2rem;
 }
 
 .filter-dropdown {
@@ -370,7 +350,7 @@
 /* Update project card styles */
 .project-card {
   min-width: 300px;
-  height: 200px;
+  height: 215px;
   margin: 0;
   background: rgba(255, 255, 255, 0.25);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);

@@ -1,23 +1,4 @@
-.advanced-education-section {
-  background: linear-gradient(
-    135deg, 
-    var(--bg-color-light) 0%, 
-    var(--orbit-color-light) 100%
-  );
-  color: var(--text-color-light);
-  transition: all 0.5s ease;
-  position: relative;
-  overflow: hidden;
-}
 
-.dark-theme .advanced-education-section {
-  background: linear-gradient(
-    135deg, 
-    var(--bg-color-dark) 0%, 
-    var(--orbit-color-dark) 100%
-  );
-  color: var(--text-color-dark);
-}
 
 .education-content {
   max-width: 1400px;
@@ -35,7 +16,6 @@
 }
 
 .section-title {
-  display: flex;
   align-items: center;
   gap: 1rem;
   font-size: 2.5rem;
