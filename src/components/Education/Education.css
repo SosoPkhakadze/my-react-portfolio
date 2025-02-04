@@ -448,3 +448,23 @@
     flex-grow: 0; /* Prevents the text from taking up too much space */
 }
 }
+
+/* Education.css */
+.courses-showcase {
+  /* Remove any existing flexbox styles that might be making the containers sit side-by-side */
+  display: block; /* Or you can keep flexbox but use flex-direction: column; */
+}
+
+.courses-containers-wrapper {
+  display: block;
+}
+
+.course-section {
+  margin-bottom: 20px; /* Add some spacing between the two sections */
+}
+
+.course-container-title {
+  font-weight: 600;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
