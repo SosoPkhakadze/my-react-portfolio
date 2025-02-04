@@ -121,6 +121,9 @@ const Skills = () => {
 
     return (
         <section id="skills" className="skills-section" ref={skillsSectionRef}>
+            <h2 className="section-title">
+                       Skills
+                    </h2>
             <div className="skills-control-panel">
                 <motion.div
                     className="search-wrapper"
@@ -135,9 +138,10 @@ const Skills = () => {
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
                 </motion.div>
-
+                
                 <div className="filter-section">
                     <div className="filter-header">
+                    
                         <FaFilter />
                         <span>Skill Filters</span>
                     </div>
