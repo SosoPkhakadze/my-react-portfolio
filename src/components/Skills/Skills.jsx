@@ -1,8 +1,8 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
     FaCode, FaDatabase, FaChartBar, FaReact, FaTools,
-    FaFilter, FaSearch, FaBrain, FaLayerGroup
+    FaFilter, FaSearch, FaArrowUp
 } from 'react-icons/fa';
 import "./Skills.css";
 import projectsData from '../Projects/projectsData'; // Assuming this is the correct path
@@ -14,8 +14,6 @@ const skillCategories = {
             category: 'Programming Languages',
             level: 'Advanced',
             icon: FaCode,
-            complexity: 4,
-            learningCurve: 'Challenging',
             projects: ['k-line-data-analysis', 'search-products', 'weather-forecast', 'image-resizing', 'price-comparison']
         },
         {
@@ -23,8 +21,6 @@ const skillCategories = {
             category: 'Frontend',
             level: 'Advanced',
             icon: FaReact,
-            complexity: 5,
-            learningCurve: 'Intermediate',
             projects: ['job-aggregator']
         },
         {
@@ -32,8 +28,6 @@ const skillCategories = {
             category: 'DevOps',
             level: 'Intermediate',
             icon: FaTools,
-            complexity: 3,
-            learningCurve: 'Moderate',
             other: 'Highly skilled in containerization, enhancing deployment efficiency and application scalability.'
         },
         {
@@ -41,8 +35,6 @@ const skillCategories = {
             category: 'Databases',
             level: 'Intermediate',
             icon: FaDatabase,
-            complexity: 3,
-            learningCurve: 'Moderate',
             projects: ['data-analysis-dashboard']
         },
         {
@@ -50,8 +42,6 @@ const skillCategories = {
             category: 'Data Science',
             level: 'Advanced',
             icon: FaChartBar,
-            complexity: 5,
-            learningCurve: 'Challenging',
             projects: ['k-line-data-analysis', 'sales-dashboard', 'covid-insight-analysis']
         },
         {
@@ -59,8 +49,6 @@ const skillCategories = {
             category: 'Backend',
             level: 'Advanced',
             icon: FaCode, // Consider a different icon for Django, like a server icon
-            complexity: 4,
-            learningCurve: 'Challenging',
             projects: ['weather-forecast', 'job-aggregator', 'price-comparison']
         },
         {
@@ -68,8 +56,6 @@ const skillCategories = {
             category: 'Data Visualization',
             level: 'Advanced',
             icon: FaChartBar,
-            complexity: 4,
-            learningCurve: 'Moderate',
             projects: ['sales-dashboard', 'data-analysis-dashboard', 'covid-insight-analysis']
         },
         {
@@ -77,30 +63,16 @@ const skillCategories = {
             category: 'Data Visualization',
             level: 'Intermediate',
             icon: FaChartBar,
-            complexity: 3,
-            learningCurve: 'Moderate',
             projects: ['user-requirements-analysis']
         }
     ]
 };
 
-const ComplexityIndicator = ({ complexity }) => {
-    return (
-        <div className="complexity-indicator">
-            {[...Array(5)].map((_, index) => (
-                <span
-                    key={index}
-                    className={`complexity-dot ${index < complexity ? 'filled' : ''}`}
-                ></span>
-            ))}
-        </div>
-    );
-};
-
 const Skills = () => {
     const [activeFilters, setActiveFilters] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
-    const [viewMode, setViewMode] = useState('grid');
+    const [showScrollButton, setShowScrollButton] = useState(false);
+    const skillsSectionRef = useRef(null); // Ref for the skills section
 
     const filterCategories = [
         { name: 'Programming Languages', icon: FaCode },
@@ -129,8 +101,26 @@ const Skills = () => {
         );
     };
 
+    // Scroll to top functionality
+    const scrollToTop = () => {
+        skillsSectionRef.current.scrollIntoView({ behavior: 'smooth' });
+    };
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 300) {
+                setShowScrollButton(true);
+            } else {
+                setShowScrollButton(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
     return (
-        <section className="innovative-skills-section">
+        <section className="innovative-skills-section" ref={skillsSectionRef}>
             <div className="skills-control-panel">
                 <motion.div
                     className="search-wrapper"
@@ -167,24 +157,11 @@ const Skills = () => {
                     </div>
                 </div>
 
-                <div className="view-mode-toggle">
-                    <button
-                        onClick={() => setViewMode('grid')}
-                        className={viewMode === 'grid' ? 'active' : ''}
-                    >
-                        <FaLayerGroup /> Grid
-                    </button>
-                    <button
-                        onClick={() => setViewMode('list')}
-                        className={viewMode === 'list' ? 'active' : ''}
-                    >
-                        <FaBrain /> List
-                    </button>
-                </div>
+                {/* REMOVE View Functionality */}
             </div>
 
             <motion.div
-                className={`skills-showcase ${viewMode}-view`}
+                className="skills-showcase grid-view"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5 }}
@@ -238,6 +215,27 @@ const Skills = () => {
                     ))}
                 </AnimatePresence>
             </motion.div>
+
+            {/* Scroll to Top Button */}
+            <AnimatePresence>
+                {showScrollButton && (
+                    <motion.div
+                        className="scroll-to-top-container"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 20 }}
+                    >
+                        <motion.button
+                            className="scroll-to-top"
+                            onClick={scrollToTop}
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                        >
+                            <FaArrowUp />
+                        </motion.button>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </section>
     );
 };

@@ -59,7 +59,6 @@
 }
 
 .search-wrapper input {
-  width: 100%;
   padding: 15px 15px 15px 50px;
   background: var(--toggle-bg-light);
   border: 2px solid var(--orbit-color-light);
@@ -151,40 +150,7 @@
   color: black;
 }
 
-.view-mode-toggle {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-}
-
-.view-mode-toggle button {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 10px 15px;
-  background: var(--toggle-bg-light);
-  border: 2px solid var(--orbit-color-light);
-  border-radius: 25px;
-  color: var(--text-color-light);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.dark-theme .view-mode-toggle button {
-  background: var(--toggle-bg-dark);
-  border-color: var(--orbit-color-dark);
-  color: var(--text-color-dark);
-}
-
-.view-mode-toggle button.active {
-  background: var(--accent-color-light);
-  color: white;
-}
-
-.dark-theme .view-mode-toggle button.active {
-  background: var(--accent-color-dark);
-  color: black;
-}
+/* Remove view-mode-toggle completely */
 
 .skills-showcase {
   display: grid;
@@ -193,10 +159,6 @@
 
 .grid-view {
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-}
-
-.list-view {
-  grid-template-columns: 1fr;
 }
 
 .skill-card {
@@ -257,47 +219,6 @@
   flex-direction: column;
 }
 
-.skill-detail {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.complexity-indicator {
-  display: flex;
-  gap: 0.25rem;
-}
-
-.complexity-dot {
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  background: var(--orbit-color-light);
-}
-
-.dark-theme .complexity-dot {
-  background: var(--orbit-color-dark);
-}
-
-.complexity-dot.filled {
-  background: var(--accent-color-light);
-}
-
-.dark-theme .complexity-dot.filled {
-  background: var(--accent-color-dark);
-}
-
-.learning-curve {
-  background: rgba(0, 74, 173, 0.2);
-  padding: 5px 10px;
-  border-radius: 15px;
-  font-size: 0.8rem;
-}
-
-.dark-theme .learning-curve {
-  background: rgba(255, 152, 0, 0.2);
-}
-
 .skill-projects {
   margin-top: 1rem;
 }
@@ -308,8 +229,6 @@
   gap: 0.5rem;
   margin-top: 0.5rem;
 }
-
-/* ... (rest of your existing CSS) ... */
 
 .project-tag {
   background-color: var(--project-tag-bg-light); /* Use a CSS variable */
@@ -337,8 +256,6 @@
   color: var(--project-tag-text-hover-dark); /* Use a CSS variable */
 }
 
-/* ... (rest of your existing CSS) ... */
-
 .skill-level {
   display: flex;
   justify-content: space-between;
@@ -357,8 +274,6 @@
   background: rgba(255, 152, 0, 0.2); /* Dark theme styling */
 }
 
-
-
 .skill-other {
   margin-top: 1rem;
 }
@@ -366,7 +281,6 @@
 .skill-other h4 {
   margin-bottom: 0.5rem;
 }
-
 
 /* Skill level part */
 .skill-detail {
@@ -391,4 +305,51 @@
 /* Dark theme styling */
 .dark-theme .level-text {
   background: rgba(255, 152, 0, 0.2);
+}
+
+.scroll-to-top-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem; /* Add some space above the button */
+}
+
+.scroll-to-top {
+  /* position: fixed; */  /* Remove fixed positioning */
+  /* bottom: 2rem; */    /* Remove bottom property */
+  /* right: 2rem; */     /* Remove right property */
+  background-color: var(--accent-color-light); 
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 0.8rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0.8; 
+  transition: all 0.3s ease;
+}
+
+.scroll-to-top:hover {
+  opacity: 1;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.scroll-to-top svg {
+  font-size: 1.5rem;
+}
+
+/* Dark theme */
+.dark-theme .scroll-to-top {
+  background-color: var(--accent-color-dark); /* Adjust color as needed */
+  color: black;
+}
+
+.dark-theme .scroll-to-top:hover {
+opacity: 1;
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.scroll-to-top svg {
+font-size: 1.5rem;
 }
