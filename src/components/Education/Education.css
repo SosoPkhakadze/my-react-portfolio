@@ -124,10 +124,27 @@
   padding: 2rem;
   position: relative;
   overflow: hidden;
+  transition: max-height 0.5s ease-in-out; /* Add transition for max-height */
+  max-height: 200px; /* Initial max-height */
 }
 
 .dark-theme .courses-showcase {
   background-color: var(--toggle-bg-dark);
+}
+
+.courses-showcase.expanded {
+  max-height: 500px; /* Adjust to accommodate all courses without overflow */
+}
+
+.courses-showcase.expanded .course-container {
+  overflow-x: visible;
+  flex-wrap: wrap;
+}
+
+.course-container.static {
+    overflow-x: visible; 
+    flex-wrap: wrap; 
+    justify-content: center; 
 }
 
 .courses-showcase h4 {

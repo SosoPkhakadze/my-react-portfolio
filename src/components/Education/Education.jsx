@@ -1,13 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { 
-  GraduationCap, 
-  Code, 
-  Database, 
-  Cpu, 
-  PieChart, 
-  BookOpen, 
-  Layers, 
-  Calculator, 
+import {
+  GraduationCap,
+  Code,
+  Database,
+  Cpu,
+  PieChart,
+  BookOpen,
+  Layers,
+  Calculator,
   Share2,
   Zap,
   MapPin,
@@ -82,7 +82,7 @@ const educationData = {
 
 const CourseTag = ({ course }) => {
   const Icon = courseIcons[course];
-  
+
   return (
     <div className="course-tag">
       {Icon && <span className="course-tag-icon">{Icon}</span>}
@@ -94,21 +94,35 @@ const CourseTag = ({ course }) => {
 const Education = () => {
   const [activeSection, setActiveSection] = useState('university');
   const courseContainerRef = useRef(null);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isPressed, setIsPressed] = useState(false);
 
   useEffect(() => {
     const container = courseContainerRef.current;
-    if (container) {
-      const scrollInterval = setInterval(() => {
+    let scrollInterval;
+
+    const startScrolling = () => {
+      scrollInterval = setInterval(() => {
         if (container.scrollLeft >= container.scrollWidth - container.clientWidth) {
           container.scrollLeft = 0;
         } else {
           container.scrollLeft += 1;
         }
       }, 20);
+    };
 
-      return () => clearInterval(scrollInterval);
+    const stopScrolling = () => {
+      clearInterval(scrollInterval);
+    };
+
+    if (container && !isHovered && !isPressed) {
+      startScrolling();
+    } else {
+      stopScrolling();
     }
-  }, []);
+
+    return () => clearInterval(scrollInterval);
+  }, [isHovered, isPressed]);
 
   return (
     <section id="education" className="advanced-education-section">
@@ -118,13 +132,13 @@ const Education = () => {
             <GraduationCap size={40} /> Educational Odyssey
           </h2>
           <div className="section-toggle">
-            <button 
+            <button
               className={activeSection === 'university' ? 'active' : ''}
               onClick={() => setActiveSection('university')}
             >
               University
             </button>
-            <button 
+            <button
               className={activeSection === 'online' ? 'active' : ''}
               onClick={() => setActiveSection('online')}
             >
@@ -157,10 +171,16 @@ const Education = () => {
               </div>
             </div>
 
-            <div className="courses-showcase">
+            <div
+              className={`courses-showcase ${isHovered || isPressed ? 'expanded' : ''}`}
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+              onMouseDown={() => setIsPressed(true)}
+              onMouseUp={() => setIsPressed(false)}
+            >
               <h4>Completed Courses</h4>
-              <div 
-                className="course-container" 
+              <div
+                className={`course-container ${isHovered || isPressed ? 'static' : ''}`}
                 ref={courseContainerRef}
               >
                 {educationData.university.completedCourses.map((course, index) => (
