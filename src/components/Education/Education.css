@@ -358,3 +358,93 @@
     font-size: 0.7rem;
   }
 }
+
+.university-logo-link {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex: 1 0 100%;
+  justify-content: center;
+}
+
+.university-logo {
+  max-width: 80px; /* Adjust as needed */
+  max-height: 80px; /* Adjust as needed */
+  margin-right: 1rem;
+  border-radius: 100px;
+  animation: pulse-light 1s infinite; /* Initial animation for light mode */
+  transition: all 0.3s ease;
+  margin: 0;
+}
+
+.dark-theme .university-logo {
+  animation-name: pulse-dark; /* Change animation for dark mode */
+}
+
+@keyframes pulse-light {
+  0% {
+    box-shadow: 0 0 0 0 var(--accent-color-light);
+  }
+  70% {
+    box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+
+/* Keyframes for pulse effect in dark mode */
+@keyframes pulse-dark {
+  0% {
+    box-shadow: 0 0 0 0 var(--accent-color-dark);
+  }
+  70% {
+    box-shadow: 0 0 0 20px rgba(255, 255, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+.university-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.university-header-text {
+    flex-grow: 1;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .university-logo {
+    max-width: 60px;
+    max-height: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .university-logo {
+    max-width: 50px;
+    max-height: 50px;
+    margin-right: 0.5rem;
+  }
+
+  .university-header {
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    text-align: center;
+  }
+  .university-logo-link {
+    margin-bottom: 0; /*remove spacing to allow the title go right under the logo*/
+}
+.university-logo {
+  margin-right: 0; /* Center logo and remove any extra margin */
+}
+
+.university-header-text {
+    flex-grow: 0; /* Prevents the text from taking up too much space */
+}
+}

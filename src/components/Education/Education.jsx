@@ -14,6 +14,7 @@ import {
   Calendar
 } from 'lucide-react';
 import './Education.css';
+import kiuLogo from '../assets/KIU.png'; // Import the KIU logo
 
 const courseIcons = {
   'Numerical Programming': <Calculator strokeWidth={1.5} />,
@@ -152,8 +153,13 @@ const Education = () => {
             <div className="university-details">
               <div className="university-card">
                 <div className="university-header">
-                  <h3>{educationData.university.degree}</h3>
-                  <p>{educationData.university.institution}</p>
+                  <a href="https://www.kiu.edu.ge/" target="_blank" rel="noopener noreferrer" className="university-logo-link">
+                    <img src={kiuLogo} alt="KIU Logo" className="university-logo" />
+                  </a>
+                  <div className="university-header-text">
+                    <h3>{educationData.university.degree}</h3>
+                    <p>{educationData.university.institution}</p>
+                  </div>
                 </div>
                 <div className="university-info">
                   <div className="university-meta">
