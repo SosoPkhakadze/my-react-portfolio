@@ -45,49 +45,52 @@ const Welcome = () => {
       {/* Background Initials */}
       <div className="bg-initials" ref={bgInitialsRef}></div>
 
-      {/* Intro Content */}
+      {/* Intro Content with Transparent Card */}
       <div className="intro-content">
-        {/* Orbit System */}
-        <div className="orbit-system" ref={orbitSystemRef}>
-          {/* Orbits */}
-          <div className="profile-orbit orbit-one"></div>
-          <div className="profile-orbit orbit-two"></div>
-          <div className="profile-orbit orbit-three"></div>
+        <div className="transparent-card">
+          {" "}
+          {/* Add the transparent card container */}
+          {/* Orbit System */}
+          <div className="orbit-system" ref={orbitSystemRef}>
+            {/* Orbits */}
+            <div className="profile-orbit orbit-one"></div>
+            <div className="profile-orbit orbit-two"></div>
+            <div className="profile-orbit orbit-three"></div>
 
-          {/* Central Logo */}
-          <div className="central-logo">
-            <img
-              src={`${import.meta.env.BASE_URL}SP.png`}
-              alt="Profile Logo"
-              className="profile-logo"
-            />
+            {/* Central Logo */}
+            <div className="central-logo">
+              <img
+                src={`${import.meta.env.BASE_URL}SP.png`}
+                alt="Profile Logo"
+                className="profile-logo"
+              />
+            </div>
+
+            {/* Rotating Circles */}
+            <div className="orbit-circle circle-one"></div>
+            <div className="orbit-circle circle-two"></div>
+            <div className="orbit-circle circle-three"></div>
+
+            {/* Glow Effect */}
+            <div id="orbit-glow"></div>
           </div>
-
-          {/* Rotating Circles */}
-          <div className="orbit-circle circle-one"></div>
-          <div className="orbit-circle circle-two"></div>
-          <div className="orbit-circle circle-three"></div>
-
-          {/* Glow Effect */}
-          <div id="orbit-glow"></div>
-        </div>
-
-        {/* Name and Tagline */}
-        <div className="name-title">
-          <h1 className="name">Soso Pkhakadze</h1>
-          <div className="tagline-wrapper">
-            <ReactTyped
-              strings={[
-                "Passionate Software Engineer",
-                "Experienced Django Developer",
-                "Enthusiastic Learner",
-                "Creative Problem Solver",
-              ]}
-              typeSpeed={60}
-              backSpeed={30}
-              loop
-              className="tagline"
-            />
+          {/* Name and Tagline */}
+          <div className="name-title">
+            <h1 className="name">Soso Pkhakadze</h1>
+            <div className="tagline-wrapper">
+              <ReactTyped
+                strings={[
+                  "Passionate Software Engineer",
+                  "Experienced Django Developer",
+                  "Enthusiastic Learner",
+                  "Creative Problem Solver",
+                ]}
+                typeSpeed={60}
+                backSpeed={30}
+                loop
+                className="tagline"
+              />
+            </div>
           </div>
         </div>
       </div>
