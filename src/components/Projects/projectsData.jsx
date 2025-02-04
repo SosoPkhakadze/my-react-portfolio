@@ -1,4 +1,8 @@
-// src/components/Projects/projectsData.js
+import jobSearch1 from "../assets/Job_Search/Job_Search_1.png";
+import jobSearch2 from "../assets/Job_Search/Job_Search_2.png";
+import jobSearch3 from "../assets/Job_Search/Job_Search_3.png";
+
+
 
 const projectsData = [
     {
@@ -38,7 +42,9 @@ const projectsData = [
       description:
         'Developed a full-stack web application utilizing Django for backend and React for frontend, enabling users to search for job listings based on title and location. Integrated with an external API to fetch real-time job data. Implemented features for displaying search results and viewing detailed job information.',
       technologies: ['React', 'Django', 'Python'],
-      filter: ['react', 'django', 'python']
+      githubLink: 'https://github.com/SosoPkhakadze/Job_Search',
+      filter: ['react', 'django', 'python'],
+      images: [jobSearch1, jobSearch2, jobSearch3]
     },
     {
       id: 'image-resizing',

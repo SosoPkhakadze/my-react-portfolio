@@ -309,7 +309,6 @@
   z-index: 3;
   opacity: 1;
   scale: 1.05; /* Slightly larger */
-  box-shadow: 0 12px 32px 0 rgba(31, 38, 135, 0.37); /* Enhanced shadow */
 }
 
 .carousel-card.position-1 {
