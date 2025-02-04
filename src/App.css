@@ -1,52 +1,41 @@
 :root {
-  /* Enhanced Light Theme Colors */
-  --bg-color-light: #f8f8fa;
-  /* Soft white background */
-  --text-color-light: #282c34;
-  /* Dark gray for better readability */
-  --accent-color-light: #007acc;
-  /* Calming blue accent */
-  --accent-color-light-hover: #005fa3;
-  /* Darker blue on hover */
-  --orbit-color-light: #579aff;
-  /* Light blue orbit */
-  --orbit-color-hover-light: #0047ab;
-  /* Darker orbit on hover */
-  --toggle-bg-light: #f0f0f0;
-  /* Light gray toggle background */
-  --toggle-icon-light: #ffcc66;
-  /* Yellow sun icon */
-  --particle-color: #000052;
-  /* Dark blue for particles */
+  /* Light Theme */
+  --bg-color-light: #e6f2ff;        /* Soft, pale light blue */
+  --text-color-light: #2c3e50;      /* Deep navy */
+  --accent-color-light: #3498db;    /* Bright blue */
+  --accent-color-light-hover: #2980b9; /* Deeper blue */
+  --orbit-color-light: #5dade2;     /* Soft azure */
+  --orbit-color-hover-light: #2874a6; /* Rich blue */
+  --toggle-bg-light: #f0f8ff;       /* Very light blue-white */
+  --toggle-icon-light: #34495e;     /* Slate gray */
+  --particle-color: #2c3e50;        /* Navy gray */
+  --section-border-light: rgba(52, 73, 94, 0.1); /* Subtle border */
+  --shadow-light: rgba(0, 0, 0, 0.1); /* Soft shadow */
 
-  /* Enhanced Dark Theme Colors */
-  --bg-color-dark: #181a1b;
-  /* Darker gray background */
-  --text-color-dark: #d1d1cf;
-  /* Off-white text */
-  --accent-color-dark: #ffb74d;
-  /* Warm orange accent */
-  --accent-color-dark-hover: #ff9800;
-  /* Darker orange on hover */
-  --orbit-color-dark: #ffcc80;
-  /* Light orange orbit */
-  --orbit-color-hover-dark: #e65100;
-  /* Darker orbit on hover */
-  --toggle-bg-dark: #282c34;
-  /* Dark gray toggle background */
-  --toggle-icon-dark: #fbc02d;
-  /* Golden moon icon */
-  --particle-color-dark: #ffcc80;
+  /* /* Dark Theme */
+  --bg-color-dark: #1c1c1c;         /* Very dark gray, almost black */
+  --text-color-dark: #f3d9b1;       /* Soft orange-white */
+  --accent-color-dark: #d35400;     /* Dark orange */
+  --accent-color-dark-hover: #b44300; /* Deeper dark orange */
+  --orbit-color-dark: #e67e22;      /* Bright orange */
+  --orbit-color-hover-dark: #d35400; /* Dark orange */
+  --toggle-bg-dark: #2c2c2c;        /* Slightly lighter black */
+  --toggle-icon-dark: #f39c12;      /* Golden orange */
+  --particle-color-dark: #a04000;   /* Deep burnt orange */
+  --section-border-dark: rgba(243, 217, 177, 0.1); /* Subtle light border */
+  --shadow-dark: rgba(0, 0, 0, 0.2); /* Deeper shadow */
 }
 
-/* Global styles */
+/* Global Styles */
 body {
   margin: 0;
-  font-family: "Inter", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Inter', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
   overflow-x: hidden;
   color: var(--text-color-light);
   background-color: var(--bg-color-light);
+  letter-spacing: 0.5px;
 }
 
 .dark-theme {
@@ -54,16 +43,12 @@ body {
   background-color: var(--bg-color-dark);
 }
 
-/* Smooth scroll behavior */
+/* Scrollbar Styling */
 html {
   scroll-behavior: smooth;
-  overflow-y: scroll;
-  /* Enable scrolling but hide scrollbar */
   scrollbar-width: thin;
-  /* Firefox */
-  -ms-overflow-style: scrollbar;
-  /* IE and Edge */
   scroll-padding-top: 65px;
+  overflow-x: hidden;
 }
 
 html::-webkit-scrollbar {
@@ -71,78 +56,88 @@ html::-webkit-scrollbar {
 }
 
 html::-webkit-scrollbar-track {
-  background: var(--bg-color-light);
+  background: var(--toggle-bg-light);
 }
 
 .dark-theme ::-webkit-scrollbar-track {
-  background: var(--bg-color-dark);
+  background: var(--toggle-bg-dark);
 }
 
 html::-webkit-scrollbar-thumb {
-  background-color: var(--orbit-color-light);
-  /* Color of the scroll thumb */
-  border-radius: 20px;
-  /* Rounded corners on the scroll thumb */
-  border: 3px solid var(--bg-color-light);
+  background-color: var(--accent-color-light);
+  border-radius: 10px;
+  border: 2px solid var(--bg-color-light);
 }
 
 .dark-theme ::-webkit-scrollbar-thumb {
-  background-color: var(--orbit-color-dark);
+  background-color: var(--accent-color-dark);
   border-color: var(--bg-color-dark);
 }
 
-/* Section styles */
+/* Section Styles with Enhanced Distinction */
 section {
   padding: 6rem 2rem;
-  /* Increased padding */
   min-height: 85vh;
-  /* Ensure sections take up full viewport height */
-
-  /* Center content vertically */
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  /* Subtle divider */
+  position: relative;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 6px var(--shadow-light);
+  border-bottom: 1px solid var(--section-border-light);
 }
 
 .dark-theme section {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 6px var(--shadow-dark);
+  border-bottom: 1px solid var(--section-border-dark);
+}
+
+/* Alternating Section Backgrounds for Visual Separation */
+.welcome-section, .skills-section, .contact-section {
+  background-color: var(--bg-color-light);
+}
+
+.dark-theme .welcome-section, 
+.dark-theme .skills-section, 
+.dark-theme .contact-section {
+  background-color: var(--bg-color-dark);
+}
+
+.experience-section, .projects-section, .education-section {
+  background-color: color-mix(in srgb, var(--bg-color-light) 95%, var(--accent-color-light) 5%);
+}
+
+.dark-theme .experience-section, 
+.dark-theme .projects-section, 
+.dark-theme .education-section {
+  background-color: color-mix(in srgb, var(--bg-color-dark) 95%, var(--accent-color-dark) 5%);
 }
 
 /* Section Title Styles */
 .section-title {
   font-size: 3rem;
-  font-weight: 700;
+  font-weight: 800;
   text-align: center;
   margin-bottom: 4rem;
   color: var(--accent-color-light);
-  letter-spacing: 1px;
-  /* Add slight letter spacing */
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 100px;
+  height: 4px;
+  background: var(--accent-color-light);
+  transform: translateX(-50%);
 }
 
 .dark-theme .section-title {
   color: var(--accent-color-dark);
 }
 
-/* Specific Section Backgrounds with subtle patterns */
-.welcome-section,
-.experience-section,
-.projects-section,
-.skills-section,
-.education-section,
-.contact-section {
-  background-color: var(--bg-color-light);
-  position: relative;
-
-}
-
-.dark-theme .welcome-section,
-.dark-theme .experience-section,
-.dark-theme .projects-section,
-.dark-theme .skills-section,
-.dark-theme .education-section,
-.dark-theme .contact-section {
-  background-color: var(--bg-color-dark);
-}
-
-.dark-theme .bg-initials {
-  filter: drop-shadow(0 0 2px white);
+.dark-theme .section-title::after {
+  background: var(--accent-color-dark);
 }

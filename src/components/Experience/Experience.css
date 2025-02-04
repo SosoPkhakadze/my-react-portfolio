@@ -35,17 +35,15 @@
 .experience-info-card {
   flex: 1.5; /* Adjusted flex for better balance */
   border-radius: 16px; /* More rounded corners */
-  background: rgba(0, 74, 173, 0.2); /* More transparency */
   backdrop-filter: blur(10px); /* Glassmorphism blur */
-  -webkit-backdrop-filter: blur(10px); /* Safari support */
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); /* More pronounced shadow */
   border: 1px solid rgba(255, 255, 255, 0.18); /* Subtle border */
   position: relative;
   padding: 2.5rem; /* Consistent padding */
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+
 }
 
 .dark-theme .experience-info-card {
-  background: rgba(255, 152, 0, 0.2);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
@@ -137,9 +135,7 @@
   width: 320px; /* Slightly wider */
   padding: 1rem; /* Consistent padding */
   border-radius: 16px; /* More rounded corners */
-  background: rgba(0, 74, 173, 0.2);
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   border: 1px solid rgba(255, 255, 255, 0.18);
   display: flex;
@@ -149,7 +145,6 @@
 }
 
 .dark-theme .company-logos-card {
-  background: rgba(255, 152, 0, 0.2);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); /* Shadow for dark mode */
 }
 
