@@ -3,7 +3,7 @@ import "./Header.css";
 
 const Header = ({ isDarkMode, toggleTheme }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
+  const [activeSection, setActiveSection] = useState("welcome");
   const headerRef = useRef(null);
 
   // Toggle mobile menu
@@ -14,62 +14,43 @@ const Header = ({ isDarkMode, toggleTheme }) => {
   // Handle scroll to detect active section
   useEffect(() => {
     const handleScroll = () => {
-      const sections = [
-        "home",
-        "experience",
-        "projects",
-        "skills",
-        "education",
-        "contact",
-      ];
-      const currentSection = sections.find((section) => {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          return (
-            rect.top <= window.innerHeight / 2 &&
-            rect.bottom >= window.innerHeight / 2
-          );
+      const sections = document.querySelectorAll("section");
+      const headerHeight = headerRef.current ? headerRef.current.offsetHeight : 0;
+      let currentSection = "";
+
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop - headerHeight -1; // Adjust for header height
+
+        const sectionHeight = section.clientHeight;
+        const scroll = window.scrollY;
+
+        // Add extra condition to mark the section as active slightly before it hits the top
+        if (
+          scroll >= sectionTop &&
+          scroll < sectionTop + sectionHeight
+        ) {
+          currentSection = section.id;
         }
-        return false;
       });
-      setActiveSection(currentSection || "home");
+
+      setActiveSection(currentSection);
     };
 
-    // Intersection Observer for smooth active link updates
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const link = headerRef.current.querySelector(
-            `a[href="#${entry.target.id}"]`
-          );
-          if (link) {
-            if (entry.isIntersecting) {
-              // Remove active class from all links
-              headerRef.current
-                .querySelectorAll(".nav-list li")
-                .forEach((li) => li.classList.remove("active"));
-              // Add active class to the current link
-              link.closest("li").classList.add("active");
-            }
-          }
-        });
-      },
-      {
-        threshold: 0.5,
-      }
-    );
-
-    const sections = document.querySelectorAll("section");
-    sections.forEach((section) => observer.observe(section));
 
     window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Initial check
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      sections.forEach((section) => observer.unobserve(section));
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const navItems = [
+    { label: "Home", id: "welcome" },
+    { label: "Experience", id: "experience" },
+    { label: "Projects", id: "projects" },
+    { label: "Skills", id: "skills" },
+    { label: "Education", id: "education" },
+    { label: "Contact", id: "contact" },
+  ];
 
   return (
     <header className={`header ${isDarkMode ? "dark-theme" : ""}`} ref={headerRef}>
@@ -95,25 +76,14 @@ const Header = ({ isDarkMode, toggleTheme }) => {
             <span className="bar"></span>
           </button>
           <ul className={`nav-list ${isMenuOpen ? "active" : ""}`}>
-            {[
-              "Home",
-              "Experience",
-              "Projects",
-              "Skills",
-              "Education",
-              "Contact",
-            ].map((item) => {
-              const sectionId =
-                item.toLowerCase() === "home" ? "welcome" : item.toLowerCase();
-              return (
-                <li
-                  key={item}
-                  className={activeSection === sectionId ? "active" : ""}
-                >
-                  <a href={`#${sectionId}`}>{item}</a>
-                </li>
-              );
-            })}
+            {navItems.map(({ label, id }) => (
+              <li
+                key={label}
+                className={activeSection === id ? "active" : ""}
+              >
+                <a href={`#${id}`}>{label}</a>
+              </li>
+            ))}
           </ul>
         </nav>
 
