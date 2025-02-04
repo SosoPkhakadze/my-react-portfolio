@@ -108,18 +108,44 @@ const Projects = ({ isDarkMode }) => {
   }, []);
 
   const getVisibleCards = () => {
-    const cards = [];
-    for (let i = -1; i <= 1; i++) {
-      let index = activeIndex + i;
-      if (index < 0) index = filteredProjects.length - 1;
-      if (index >= filteredProjects.length) index = 0;
-      cards.push({
-        project: filteredProjects[index],
-        position: i
-      });
-    }
-    return cards;
-  };
+    const numProjects = filteredProjects.length;
+  if (numProjects === 0) {
+    return []; // Return empty array if no projects match the filter
+  }
+
+  if (numProjects === 1) {
+    return [{
+      project: filteredProjects[0],
+      position: 0 // Only center position is needed
+    }];
+  }
+
+  if (numProjects === 2) {
+    return [
+      {
+        project: filteredProjects[activeIndex],
+        position: 0 // Center position
+      },
+      {
+        project: filteredProjects[(activeIndex + 1) % 2], // The other project will be positioned according to current activeIndex
+        position: activeIndex === 0 ? 1 : -1
+      }
+    ];
+  }
+
+  // For three or more projects, your original logic is fine:
+  const cards = [];
+  for (let i = -1; i <= 1; i++) {
+    let index = activeIndex + i;
+    if (index < 0) index = numProjects - 1;
+    if (index >= numProjects) index = 0;
+    cards.push({
+      project: filteredProjects[index],
+      position: i
+    });
+  }
+  return cards;
+};
 
   return (
     <section id="projects" className="projects-section">
