@@ -209,6 +209,7 @@
 @media (max-width: 768px) {
   .nav {
     justify-content: space-between;
+    padding: 0;
   }
 
   #hamburger-btn {
@@ -227,6 +228,7 @@
     padding: 1rem 0;
     z-index: 1000;
     gap: 2rem;
+    margin-left: -20px;
   }
 
   .dark-theme .nav-list {
@@ -237,12 +239,8 @@
     display: flex;
   }
 
-  .nav-list li {
-    width: 100%;
-  }
 
   .nav-list a {
-    padding: 1rem;
     text-align: center;
     display: block;
   }
@@ -253,6 +251,5 @@
     right: 0;
     margin-right: 10px;
   }
-
-  
 }
+
