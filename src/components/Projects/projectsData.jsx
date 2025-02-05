@@ -39,7 +39,7 @@ const projectsData = [
       title: 'Search Products',
       shortDescription: 'E-commerce product search application',
       description:
-        'Developed a web application for searching products from an e-commerce platform. The project uses web scraping techniques (likely with libraries like BeautifulSoup) to extract product information and provide search functionality.',
+        'Developed a web application for searching products from an e-commerce platform. The project uses web scraping API (RapidAPI) to extract product information and provide search functionality.',
       technologies: ['Python', 'Django', 'RapidAPI'],
       githubLink: 'https://github.com/SosoPkhakadze/Search_Products',
       filter: ['python', 'bases'],
