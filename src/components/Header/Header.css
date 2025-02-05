@@ -8,9 +8,7 @@
   padding: 1rem 2rem;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
-.dark-theme .header {
-  background-color: rgba(26, 26, 26, 0.9);
-}
+
 
 .nav {
   display: flex;
