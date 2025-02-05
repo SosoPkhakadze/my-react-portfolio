@@ -3,6 +3,18 @@ import jobSearch2 from "../assets/Job_Search/Job_Search_2.png";
 import jobSearch3 from "../assets/Job_Search/Job_Search_3.png";
 
 
+import productSearch1 from "../assets/Product_Search/Product_Search_1.png"
+import productSearch2 from "../assets/Product_Search/Product_Search_2.png"
+
+import weather1 from "../assets/Weather/Weather_1.png";
+import weather2 from "../assets/Weather/Weather_2.png";
+
+
+import kLine1 from "../assets/K-Line/K-Line_1.png";
+import kLine2 from "../assets/K-Line/K-Line_2.png";
+import kLine3 from "../assets/K-Line/K-Line_3.png";
+
+
 
 const projectsData = [
     {
@@ -11,9 +23,10 @@ const projectsData = [
       shortDescription: 'Financial data analysis using Python',
       description:
         'This project focuses on analyzing financial K-line data using Python libraries like Pandas, NumPy, Matplotlib, and mplfinance. It involves data cleaning, statistical analysis, and visualization to derive meaningful insights from K-line charts (candlestick charts).',
-      technologies: ['Python', 'Pandas', 'NumPy', 'Matplotlib', 'mplfinance'],
+      technologies: ['Python', 'Pandas', 'NumPy', 'Matplotlib'],
       githubLink: 'https://github.com/SosoPkhakadze/K-line-Data-Analysis',
-      filter: ['python']
+      filter: ['python'],
+      images: [kLine1, kLine2, kLine3],
     },
     {
       id: 'search-products',
@@ -21,9 +34,10 @@ const projectsData = [
       shortDescription: 'E-commerce product search application',
       description:
         'Developed a web application for searching products from an e-commerce platform. The project uses web scraping techniques (likely with libraries like BeautifulSoup) to extract product information and provide search functionality.',
-      technologies: ['Python', 'Web Scraping', 'BeautifulSoup'],
+      technologies: ['Python', 'Django', 'RapidAPI'],
       githubLink: 'https://github.com/SosoPkhakadze/Search_Products',
-      filter: ['python', 'bases']
+      filter: ['python', 'bases'],
+      images: [productSearch1, productSearch2],
     },
     {
       id: 'weather-forecast',
@@ -33,7 +47,8 @@ const projectsData = [
         'A Django-based weather forecast application that utilizes the OpenWeatherMap API to fetch and display current weather data based on user location or a specified city. It includes backend functionality to handle API requests and a frontend to present the weather information.',
       technologies: ['Django', 'Python', 'OpenWeatherMap API'],
       githubLink: 'https://github.com/SosoPkhakadze/Weather-forecast',
-      filter: ['django', 'python']
+      filter: ['django', 'python'],
+      images: [weather1, weather2],
     },
     {
       id: "job-aggregator",
@@ -41,7 +56,7 @@ const projectsData = [
       shortDescription: "Full-stack job search platform",
       description:
         "Developed a full-stack web application utilizing Django for backend and React for frontend, enabling users to search for job listings based on title and location. Integrated with an external API to fetch real-time job data. Implemented features for displaying search results and viewing detailed job information.",
-      technologies: ["React", "Django", "Python"],
+      technologies: ["React", "Django", "Python", "RapidAPI"],
       githubLink: "https://github.com/SosoPkhakadze/Job_Search",
       filter: ["react", "django", "python"],
       images: [jobSearch1, jobSearch2, jobSearch3],
@@ -54,15 +69,6 @@ const projectsData = [
         'Built an image resizing application from scratch using bilinear and bicubic interpolation techniques without relying on built-in libraries. This project demonstrates fundamentals of image processing and displays results through Matplotlib for visualization.',
       technologies: ['Python', 'Matplotlib'],
       filter: ['python']
-    },
-    {
-      id: 'price-comparison',
-      title: 'Price Comparison',
-      shortDescription: 'Real-time price tracking web app',
-      description:
-        'Developed a price comparison web application using Django, integrating scraping scripts for major e-commerce websites like Amazon, eBay, Walmart, Target, Etsy, and Wayfair. Implemented sorting functionality to display search results from cheapest to most expensive.',
-      technologies: ['Python', 'Django', 'BeautifulSoup'],
-      filter: ['django', 'python', 'bases']
     },
     {
       id: 'sales-dashboard',
