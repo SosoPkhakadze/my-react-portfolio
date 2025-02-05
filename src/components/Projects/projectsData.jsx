@@ -89,12 +89,23 @@ const projectsData = [
     {
       id: 'tiktok-insight-analysis',
       title: 'TikTok content Analysis Dashboard',
-      shortDescription: 'TikTok content statistics analyze with Power BI',
+      shortDescription: 'TikTok content analyze with Power BI',
       description:
         'Leveraged Power BI to analyze TikTok account data, providing insights about views, age statistics, and genders interested in the content. This project can be used by anyone with their own data to better visualize if the content and videos are being liked by people.',
       technologies: ['Power BI'],
       filter: ['tabi'],
       images: [TikTokReport1, TikTokReport2],
+    },
+    {
+      id: 'react-portfolio',
+      title: 'React Portfolio Website',
+      shortDescription: 'Personal portfolio showcasing projects and skills',
+      description:
+        'This very website you are browsing! Built with React, it showcases my projects, skills, and experience. It features a responsive design, a filterable project section, and a dark/light mode toggle. The site also includes smooth animations, interactive elements and it is completely accessable from any device.',
+      technologies: ['React', 'CSS', 'JavaScript'],
+      githubLink: 'https://github.com/SosoPkhakadze/my-react-portfolio',
+      liveLink: 'https://sosopkhakadze.github.io/my-react-portfolio/',
+      filter: ['react'],
     },
   ];
   

@@ -84,17 +84,27 @@ const ProjectModal = ({ project, onClose }) => {
 
         {/* GitHub Button */}
         <div className="modal-buttons">
-          {project.githubLink && (
-            <a
-              href={project.githubLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="modal-button"
-            >
-              GitHub
-            </a>
-          )}
-        </div>
+  {project.githubLink && (
+    <a
+      href={project.githubLink}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="modal-button"
+    >
+      GitHub
+    </a>
+  )}
+  {project.liveLink && ( 
+    <a
+      href={project.liveLink}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="modal-button"
+    >
+      Live Demo 
+    </a>
+  )}
+</div>
       </div>
     </div>
   );

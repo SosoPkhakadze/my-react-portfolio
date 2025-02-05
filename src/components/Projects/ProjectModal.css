@@ -63,6 +63,7 @@
 .modal-buttons {
   /* Add this container for buttons */
   margin-top: 1rem;
+  
 }
 
 .modal-button {
@@ -75,6 +76,7 @@
   cursor: pointer;
   margin: 0 0.5rem; /* Space between buttons */
   transition: background-color 0.3s ease;
+  text-decoration: none;
 }
 
 .dark-theme .modal-button {
