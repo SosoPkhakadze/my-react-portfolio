@@ -44,6 +44,10 @@ h3 {
   border-color: var(--orbit-color-dark);
 }
 
+.dark-theme .skill-card:hover {
+  box-shadow: 0 15px 30px rgba(173, 84, 0, 0.2);
+}
+
 
 .dark-theme .skill-icon {
   color: var(--accent-color-dark);
@@ -164,7 +168,7 @@ transition: all 0.3s ease;
 
 .skill-card:hover {
 transform: translateY(-10px);
-box-shadow: 0 15px 30px rgba(0, 74, 173, 0.2);
+box-shadow: 0 15px 30px rgba(0, 37, 173, 0.2);
 }
 
 .skill-card-header {
@@ -272,4 +276,43 @@ box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 
 .scroll-to-top svg {
 font-size: 1.5rem;
+}
+
+/* ... other CSS from your original code ... */
+.show-more-less-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.show-more-less-btn {
+  background-color: var(--accent-color-light);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dark-theme .show-more-less-btn {
+  background-color: var(--accent-color-dark);
+  color: black;
+}
+
+.show-more-less-btn:hover {
+  background-color: var(--section-border-light);
+  color: var(--project-tag-text-hover-light);
+}
+
+.dark-theme .show-more-less-btn:hover {
+  background-color: var(--orbit-color-dark);
+}
+
+.show-more-less-btn .icon {
+  font-size: 1.2rem;
 }

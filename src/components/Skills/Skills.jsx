@@ -2,7 +2,7 @@ import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
     FaCode, FaDatabase, FaChartBar, FaReact, FaTools,
-    FaFilter, FaSearch, FaArrowUp, FaGit, FaGithub
+    FaFilter, FaSearch, FaArrowUp, FaGit, FaGithub, FaChevronDown, FaChevronUp
 } from 'react-icons/fa';
 import {
     SiPython, SiJavascript, SiHtml5, SiCss3, SiMysql,
@@ -177,7 +177,12 @@ const Skills = () => {
     const [activeFilters, setActiveFilters] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [showScrollButton, setShowScrollButton] = useState(false);
+    const [numSkillsToShow, setNumSkillsToShow] = useState(6); // Start with 6 skills
     const skillsSectionRef = useRef(null);
+    const skillsShowcaseRef = useRef(null); // Ref for the skills showcase section
+
+    const MAX_SKILLS_INCREMENT = 6;
+    const INITIAL_SKILLS_TO_SHOW = 6;
 
     const filterCategories = [
         { name: 'Programming Languages', icon: FaCode },
@@ -198,6 +203,10 @@ const Skills = () => {
         });
     }, [searchTerm, activeFilters]);
 
+    const displayedSkills = useMemo(() => {
+        return filteredSkills.slice(0, numSkillsToShow);
+    }, [filteredSkills, numSkillsToShow]);
+
     const toggleFilter = (category) => {
         setActiveFilters(prev =>
             prev.includes(category)
@@ -208,6 +217,12 @@ const Skills = () => {
 
     const scrollToTop = () => {
         skillsSectionRef.current.scrollIntoView({ behavior: 'smooth' });
+    };
+
+    const scrollToSkillsShowcase = () => {
+        if (skillsShowcaseRef.current) {
+            skillsShowcaseRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
     };
 
     useEffect(() => {
@@ -222,6 +237,15 @@ const Skills = () => {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    const handleShowMore = () => {
+        setNumSkillsToShow(prevNum => Math.min(prevNum + MAX_SKILLS_INCREMENT, filteredSkills.length));
+    };
+
+    const handleShowLess = () => {
+        setNumSkillsToShow(INITIAL_SKILLS_TO_SHOW);
+        scrollToSkillsShowcase(); // Scroll back to the skills showcase
+    };
 
     return (
         <section id="skills" className="skills-section" ref={skillsSectionRef}>
@@ -265,12 +289,13 @@ const Skills = () => {
 
             <motion.div
                 className="skills-showcase grid-view"
+                ref={skillsShowcaseRef} // Assign the ref here
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5 }}
             >
                 <AnimatePresence>
-                    {filteredSkills.map(skill => (
+                    {displayedSkills.map(skill => (
                         <motion.div
                             key={skill.name}
                             className="skill-card"
@@ -342,6 +367,23 @@ const Skills = () => {
                     </motion.div>
                 )}
             </AnimatePresence>
+
+            {/* Show More/Less Buttons */}
+            <div className="show-more-less-container">
+                {numSkillsToShow < filteredSkills.length && (
+                    <button onClick={handleShowMore} className="show-more-less-btn">
+                        <FaChevronDown className="icon" />
+                        Show More
+                    </button>
+                )}
+                {numSkillsToShow > INITIAL_SKILLS_TO_SHOW && (
+                    <button onClick={handleShowLess} className="show-more-less-btn">
+                        <FaChevronUp className="icon" />
+                        Show Less
+                    </button>
+                )}
+            </div>
+
         </section>
     );
 };
