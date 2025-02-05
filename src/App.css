@@ -1,29 +1,30 @@
 :root {
-  /* Light Theme */
-  --bg-color-light: #e6f2ff;        /* Soft, pale light blue */
-  --text-color-light: #2c3e50;      /* Deep navy */
-  --accent-color-light: #3498db;    /* Bright blue */
-  --accent-color-light-hover: #2980b9; /* Deeper blue */
-  --orbit-color-light: #5dade2;     /* Soft azure */
-  --orbit-color-hover-light: #2874a6; /* Rich blue */
-  --toggle-bg-light: #f0f8ff;       /* Very light blue-white */
-  --toggle-icon-light: #34495e;     /* Slate gray */
-  --particle-color: #2c3e50;        /* Navy gray */
-  --section-border-light: rgba(52, 73, 94, 0.1); /* Subtle border */
-  --shadow-light: rgba(0, 0, 0, 0.1); /* Soft shadow */
+  /* Light Theme (KEEP YOUR EXISTING LIGHT THEME HERE) */
+  --bg-color-light: #f5f5f5;
+  --text-color-light: #333333;
+  --accent-color-light: #1976d2;
+  --accent-color-light-hover: #1565c0;
+  --orbit-color-light: #64b5f6;
+  --orbit-color-hover-light: #42a5f5;
+  --toggle-bg-light: #e0e0e0;
+  --toggle-icon-light: #1976d2;
+  --particle-color: #757575;
+  --section-border-light: rgba(0, 0, 0, 0.12);
+  --shadow-light: rgba(0, 0, 0, 0.15);
 
-  /* /* Dark Theme */
-  --bg-color-dark: #1c1c1c;         /* Very dark gray, almost black */
-  --text-color-dark: #f3d9b1;       /* Soft orange-white */
-  --accent-color-dark: #d35400;     /* Dark orange */
-  --accent-color-dark-hover: #b44300; /* Deeper dark orange */
-  --orbit-color-dark: #e67e22;      /* Bright orange */
-  --orbit-color-hover-dark: #d35400; /* Dark orange */
-  --toggle-bg-dark: #2c2c2c;        /* Slightly lighter black */
-  --toggle-icon-dark: #f39c12;      /* Golden orange */
-  --particle-color-dark: #a04000;   /* Deep burnt orange */
-  --section-border-dark: rgba(243, 217, 177, 0.1); /* Subtle light border */
-  --shadow-dark: rgba(0, 0, 0, 0.2); /* Deeper shadow */
+  /* Image-Inspired Dark Theme */
+  --bg-color-dark: #0a192f;        /* Very dark, slightly bluish-gray */
+  --text-color-dark: #c9d1d9;      /* Light gray with a hint of blue.  Good readability. */
+  --accent-color-dark: #238695;    /* Teal/Cyan, inspired by your image's highlight. */
+  --accent-color-dark-hover: #35b3c5; /* Brighter teal on hover */
+  --orbit-color-dark: #357b8a;     /* Slightly darker teal for the orbits */
+  --orbit-color-hover-dark: #4199ab;  /* Brighter orbit hover */
+  --toggle-bg-dark: #161b22;      /* Darker than the background, for toggle contrast. */
+  --toggle-icon-dark: #238695;   /*  teal from your image  */
+  --particle-color-dark: #586069; /* Neutral gray for particles - avoids being too distracting. */
+  --section-border-dark: rgba(53, 123, 138, 0.2); /* teal color but subtle, like an outline */
+  --shadow-dark: rgba(0, 0, 0, 0.5);    /* A strong shadow for a more modern look */
+
 }
 
 /* Global Styles */

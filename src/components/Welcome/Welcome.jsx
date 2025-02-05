@@ -1,3 +1,4 @@
+// Welcome.jsx
 import React, { useEffect, useRef } from "react";
 import "./Welcome.css";
 import { ReactTyped } from "react-typed";
@@ -5,6 +6,7 @@ import { ReactTyped } from "react-typed";
 const Welcome = () => {
   const orbitSystemRef = useRef(null);
   const bgInitialsRef = useRef(null);
+  const googleDriveViewLink = "https://drive.google.com/file/d/1aPTjBjA0IFDHReC43O7b_oeHsKYFDAF7/view?usp=sharing";
 
   useEffect(() => {
     const orbitSystem = orbitSystemRef.current;
@@ -91,6 +93,15 @@ const Welcome = () => {
                 className="tagline"
               />
             </div>
+            {/* Download Resume Button */}
+            <a
+              href={googleDriveViewLink}
+              target="_blank" // Crucial: Opens in a new tab/window
+              rel="noopener noreferrer"  // Good practice for security
+              className="download-button"
+            >
+              View Resume
+            </a>
           </div>
         </div>
       </div>

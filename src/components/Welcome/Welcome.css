@@ -397,3 +397,50 @@ align-items: center;
   height: 300px;
 }
 }
+
+/* Download Button Styles */
+.download-button {
+  display: inline-block;
+  margin-top: 20px; /* Space above the button */
+  padding: 12px 24px;
+  background-color: var(--accent-color-light);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer; /* Show pointer cursor on hover */
+}
+
+.dark-theme .download-button {
+  background-color: var(--accent-color-dark);
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2); /* Lighter shadow in dark mode */
+}
+
+.download-button:hover {
+  background-color: var(--orbit-color-hover-light);
+  transform: translateY(-3px); /* Slight lift on hover */
+}
+
+.dark-theme .download-button:hover {
+  background-color: var(--orbit-color-hover-dark);
+}
+
+.download-button:active {
+    transform: translateY(1px); /* Slight press effect */
+}
+
+
+/* ... (rest of your CSS) ... */
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+/* ... (your other responsive styles) ... */
+    .download-button{
+      font-size: 1rem; /* Reduce font size */
+      padding: 10px 20px;
+    }
+
+}
