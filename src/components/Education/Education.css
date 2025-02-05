@@ -105,7 +105,6 @@
   position: relative;
   overflow: hidden;
   transition: max-height 0.5s ease-in-out; /* Add transition for max-height */
-  max-height: 200px; /* Initial max-height */
 }
 
 .dark-theme .courses-showcase {
