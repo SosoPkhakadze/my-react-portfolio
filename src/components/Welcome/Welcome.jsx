@@ -105,19 +105,43 @@ const Welcome = () => {
       </div>
           {/* PDF Modal */}
           {showModal && (
-              <div className="modal-backdrop" onClick={closeModal}>
-                  <div className="resume-modal-content" onClick={(e) => e.stopPropagation()}>  {/* Prevent modal from closing when clicking inside */}
-                      <span className="close-button" onClick={closeModal}>×</span>
-                      <object data={pdfPath} type="application/pdf" width="100%" height="100%">
-                        <p>
-                            It appears you don't have a PDF plugin for this browser.
-                            No problem... you can <a href={pdfPath}>click here to
-                            download the PDF file.</a>
-                        </p>
-                      </object>
-                  </div>
-              </div>
-          )}
+    <div className="modal-backdrop" onClick={closeModal}>
+        <div className="resume-modal-content" onClick={(e) => e.stopPropagation()}>
+            <span className="close-button" onClick={closeModal}>×</span>
+            <object data={pdfPath} type="application/pdf" width="100%" height="100%">
+                <div style={{
+                    display: 'flex', 
+                    flexDirection: 'column', 
+                    alignItems: 'center', 
+                    justifyContent: 'center', 
+                    height: '100%'
+                }}>
+                    <img 
+                        src={`${import.meta.env.BASE_URL}Soso Pkhakarde CV.png`} 
+                        alt="Resume" 
+                        style={{
+                            maxWidth: '100%', 
+                            maxHeight: '80%', 
+                            objectFit: 'contain'
+                        }} 
+                    />
+                    <a 
+                        href={pdfPath} 
+                        download="Soso_Pkhakadze_CV.pdf" 
+                        className="download-button"
+                        style={{
+                            marginTop: '20px',
+                            textDecoration: 'none',
+                            textAlign: 'center'
+                        }}
+                    >
+                        Download PDF
+                    </a>
+                </div>
+            </object>
+        </div>
+    </div>
+)}
 
         {/* Fallback for no JavaScript */}
         <noscript>
