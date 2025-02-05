@@ -14,6 +14,12 @@ import kLine1 from "../assets/K-Line/K-Line_1.png";
 import kLine2 from "../assets/K-Line/K-Line_2.png";
 import kLine3 from "../assets/K-Line/K-Line_3.png";
 
+import TikTokReport1 from "../assets/TikTokReport/TikTokReport_2.png";
+import TikTokReport2 from "../assets/TikTokReport/TikTokReport_2.png";
+
+import salesDashboard1 from "../assets/Sales_Dashboard/Sales_Dashboard_1.jpg";
+import salesDashboard2 from "../assets/Sales_Dashboard/Sales_Dashboard_2.jpg";
+
 
 
 const projectsData = [
@@ -73,38 +79,22 @@ const projectsData = [
     {
       id: 'sales-dashboard',
       title: 'Sales Dashboard',
-      shortDescription: 'Data-driven sales insights with Power BI',
+      shortDescription: 'Data-driven sales insights with Tableau',
       description:
-        'Developed an advanced sales dashboard using Power BI, leveraging data from SQL databases. Demonstrated expertise in data cleaning, exploratory data analysis, and predictive modeling to uncover actionable insights driving business decisions.',
-      technologies: ['Power BI', 'SQL'],
-      filter: ['tabi']
+        'Developed an advanced sales dashboard using Tableau, leveraging data from SQL databases. Demonstrated expertise in data cleaning, exploratory data analysis, and predictive modeling to uncover actionable insights driving business decisions.',
+      technologies: ['Tableau', 'SQL'],
+      filter: ['tabi'],
+      images: [salesDashboard1, salesDashboard2],
     },
     {
-      id: 'data-analysis-dashboard',
-      title: 'Data Analysis Dashboard',
-      shortDescription: 'Restaurant performance analysis with Power BI',
+      id: 'tiktok-insight-analysis',
+      title: 'TikTok content Analysis Dashboard',
+      shortDescription: 'TikTok content statistics analyze with Power BI',
       description:
-        'Designed a comprehensive data analysis dashboard for a Pizza Restaurant using Power BI and MariaDB, delivering key performance indicators and actionable insights, facilitating strategic decision-making and business optimization.',
-      technologies: ['Power BI', 'MariaDB'],
-      filter: ['tabi', 'bases']
-    },
-    {
-      id: 'covid-insight-analysis',
-      title: 'COVID Insight Analysis Dashboard',
-      shortDescription: 'Public health data exploration with Power BI',
-      description:
-        'Leveraged Power BI to analyze COVID-19 data, providing insights into virus spread, vaccination rates, and their impact on public health and the economy. Integrated diverse data sources, crafted interactive visualizations, enabling users to discern trends for informed decision-making.',
+        'Leveraged Power BI to analyze TikTok account data, providing insights about views, age statistics, and genders interested in the content. This project can be used by anyone with their own data to better visualize if the content and videos are being liked by people.',
       technologies: ['Power BI'],
-      filter: ['tabi']
-    },
-    {
-      id: 'user-requirements-analysis',
-      title: 'User Requirements Analysis Dashboard',
-      shortDescription: 'Tableau dashboard for user insights',
-      description:
-        'Developed a comprehensive Tableau dashboard project by analyzing user requirements, creating mockups, and deciding on chart types. Built the data model, prepared the data source, and created various charts. Designed the layout container and constructed the dashboard to deliver insightful visualizations.',
-      technologies: ['Tableau'],
-      filter: ['tabi']
+      filter: ['tabi'],
+      images: [TikTokReport1, TikTokReport2],
     },
   ];
   
