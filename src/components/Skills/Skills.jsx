@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-    FaCode, FaDatabase, FaChartBar, FaReact, FaTools,
+    FaCode, FaDatabase, FaChartBar, FaReact, FaTools, FaNetworkWired,
     FaFilter, FaSearch, FaArrowUp, FaGit, FaGithub, FaChevronDown, FaChevronUp
 } from 'react-icons/fa';
 import {
@@ -15,35 +15,40 @@ import projectsData from '../Projects/projectsData';
 
 const skillCategories = {
     'All Skills': [
-        // Programming Languages
         {
             name: 'Python',
-            category: ['Programming Languages'],
+            category: ['Development'],
             level: 'Advanced',
             icon: SiPython,
             projects: ['k-line-data-analysis', 'search-products', 'weather-forecast', 'image-resizing', 'price-comparison', 'job-aggregator']
         },
         {
+            name: 'Postman',
+            category: ['Databases'],
+            level: 'Intermediate',
+            icon: FaNetworkWired,
+            other: 'Skilled in API testing, documentation, and collaboration using Postman.'
+        },
+        {
             name: 'JavaScript',
-            category: ['Programming Languages', 'Frontend'],
+            category: ['Development'],
             level: 'Advanced',
             icon: SiJavascript,
             projects: ['job-aggregator']
         },
         {
             name: 'HTML',
-            category: ['Frontend'],
+            category: ['UI/UX & Data'],
             level: 'Advanced',
             icon: SiHtml5,
             projects: ['job-aggregator']
         },
         {
             name: 'CSS',
-            category: ['Frontend'],
+            category: ['UI/UX & Data'], 
             level: 'Advanced',
             icon: SiCss3,
             projects: ['job-aggregator']
-
         },
         {
             name: 'SQL',
@@ -54,38 +59,36 @@ const skillCategories = {
         },
         {
             name: 'C',
-            category: ['Programming Languages'],
+            category: ['Development'],
             level: 'Intermediate',
             icon: SiC
         },
         {
             name: 'Java',
-            category: ['Programming Languages'],
+            category: ['Development'],
             level: 'Intermediate',
-            icon: FaCode // Using a generic icon as a placeholder
+            icon: FaCode
         },
         {
             name: 'C#',
-            category: ['Programming Languages'],
+            category: ['Development'],
             level: 'Intermediate',
             icon: SiDotnet
         },
-        // Data Analysis & Visualization
         {
             name: 'Power BI',
-            category: ['Data Visualization'],
+            category: ['UI/UX & Data'],
             level: 'Advanced',
-            icon: FaChartBar, // Using a generic icon as a placeholder
+            icon: FaChartBar,
             projects: ['sales-dashboard', 'data-analysis-dashboard', 'covid-insight-analysis']
         },
         {
             name: 'Tableau',
-            category: ['Data Visualization'],
+            category: ['UI/UX & Data'],
             level: 'Intermediate',
             icon: SiTableau,
             projects: ['user-requirements-analysis']
         },
-        // Databases
         {
             name: 'MySQL',
             category: ['Databases'],
@@ -106,7 +109,6 @@ const skillCategories = {
             level: 'Intermediate',
             icon: SiSqlite
         },
-        // Version Control & Collaboration
         {
             name: 'Git',
             category: ['Version Control'],
@@ -126,46 +128,44 @@ const skillCategories = {
             icon: SiDocker,
             other: 'Highly skilled in containerization, enhancing deployment efficiency and application scalability.'
         },
-        // Frameworks/Libraries
         {
             name: 'React',
-            category: ['Frontend', 'Programming Languages'],
+            category: ['Development'],
             level: 'Advanced',
             icon: FaReact,
             projects: ['job-aggregator']
         },
         {
             name: 'Django',
-            category: ['Backend', 'Programming Languages'],
+            category: ['Development'],
             level: 'Advanced',
             icon: SiDjango,
             projects: ['weather-forecast', 'job-aggregator', 'price-comparison']
         },
-        // Software Development
         {
             name: 'OOP',
-            category: ['Software Development'],
+            category: ['Development'],
             level: 'Advanced',
-            icon: FaCode, // You can find a better icon for OOP
+            icon: FaCode, 
             other: 'Strong foundation in Object-Oriented Programming principles.'
         },
         {
             name: 'Data Structures & Algorithms',
-            category: ['Software Development'],
+            category: ['Development'],
             level: 'Advanced',
-            icon: FaCode, // Consider an icon like a flowchart or algorithm symbol
+            icon: FaCode,
             other: 'Proficient in various data structures and algorithm design and analysis.'
         },
         {
             name: 'Testing & Debugging',
-            category: ['Software Development'],
+            category: ['Development'],
             level: 'Advanced',
-            icon: FaTools, // Or a bug icon for debugging
+            icon: FaTools,
             other: 'Experienced in writing unit tests, integration tests, and debugging code effectively.'
         },
         {
             name: 'Agile Methodologies',
-            category: ['Software Development'],
+            category: ['Development'],
             level: 'Intermediate',
             icon: FaCode,
             other: 'Familiar with Agile development practices, including Scrum basics.'
@@ -177,20 +177,18 @@ const Skills = () => {
     const [activeFilters, setActiveFilters] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [showScrollButton, setShowScrollButton] = useState(false);
-    const [numSkillsToShow, setNumSkillsToShow] = useState(6); // Start with 6 skills
+    const [numSkillsToShow, setNumSkillsToShow] = useState(6); 
     const skillsSectionRef = useRef(null);
-    const skillsShowcaseRef = useRef(null); // Ref for the skills showcase section
+    const skillsShowcaseRef = useRef(null);
 
     const MAX_SKILLS_INCREMENT = 6;
     const INITIAL_SKILLS_TO_SHOW = 6;
 
     const filterCategories = [
-        { name: 'Programming Languages', icon: FaCode },
-        { name: 'Backend', icon: FaCode }, // Consider a different icon
-        { name: 'Frontend', icon: FaReact },
+        { name: 'Development', icon: FaCode },
         { name: 'Databases', icon: FaDatabase },
         { name: 'DevOps', icon: FaTools },
-        { name: 'Data Visualization', icon: FaChartBar },
+        { name: 'UI/UX & Data', icon: FaChartBar },
         { name: 'Version Control', icon: FaGit }
     ];
 
@@ -244,7 +242,7 @@ const Skills = () => {
 
     const handleShowLess = () => {
         setNumSkillsToShow(INITIAL_SKILLS_TO_SHOW);
-        scrollToSkillsShowcase(); // Scroll back to the skills showcase
+        scrollToSkillsShowcase();
     };
 
     return (
@@ -289,7 +287,7 @@ const Skills = () => {
 
             <motion.div
                 className="skills-showcase grid-view"
-                ref={skillsShowcaseRef} // Assign the ref here
+                ref={skillsShowcaseRef} 
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5 }}
@@ -368,7 +366,6 @@ const Skills = () => {
                 )}
             </AnimatePresence>
 
-            {/* Show More/Less Buttons */}
             <div className="show-more-less-container">
                 {numSkillsToShow < filteredSkills.length && (
                     <button onClick={handleShowMore} className="show-more-less-btn">
