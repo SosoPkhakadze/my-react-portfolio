@@ -4,7 +4,7 @@ def get_css_files_and_codes_to_txt(folder_path, output_file="file_contents.txt")
     with open(output_file, 'w', encoding='utf-8') as outfile:
         for root, _, files in os.walk(folder_path):
             for file in files:
-                if file.endswith(".css"):  # Only process .css files
+                if file.endswith(".css") or file.endswith(".jsx"):  # Only process .css files
                     file_path = os.path.join(root, file)
 
                     outfile.write(f"File Path: {file_path}\n")
@@ -23,7 +23,7 @@ def get_css_files_and_codes_to_txt(folder_path, output_file="file_contents.txt")
                     outfile.write("-" * 20 + "\n")
 
 # Example usage:
-folder_path = r"C:\Users\admin\Desktop\portfolio\my-react-portfolio\src"  # Replace with your actual folder path
+folder_path = r"C:\Users\admin\Desktop\portfolio\my-react-portfolio\src\components\Projects"  # Replace with your actual folder path
 output_file = "css_files_and_code.txt"  # Specify a different output file name if needed
 get_css_files_and_codes_to_txt(folder_path, output_file)
 

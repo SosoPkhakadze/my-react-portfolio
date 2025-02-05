@@ -1,104 +1,162 @@
 .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 10; /* Ensure it's above other content */
-  }
-  
-  .modal-content {
-    background-color: var(--bg-color-light);
-    color: var(--text-color-light);
-    padding: 2rem;
-    border-radius: 12px; /* More rounded corners */
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2); /* Softer shadow */
-    max-width: 70%; /* Adjust as needed */
-    max-height: 80%;
-    overflow-y: auto;
-    position: relative;
-    text-align: center; /* Center align modal content */
-  }
-  
-  .dark-theme .modal-content {
-    background-color: var(--bg-color-dark);
-    color: var(--text-color-dark);
-  }
-  
-  .modal-title {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-    color: var(--accent-color-light);
-  }
-  
-  .dark-theme .modal-title {
-    color: var(--accent-color-dark);
-  }
-  
-  .modal-image {
-    width: 100%;
-    margin: 0 auto 20px;
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  
-  .modal-image img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-  
-  .modal-description {
-    margin-bottom: 2rem; /* Space before the buttons */
-    font-size: 1rem;
-  }
-  
-  .close-button {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: var(--text-color-light);
-    z-index: 11;
-  }
-  
-  .dark-theme .close-button {
-    color: var(--text-color-dark);
-  }
-  
-  .modal-buttons {
-    /* Add this container for buttons */
-    margin-top: 1rem;
-  }
-  
-  .modal-button {
-    background-color: var(--accent-color-light);
-    color: var(--text-color-dark);
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    margin: 0 0.5rem; /* Space between buttons */
-    transition: background-color 0.3s ease;
-  }
-  
-  .dark-theme .modal-button {
-    background-color: var(--accent-color-dark);
-    color: var(--text-color-light);
-  }
-  
-  .modal-button:hover {
-    background-color: var(--orbit-color-hover-light);
-  }
-  
-  .dark-theme .modal-button:hover {
-    background-color: var(--orbit-color-hover-dark);
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it's above other content */
+}
+
+.modal-content {
+  background-color: var(--bg-color-light);
+  color: var(--text-color-light);
+  padding: 2rem;
+  border-radius: 12px; /* More rounded corners */
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2); /* Softer shadow */
+  max-width: 70%; /* Adjust as needed */
+  max-height: 80%;
+  overflow-y: auto;
+  position: relative;
+  text-align: center; /* Center align modal content */
+}
+
+.dark-theme .modal-content {
+  background-color: var(--bg-color-dark);
+  color: var(--text-color-dark);
+}
+
+.modal-title {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: var(--accent-color-light);
+}
+
+.dark-theme .modal-title {
+  color: var(--accent-color-dark);
+}
+
+.modal-description {
+  margin-bottom: 2rem; /* Space before the buttons */
+  font-size: 1rem;
+}
+
+.close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-color-light);
+  z-index: 11;
+}
+
+.dark-theme .close-button {
+  color: var(--text-color-dark);
+}
+
+.modal-buttons {
+  /* Add this container for buttons */
+  margin-top: 1rem;
+}
+
+.modal-button {
+  background-color: var(--accent-color-light);
+  color: var(--text-color-dark);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin: 0 0.5rem; /* Space between buttons */
+  transition: background-color 0.3s ease;
+}
+
+.dark-theme .modal-button {
+  background-color: var(--accent-color-dark);
+  color: var(--text-color-light);
+}
+
+.modal-button:hover {
+  background-color: var(--orbit-color-hover-light);
+}
+
+.dark-theme .modal-button:hover {
+  background-color: var(--orbit-color-hover-dark);
+}
+
+.modal-image-carousel-container {
+  position: relative;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.modal-image-carousel {
+  display: flex;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.modal-image {
+  width: 100%;
+  height: auto;
+  display: none;
+}
+
+.modal-image.active {
+  display: block;
+}
+
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.4);
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  z-index: 2; /* Ensure it stays on top */
+  opacity: 0.7;
+}
+
+.carousel-control.prev {
+  left: 10px;
+}
+
+.carousel-control.next {
+  right: 10px;
+}
+
+.carousel-control:hover,
+.carousel-control:disabled {
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 0.9;
+}
+
+/* Technologies Styling */
+.modal-technologies {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.modal-tech {
+  background-color: var(--orbit-color-light);
+  color: white;
+  padding: 0.3rem 0.6rem;
+  border-radius: 5px;
+  font-size: 0.8rem;
+}
+
+.dark-theme .modal-tech {
+  background-color: var(--orbit-color-dark);
+}

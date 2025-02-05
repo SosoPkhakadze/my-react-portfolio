@@ -36,15 +36,15 @@ const projectsData = [
       filter: ['django', 'python']
     },
     {
-      id: 'job-aggregator',
-      title: 'Job Aggregator Website',
-      shortDescription: 'Full-stack job search platform',
+      id: "job-aggregator",
+      title: "Job Aggregator Website",
+      shortDescription: "Full-stack job search platform",
       description:
-        'Developed a full-stack web application utilizing Django for backend and React for frontend, enabling users to search for job listings based on title and location. Integrated with an external API to fetch real-time job data. Implemented features for displaying search results and viewing detailed job information.',
-      technologies: ['React', 'Django', 'Python'],
-      githubLink: 'https://github.com/SosoPkhakadze/Job_Search',
-      filter: ['react', 'django', 'python'],
-      images: [jobSearch1, jobSearch2, jobSearch3]
+        "Developed a full-stack web application utilizing Django for backend and React for frontend, enabling users to search for job listings based on title and location. Integrated with an external API to fetch real-time job data. Implemented features for displaying search results and viewing detailed job information.",
+      technologies: ["React", "Django", "Python"],
+      githubLink: "https://github.com/SosoPkhakadze/Job_Search",
+      filter: ["react", "django", "python"],
+      images: [jobSearch1, jobSearch2, jobSearch3],
     },
     {
       id: 'image-resizing',

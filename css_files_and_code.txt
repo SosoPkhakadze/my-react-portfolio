@@ -1,1304 +1,3 @@
-File Path: C:\Users\admin\Desktop\portfolio\my-react-portfolio\src\App.css
-File Name: App.css
-Code:
-:root {
-  --bg-color-light: #ffffff; /* White background */
-  --text-color-light: #1a237e; /* Indigo dark blue text */
-  --accent-color-light: #004aad; /* Royal blue accent */
-  --orbit-color-light: #6a6acd; /* Light-blue/purplish orbit */
-  --orbit-color-hover-light: #002171; /* Darker blue on hover */
-  --toggle-bg-light: #f0f0f0; /* Light gray toggle background */
-  --toggle-icon-light: #ffcc66; /* Yellow sun icon */
-  --particle-color: #000052;
-
- --bg-color-dark: #000000; 
-  --text-color-dark: #ffcc80; 
-  --accent-color-dark: #ff9800; 
-  --orbit-color-dark: #ffcc80; 
-  --orbit-color-hover-dark: #e65100; 
-  --toggle-bg-dark: #333333; 
-  --toggle-icon-dark: #fbc02d;  
-
-}
-/* Global styles */
-body {
-  margin: 0;
-  font-family: "Arial", sans-serif;
-  transition: background-color 0.3s, color 0.3s;
-  overflow: hidden; /* Hide vertical scrollbar on the body */
-}
-
-/* Smooth scroll behavior */
-html {
-  scroll-behavior: smooth;
-  overflow-y: scroll; /* Enable scrolling but hide scrollbar */
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
-}
-
-html::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, and Opera */
-}
-
-/* Section styles */
-section {
-  padding: 4rem 2rem;
-}
-
-/* Welcome section */
-.welcome-section {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--bg-color-light);
-}
-
-.dark-theme .welcome-section {
-  background-color: var(--bg-color-dark);
-}
-
-/* Experience section */
-.experience-section {
-  background-color: var(--bg-color-light);
-}
-
-.dark-theme .experience-section {
-  background-color: var(--bg-color-dark);
-}
-
-/* Projects section */
-.projects-section {
-  background-color: var(--bg-color-light);
-}
-
-.dark-theme .projects-section {
-  background-color: var(--bg-color-dark);
-}
-
-/* Skills section */
-.skills-section {
-  background-color: var(--bg-color-light);
-}
-
-.dark-theme .skills-section {
-  background-color: var(--bg-color-dark);
-}
-
-/* Education section */
-.education-section {
-  background-color: var(--bg-color-light);
-}
-
-.dark-theme .education-section {
-  background-color: var(--bg-color-dark);
-}
-
-/* Contact section */
-.contact-section {
-  background-color: var(--bg-color-light);
-}
-
-.dark-theme .contact-section {
-  background-color: var(--bg-color-dark);
-}
-
-/* Other dark theme styles... */
-.dark-theme {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
-}
-
-.dark-theme::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, and Opera */
-}
-
-.dark-theme .bg-initials {
-  filter: drop-shadow(0 0 2px white);
-}
-
-section {
-  padding: 4rem 2rem;
-}
-
-/* Section Title Styles (applied to all sections) */
-.section-title {
-  font-size: 2.5rem; /* Adjust as needed */
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 5rem; /* Adjust as needed */
-  color: var(--accent-color-light); /* Use accent color for title */
-}
-
-.dark-theme .section-title {
-  color: var(--accent-color-dark);
-}
-
---------------------
-File Path: C:\Users\admin\Desktop\portfolio\my-react-portfolio\src\components\Contact\Contact.css
-File Name: Contact.css
-Code:
-.contact-section {
-  position: relative;
-  padding: 4rem 2rem;
-  background-color: var(--bg-color-light);
-  color: var(--text-color-light);
-  overflow: hidden;
-}
-
-.dark-theme .contact-section {
-  background-color: var(--bg-color-dark);
-  color: var(--text-color-dark);
-}
-
-.contact-content-wrapper {
-  max-width: 1200px;
-  margin: 0 auto;
-  position: relative;
-}
-
-.contact-header {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-}
-
-.contact-info-column {
-  display: grid;
-  gap: 1.5rem;
-}
-
-.contact-morphic-card {
-  position: relative;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  background-color: var(--toggle-bg-light);
-  border-radius: 15px;
-  overflow: hidden;
-}
-
-.contact-morphic-card.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.dark-theme .contact-morphic-card {
-  background-color: rgba(30, 30, 30, 0.7);
-}
-
-.contact-morphic-card-content {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  padding: 1.5rem;
-  position: relative;
-  z-index: 2;
-}
-
-.contact-morphic-icon-wrapper {
-  background-color: var(--accent-color-light);
-  color: white;
-  padding: 1rem;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.3s ease;
-}
-
-.contact-morphic-card:hover .contact-morphic-icon-wrapper {
-  transform: rotate(360deg);
-}
-
-.dark-theme .contact-morphic-icon-wrapper {
-  background-color: var(--accent-color-dark);
-}
-
-.contact-morphic-icon {
-  width: 2rem;
-  height: 2rem;
-}
-
-.contact-copy-button {
-  position: absolute;
-  right: 0.5rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--accent-color-light);
-  transition: transform 0.2s ease;
-}
-
-.dark-theme .contact-copy-button {
-  color: var(--accent-color-dark)
-}
-
-.contact-copy-button:hover {
-  transform: scale(1.2);
-}
-
-.contact-interaction-column {
-  display: grid;
-  gap: 1.5rem;
-}
-
-.interaction-portal {
-  position: relative;
-  border-radius: 15px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  background-color: var(--toggle-bg-light);;
-}
-
-.dark-theme .interaction-portal {
-  background-color: var(--toggle-bg-dark);
-}
-
-.interaction-portal-content {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  padding: 1.5rem;
-  z-index: 2;
-}
-
-.interaction-icon svg {
-  width: 2.5rem;
-  height: 2.5rem;
-  color: var(--accent-color-light);
-}
-
-.dark-theme .interaction-icon svg {
-  color: var(--accent-color-dark);
-}
-
-.interaction-details h3 {
-  margin: 0;
-  font-size: 1.2rem;
-}
-
-.interaction-details p {
-  margin: 0.5rem 0 0;
-  opacity: 0.7;
-}
-
-.interaction-portal-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(
-    45deg, 
-    var(--accent-color-light),
-    var(--orbit-color-light)
-  );
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: 1;
-}
-
-.interaction-portal:hover .interaction-portal-overlay {
-  opacity: 0.1;
-}
-
-
-@media (max-width: 1024px) {
-  .contact-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 600px) {
-  .interaction-portal-content {
-    flex-direction: column;
-    text-align: center;
-  }
-}
---------------------
-File Path: C:\Users\admin\Desktop\portfolio\my-react-portfolio\src\components\CursorTrail\CursorTrail.css
-File Name: CursorTrail.css
-Code:
-.cursor-trail {
-  position: fixed;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background-color: var(--accent-color-light);
-  pointer-events: none;
-  mix-blend-mode: difference;
-  z-index: 10000;
-  transition: transform 0.03s ease-out, opacity 0.2s ease-in;
-}
-
-.dark-theme .cursor-trail {
-  background-color: var(--accent-color-dark);
-}
-
-/* Splattering Particles */
-.cursor-particle {
-  position: fixed;
-  width: 3px;
-  height: 3px;
-  border-radius: 50%;
-  background: var(--accent-color-light);
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 1;
-  transition: transform 0.4s ease-out, opacity 0.4s ease-in;
-}
-
-.dark-theme .cursor-particle {
-  background: var(--accent-color-dark);
-}
---------------------
-File Path: C:\Users\admin\Desktop\portfolio\my-react-portfolio\src\components\Education\Education.css
-File Name: Education.css
-Code:
-
-
-.education-content {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 4rem 2rem;
-  position: relative;
-  z-index: 10;
-}
-
-.education-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 3rem;
-}
-
-.section-title {
-  align-items: center;
-  gap: 1rem;
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: var(--accent-color-light);
-}
-
-.dark-theme .section-title {
-  color: var(--accent-color-dark);
-}
-
-.section-toggle {
-  display: flex;
-  background-color: var(--toggle-bg-light);
-  border-radius: 50px;
-  overflow: hidden;
-}
-
-.dark-theme .section-toggle {
-  background-color: var(--toggle-bg-dark);
-}
-
-.section-toggle button {
-  padding: 0.75rem 1.5rem;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-weight: 600;
-  color: var(--text-color-light);
-  opacity: 0.6;
-}
-
-.dark-theme .section-toggle button {
-  color: var(--text-color-dark);
-}
-
-.section-toggle button.active {
-  background-color: var(--accent-color-light);
-  color: white;
-  opacity: 1;
-}
-
-.dark-theme .section-toggle button.active {
-  background-color: var(--accent-color-dark);
-}
-
-.university-section {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-}
-
-.university-card {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 15px;
-  padding: 2rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  transition: all 0.4s ease;
-}
-
-.university-header h3 {
-  margin: 0 0 0.5rem 0;
-  font-size: 1.8rem;
-  color: var(--accent-color-light);
-}
-
-.dark-theme .university-header h3 {
-  color: var(--accent-color-dark);
-}
-
-.university-info {
-  margin-top: 1rem;
-}
-
-.university-meta {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 1rem;
-  opacity: 0.7;
-}
-
-.courses-showcase {
-  background-color: var(--toggle-bg-light);
-  border-radius: 15px;
-  padding: 2rem;
-  position: relative;
-  overflow: hidden;
-  transition: max-height 0.5s ease-in-out; /* Add transition for max-height */
-  max-height: 200px; /* Initial max-height */
-}
-
-.dark-theme .courses-showcase {
-  background-color: var(--toggle-bg-dark);
-}
-
-.courses-showcase.expanded {
-  max-height: 500px; /* Adjust to accommodate all courses without overflow */
-}
-
-.courses-showcase.expanded .course-container {
-  overflow-x: visible;
-  flex-wrap: wrap;
-}
-
-.course-container.static {
-    overflow-x: visible; 
-    flex-wrap: wrap; 
-    justify-content: center; 
-}
-
-.courses-showcase h4 {
-  margin: 0 0 1.5rem 0;
-  font-size: 1.5rem;
-  color: var(--accent-color-light);
-}
-
-.dark-theme .courses-showcase h4 {
-  color: var(--accent-color-dark);
-}
-
-.course-container {
-  display: flex;
-  gap: 1rem;
-  overflow-x: scroll;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  scroll-behavior: smooth;
-}
-
-.course-container::-webkit-scrollbar {
-  display: none;
-}
-
-.course-tag {
-  display: flex;
-  align-items: center;
-  background-color: var(--orbit-color-light);
-  color: var(--bg-color-light);
-  border-radius: 50px;
-  padding: 0.5rem 1rem;
-  gap: 0.5rem;
-  white-space: nowrap;
-  transition: all 0.3s ease;
-}
-
-.dark-theme .course-tag {
-  background-color: var(--orbit-color-dark);
-  color: var(--bg-color-dark);
-}
-
-.course-tag-icon {
-  display: flex;
-  align-items: center;
-  color: var(--bg-color-light);
-}
-
-.dark-theme .course-tag-icon {
-  color: var(--bg-color-dark);
-}
-
-.online-courses-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-}
-
-.online-course-card {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 15px;
-  padding: 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  transition: all 0.4s ease;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-}
-
-.course-icon {
-  background-color: var(--orbit-color-light);
-  border-radius: 50%;
-  padding: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--bg-color-light);
-}
-
-.dark-theme .course-icon {
-  background-color: var(--orbit-color-dark);
-  color: var(--bg-color-dark);
-}
-
-.course-details h3 {
-  margin: 0 0 0.5rem 0;
-  font-size: 1.2rem;
-  color: var(--accent-color-light);
-}
-
-.dark-theme .course-details h3 {
-  color: var(--accent-color-dark);
-}
-
-.course-details .platform {
-  opacity: 0.7;
-  margin: 0 0 1rem 0;
-}
-
-.course-skills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.skill-badge {
-  background-color: var(--orbit-color-light);
-  color: var(--bg-color-light);
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
-  font-size: 0.7rem;
-}
-
-.dark-theme .skill-badge {
-  background-color: var(--orbit-color-dark);
-  color: var(--bg-color-dark);
-}
-
-/* Responsive Design */
-@media (max-width: 1024px) {
-  .university-section {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Responsive Adjustments */
-@media (max-width: 1024px) {
-  .university-section {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .education-header {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 1rem;
-  }
-
-  .section-toggle {
-    margin-top: 1rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .education-content {
-    padding: 2rem 1rem;
-  }
-
-  .section-title {
-    font-size: 2rem;
-  }
-
-  .section-toggle button {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
-  }
-
-  .university-card {
-    padding: 1.5rem;
-  }
-
-  .university-header h3 {
-    font-size: 1.5rem;
-  }
-
-  .courses-showcase {
-    padding: 1.5rem;
-  }
-
-  .courses-showcase h4 {
-    font-size: 1.2rem;
-  }
-
-  .course-container {
-    gap: 0.5rem;
-  }
-
-  .course-tag {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.8rem;
-  }
-
-  .online-courses-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .online-course-card {
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-    padding: 1.5rem;
-  }
-
-  .course-icon {
-    margin-bottom: 1rem;
-  }
-
-  .course-details h3 {
-    font-size: 1rem;
-  }
-
-  .course-skills {
-    justify-content: center;
-  }
-}
-
-@media (max-width: 480px) {
-  .section-title {
-    font-size: 1.6rem;
-  }
-
-  .section-toggle {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .section-toggle button {
-    width: 100%;
-    padding: 0.75rem;
-  }
-
-  .university-meta {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 0.5rem;
-  }
-
-  .course-tag {
-    font-size: 0.7rem;
-  }
-}
---------------------
-File Path: C:\Users\admin\Desktop\portfolio\my-react-portfolio\src\components\Experience\Experience.css
-File Name: Experience.css
-Code:
-/* Experience Section */
-.experience-section {
-  padding: 6rem 2rem; /* Increased padding */
-  background-color: var(--bg-color-light);
-  color: var(--text-color-light);
-}
-
-.dark-theme .experience-section {
-  background-color: var(--bg-color-dark);
-  color: var(--text-color-dark);
-}
-
-.section-title {
-  font-size: 2.5rem; /* Slightly larger title */
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 5rem; /* Increased margin */
-  color: var(--accent-color-light);
-}
-
-.dark-theme .section-title {
-  color: var(--accent-color-dark);
-}
-
-/* Experience Container */
-.experience-container {
-  display: flex;
-  gap: 3rem; /* Increased gap */
-  align-items: flex-start;
-  max-width: 1200px; /* Limit container width for better readability */
-  margin: 0 auto; /* Center the container */
-}
-
-/* Left Side: Experience Info Card */
-.experience-info-card {
-  flex: 1.5; /* Adjusted flex for better balance */
-  border-radius: 16px; /* More rounded corners */
-  background: rgba(0, 74, 173, 0.2); /* More transparency */
-  backdrop-filter: blur(10px); /* Glassmorphism blur */
-  -webkit-backdrop-filter: blur(10px); /* Safari support */
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); /* More pronounced shadow */
-  border: 1px solid rgba(255, 255, 255, 0.18); /* Subtle border */
-  position: relative;
-  padding: 2.5rem; /* Consistent padding */
-}
-
-.dark-theme .experience-info-card {
-  background: rgba(255, 152, 0, 0.2);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-}
-
-.experience-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Center content vertically */
-  height: 100%;
-}
-
-.experience-info h3 {
-  font-size: 1.7rem; /* Larger title */
-  margin-bottom: 0.5rem;
-  color: var(--text-color-light);
-  font-weight: 600; /* Bolder title */
-}
-
-.dark-theme .experience-info h3 {
-  color: var(--text-color-dark);
-}
-
-.experience-info h4 {
-  font-size: 1.3rem; /* Slightly larger company name */
-  font-weight: 500;
-  margin-bottom: 0.5rem;
-  color: var(--accent-color-light);
-}
-
-.dark-theme .experience-info h4 {
-  color: var(--accent-color-dark);
-}
-
-.experience-info h5 {
-  font-size: 1rem;
-  color: var(--orbit-color-light);
-  margin-bottom: 1.5rem; /* Increased margin */
-}
-
-.dark-theme .experience-info h5 {
-  color: var(--orbit-color-dark);
-}
-
-.experience-info ul {
-  list-style-type: disc;
-  padding-left: 1.5rem;
-  text-align: left; /* Align list to the left */
-  width: 100%; /* Make list take full width */
-}
-
-.experience-info li {
-  margin-bottom: 0.8rem; /* Increased margin */
-  line-height: 1.7; /* Adjusted line height */
-}
-
-/* Company Logo Holder (Main) */
-.company-logo-main {
-  width: 100px; /* Larger logo */
-  height: 100px; /* Larger logo */
-  border-radius: 50%;
-  background: var(--bg-color-light);
-  border: 3px solid var(--accent-color-light);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4), /* Outer shadow */ 
-              inset 0 0 5px rgba(0, 0, 0, 0.2); /* Inner shadow */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: -50px; /* Adjust based on new logo size */
-  left: 50%;
-  transform: translateX(-50%);
-  overflow: hidden;
-  z-index: 2;
-}
-
-.dark-theme .company-logo-main {
-  background: var(--bg-color-dark);
-  border-color: var(--accent-color-dark);
-}
-
-.company-logo-main img {
-  width: 75%; /* Adjusted image size */
-  height: 75%; /* Adjusted image size */
-  object-fit: contain;
-  border-radius: 50%;
-}
-
-/* Right Side: Company Logos and Position Names in a Card */
-.company-logos-card {
-  width: 320px; /* Slightly wider */
-  padding: 1rem; /* Consistent padding */
-  border-radius: 16px; /* More rounded corners */
-  background: rgba(0, 74, 173, 0.2);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  overflow: hidden;
-}
-
-.dark-theme .company-logos-card {
-  background: rgba(255, 152, 0, 0.2);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); /* Shadow for dark mode */
-}
-
-.company-logo-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 1.2rem; /* Increased gap */
-  cursor: pointer;
-  padding: 1rem; /* Increased padding */
-  border-radius: 10px; /* More rounded corners */
-  transition: all 0.3s ease; /* For hover effect */
-}
-
-/* Hover and active states for logos on the right */
-.company-logo-wrapper:hover {
-  background-color: var(--orbit-color-hover-light);
-}
-
-.company-logo-wrapper.active {
-  background-color: var(--accent-color-light);
-}
-
-.dark-theme .company-logo-wrapper:hover {
-  background-color: var(--orbit-color-hover-dark);
-}
-
-.dark-theme .company-logo-wrapper.active {
-  background-color: var(--accent-color-dark);
-}
-
-.company-logo-wrapper:hover .company-title,
-.company-logo-wrapper.active .company-title {
-  color: var(--bg-color-light);
-}
-
-.dark-theme .company-logo-wrapper:hover .company-title,
-.dark-theme .company-logo-wrapper.active .company-title {
-  color: var(--bg-color-dark);
-}
-
-.company-logo {
-  width: 55px; /* Slightly larger */
-  height: 55px; /* Slightly larger */
-  border-radius: 50%;
-  overflow: hidden;
-  flex-shrink: 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
-}
-
-.company-logo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.company-title {
-  font-size: 1rem; /* Slightly larger */
-  font-weight: 500;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  color: var(--accent-color-light);
-}
-
-.dark-theme .company-title {
-  color: var(--accent-color-dark);
-}
-
-/* Traveling Logo */
-.traveling-logo {
-  position: absolute;
-  border-radius: 50%;
-  z-index: 10;
-  pointer-events: none;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .experience-container {
-    flex-direction: column-reverse;
-    align-items: center;
-  }
-
-  .company-logos-card {
-    width: 100%; /* Take full width on small screens */
-  }
-
-  .experience-info-card {
-    padding: 2rem; /* Adjust padding for smaller screens */
-  }
-
-  .company-logo-main {
-    width: 80px;
-    height: 80px;
-    top: -40px;
-  }
-
-  .company-logo-main img {
-    width: 70%;
-    height: 70%;
-  }
-
-  .experience-info h3 {
-    font-size: 1.5rem;
-  }
-
-  .experience-info h4 {
-    font-size: 1.2rem;
-  }
-}
---------------------
-File Path: C:\Users\admin\Desktop\portfolio\my-react-portfolio\src\components\Header\Header.css
-File Name: Header.css
-Code:
-/* Base Header Styles */
-.header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background-color: rgba(255, 255, 255, 0.9);
-  z-index: 1000;
-  padding: 1rem 2rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-.dark-theme .header {
-  background-color: rgba(26, 26, 26, 0.9);
-}
-
-.nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo-container {
-  display: flex;
-  align-items: center;
-  z-index: 1001;
-}
-
-.logo {
-  height: 40px;
-  margin-right: 1rem;
-  filter: drop-shadow(0 0 5px var(--text-color-light));
-}
-.dark-theme .logo {
-  filter: drop-shadow(0 0 2px var(--text-color-dark));
-}
-
-.nav-list {
-  list-style: none;
-  display: flex;
-  margin: 0;
-  padding: 0;
-  flex-grow: 1; /* Allow nav-list to grow */
-  justify-content: center; /* Center the nav items */
-}
-
-.nav-list li {
-  position: relative;
-  margin: 0 2rem;
-}
-
-.nav-list li a {
-  text-decoration: none;
-  position: relative;
-  display: block;
-  overflow: hidden;
-  font-weight: 600;
-  padding: 0.5rem 1rem;
-  color: var(--text-color-light);
-  transition: all 0.3s ease-in-out;
-  border-radius: 5px;
-}
-.dark-theme .nav-list li a {
-  color: var(--text-color-dark);
-}
-
-/* Hover Effect Light Mode */
-.nav-list li a::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(0, 0, 0, 0.1),
-    var(--accent-color-light),
-    rgba(0, 0, 0, 0.1),
-    transparent
-  );
-  transform: skewX(-25deg);
-  transition: left 0.5s ease;
-  z-index: -1;
-}
-
-/* Hover Effect Dark Mode */
-.dark-theme .nav-list li a::before {
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.2),
-    var(--accent-color-dark),
-    rgba(255, 255, 255, 0.2),
-    transparent
-  );
-}
-
-.nav-list li a:hover::before {
-  left: 100%;
-}
-
-.nav-list li a:hover {
-  transform: scale(1.1); /* Slightly enlarge the link */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a subtle glow */
-}
-.dark-theme .nav-list li a:hover {
-  box-shadow: 0 0 10px var(--accent-color-dark); /* Adjust glow for dark theme */
-}
-
-/* Active State Styles */
-.nav-list li.active a {
-  color: var(--accent-color-light);
-  border: none;
-}
-.dark-theme .nav-list li.active a {
-  color: var(--accent-color-dark);
-}
-
-/* Hamburger Menu */
-#hamburger-btn {
-  display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  z-index: 1001;
-}
-
-.bar {
-  display: block;
-  width: 25px;
-  height: 3px;
-  margin: 5px auto;
-  background-color: var(--text-color-light);
-  transition: 0.3s;
-}
-.dark-theme .bar {
-  background-color: var(--text-color-dark);
-}
-
-#hamburger-btn.active .bar:nth-child(2) {
-  opacity: 0;
-}
-
-#hamburger-btn.active .bar:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
-}
-
-#hamburger-btn.active .bar:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
-}
-
-/* Theme Toggle Button */
-#theme-toggle {
-  position: relative; /* Keep relative positioning */
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: transparent;
-  border: 2px solid var(--accent-color-light);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.3s ease;
-  margin-right: 50px; /* Add some margin from the right edge */
-}
-
-.dark-theme #theme-toggle {
-  border-color: var(--accent-color-dark);
-}
-
-#theme-toggle:hover {
-  transform: rotate(45deg);
-}
-
-.toggle-icon {
-  font-size: 28px;
-  color: var(--accent-color-light);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.dark-theme .toggle-icon {
-  color: var(--accent-color-dark);
-}
-
-.sun-icon {
-  position: absolute;
-  opacity: 1;
-}
-
-.dark-theme .sun-icon {
-  opacity: 0;
-  transform: translateY(-20px);
-}
-
-.moon-icon {
-  position: absolute;
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.dark-theme .moon-icon {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Media Query for Mobile Responsiveness */
-@media (max-width: 768px) {
-  .nav {
-    justify-content: space-between;
-  }
-
-  #hamburger-btn {
-    display: block;
-  }
-
-  .nav-list {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    padding: 1rem 0;
-    z-index: 1000;
-    gap: 2rem;
-  }
-
-  .dark-theme .nav-list {
-    background-color: rgba(26, 26, 26, 0.95);
-  }
-
-  .nav-list.active {
-    display: flex;
-  }
-
-  .nav-list li {
-    width: 100%;
-  }
-
-  .nav-list a {
-    padding: 1rem;
-    text-align: center;
-    display: block;
-  }
-
-  .theme-toggle {
-    position: relative;
-    top: 0;
-    right: 0;
-    margin-right: 10px;
-  }
-
-  
-}
---------------------
-File Path: C:\Users\admin\Desktop\portfolio\my-react-portfolio\src\components\Particles\Particles.css
-File Name: Particles.css
-Code:
-.particles-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 0; /* Correct z-index */
-  }
-  .particle {
-    position: absolute;
-    border-radius: 50%;
-    background-color: var(--particle-color); 
-    opacity: 1; 
-    animation: floatParticle 6s ease-in-out infinite; 
-    
-  }
-  
-  /* Dark Mode Styling */
-  .dark-theme .particle,
-  .particle.dark-theme {
-    background-color: #ffcc80; /* Non-transparent light yellow for dark mode */
-    
-  }
-  
-  /* Floating Animation */
-  @keyframes floatParticle {
-    0% {
-      transform: translateY(0) translateX(0); /* Start at original position */
-    }
-    25% {
-      transform: translateY(-5px) translateX(5px); /* Move slightly up and right */
-    }
-    50% {
-      transform: translateY(0) translateX(0); /* Back to origin */
-    }
-    75% {
-      transform: translateY(5px) translateX(-5px); /* Move slightly down and left */
-    }
-    100% {
-      transform: translateY(0) translateX(0); /* End at original position */
-    }
-  }
---------------------
 File Path: C:\Users\admin\Desktop\portfolio\my-react-portfolio\src\components\Projects\ProjectModal.css
 File Name: ProjectModal.css
 Code:
@@ -1406,6 +105,81 @@ Code:
   .dark-theme .modal-button:hover {
     background-color: var(--orbit-color-hover-dark);
   }
+
+  /* Modal Image Carousel */
+.modal-image-carousel {
+  display: flex;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  gap: 10px; /* Space between images */
+  margin-bottom: 20px;
+}
+
+.modal-image-carousel .modal-image {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+--------------------
+File Path: C:\Users\admin\Desktop\portfolio\my-react-portfolio\src\components\Projects\ProjectModal.jsx
+File Name: ProjectModal.jsx
+Code:
+// src/components/Projects/ProjectModal.js
+import React from "react";
+import "./ProjectModal.css";
+import project1Image from "../assets/project1-1.jpg";
+
+const ProjectModal = ({ project, onClose }) => {
+    return (
+        <div className="modal-overlay" onClick={onClose}>
+            <div
+                className="modal-content"
+                onClick={(e) => e.stopPropagation()}
+            >
+                <button className="close-button" onClick={onClose}>
+                    X
+                </button>
+                <h2 className="modal-title">{project.title}</h2>
+                {project.id === "k-line-data-analysis" && (
+                    <div className="modal-image">
+                        <img
+                            src={project1Image}
+                            alt={`${project.title}`}
+                        />
+                    </div>
+                )}
+
+                {/* Job Search Image Carousel */}
+                {project.id === "job-search" && (
+                    <div className="modal-image-carousel">
+                        {project.images.map((image, index) => (
+                            <img
+                                key={index}
+                                src={image}
+                                alt={`${project.title} ${index + 1}`}
+                                className="modal-image"
+                            />
+                        ))}
+                    </div>
+                )}
+                <p className="modal-description">{project.description}</p>
+                <div className="modal-buttons">
+                    {project.githubLink && (
+                        <a
+                            href={project.githubLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="modal-button"
+                        >
+                            GitHub
+                        </a>
+                    )}
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default ProjectModal;
 --------------------
 File Path: C:\Users\admin\Desktop\portfolio\my-react-portfolio\src\components\Projects\Projects.css
 File Name: Projects.css
@@ -1458,25 +232,45 @@ Code:
 .filter-dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
+  background-color: #fff; /* White background for better contrast */
+  min-width: 180px; /* Wider dropdown */
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
-  border-radius: 5px;
+  border-radius: 8px; /* Match button radius */
+  overflow: hidden; /* Ensures rounded corners apply to internal elements */
+  top: 100%; /* Position dropdown below the button */
+  left: 0;
+  margin-top: 0.5rem; /* Space between button and dropdown */
 }
 
+/* Filter Dropdown Links */
 .filter-dropdown-content a {
-  color: black;
+  color: #333; /* Darker text color */
   padding: 12px 16px;
   text-decoration: none;
   display: block;
-  cursor: pointer;
+  transition: background-color 0.3s ease; /* Add transition to hover */
 }
 
+/* Hover State (more distinct) */
 .filter-dropdown-content a:hover {
-  background-color: #f1f1f1;
+  background-color: #e9e9e9; /* Slightly darker gray */
 }
 
+/* Active State (better contrast and visual indicator) */
+.filter-dropdown-content a.active {
+  background-color: var(--accent-color-light); /* Your theme's accent color */
+  color: white;
+  font-weight: 600; /* Make active item slightly bolder */
+}
+
+.dark-theme .filter-dropdown-content a.active {
+    background-color: var(--accent-color-dark); /* Your theme's accent color */
+    color: white;
+    font-weight: 600; /* Make active item slightly bolder */
+  }
+
+/* Show Dropdown on Hover (or click if you prefer that) */
 .filter-dropdown:hover .filter-dropdown-content {
   display: block;
 }
@@ -1701,7 +495,6 @@ Code:
   z-index: 3;
   opacity: 1;
   scale: 1.05; /* Slightly larger */
-  box-shadow: 0 12px 32px 0 rgba(31, 38, 135, 0.37); /* Enhanced shadow */
 }
 
 .carousel-card.position-1 {
@@ -1833,710 +626,412 @@ Code:
 .carousel-track:active {
   cursor: grabbing;
 }
+
+
 --------------------
-File Path: C:\Users\admin\Desktop\portfolio\my-react-portfolio\src\components\Skills\Skills.css
-File Name: Skills.css
+File Path: C:\Users\admin\Desktop\portfolio\my-react-portfolio\src\components\Projects\Projects.jsx
+File Name: Projects.jsx
 Code:
-:root {
-  /* Light Theme Colors */
-  --background-color-light: #f5f5f5;
-  --text-color-light: #222222;
-  --accent-color-light: #0077b6;
-  --accent-color-hover-light: #005b96;
-  --secondary-color-light: #4a6572;
+import React, { useState, useEffect, useRef } from "react";
+import ProjectModal from "./ProjectModal";
+import "./Projects.css";
+import projectsData from "./projectsData";
+import githubLogoLight from "../assets/github-mark.png";
+import githubLogoDark from "../assets/github-mark-white.png";
 
-  --card-bg-light: #ffffff;
-  --card-border-light: #e0e0e0;
-  --card-shadow-light: rgba(0, 0, 0, 0.1);
+const Projects = ({ isDarkMode }) => {
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [activeFilter, setActiveFilter] = useState("all");
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  
+  // Drag functionality states
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [dragX, setDragX] = useState(0);
+  const trackRef = useRef(null);
 
-  --project-tag-bg-light: #e8f0fe;
-  --project-tag-text-light: #3a3a3a;
-  --project-tag-bg-hover-light: #cce0ff;
-  --project-tag-text-hover-light: #222;
+  const openModal = (project) => {
+    // Only open modal if we haven't dragged
+    if (!isDragging) {
+      setSelectedProject(project);
+    }
+  };
 
-  --toggle-bg-light: var(--card-bg-light);
-  --orbit-color-light: var(--card-border-light);
+  const closeModal = () => {
+    setSelectedProject(null);
+  };
 
-  /* Dark Theme Colors */
-  --background-color-dark: #121212;
-  --text-color-dark: #f0f0f0;
-  --accent-color-dark: #ffa500;
-  --accent-color-hover-dark: #cc8400;
-  --secondary-color-dark: #7285a5;
+  const handleFilterClick = (filter) => {
+    setActiveFilter(filter);
+    setActiveIndex(0);
+  };
 
-  --card-bg-dark: #1e1e1e;
-  --card-border-dark: #404040;
-  --card-shadow-dark: rgba(0, 0, 0, 0.3);
+  const filteredProjects =
+    activeFilter === "all"
+      ? projectsData
+      : projectsData.filter((project) => project.filter.includes(activeFilter));
 
-  --project-tag-bg-dark: #282828;
-  --project-tag-text-dark: #eee;
-  --project-tag-bg-hover-dark: #404040;
-  --project-tag-text-hover-dark: #fff;
+  const githubLogo = isDarkMode ? githubLogoDark : githubLogoLight;
 
-  --toggle-bg-dark: var(--card-bg-dark);
-  --orbit-color-dark: var(--card-border-dark);
-}
+  const nextSlide = () => {
+    if (!isTransitioning) {
+      setIsTransitioning(true);
+      setActiveIndex((current) => (current + 1) % filteredProjects.length);
+      setTimeout(() => setIsTransitioning(false), 500);
+    }
+  };
 
-body {
-  font-family: 'Arial', sans-serif;
-  font-size: 16px;
-  line-height: 1.5;
-  color: var(--text-color-light);
-  background-color: var(--background-color-light);
-  margin: 0;
-}
+  const prevSlide = () => {
+    if (!isTransitioning) {
+      setIsTransitioning(true);
+      setActiveIndex((current) =>
+        current === 0 ? filteredProjects.length - 1 : current - 1
+      );
+      setTimeout(() => setIsTransitioning(false), 500);
+    }
+  };
 
-.dark-theme {
-  color: var(--text-color-dark);
-  background-color: var(--background-color-dark);
-}
+  // Mouse drag handlers
+  const handleMouseDown = (e) => {
+    setIsDragging(true);
+    setStartX(e.pageX - dragX);
+    if (trackRef.current) {
+      trackRef.current.style.cursor = 'grabbing';
+    }
+  };
 
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 600;
-  line-height: 1.2;
-}
+  const handleMouseMove = (e) => {
+    if (!isDragging) return;
+    
+    const currentX = e.pageX - startX;
+    setDragX(currentX);
 
-h1 {
-  font-size: 2.5rem;
-}
+    // Determine if we should change slides based on drag distance
+    if (Math.abs(currentX) > 100) {
+      if (currentX > 0) {
+        prevSlide();
+      } else {
+        nextSlide();
+      }
+      // Reset drag state
+      setIsDragging(false);
+      setDragX(0);
+    }
+  };
 
-h2 {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-}
+  const handleMouseUp = () => {
+    setIsDragging(false);
+    setDragX(0);
+    if (trackRef.current) {
+      trackRef.current.style.cursor = 'grab';
+    }
+  };
 
-h3 {
-  font-size: 1.5rem;
-}
+  // Clean up mouse events
+  useEffect(() => {
+    const cleanup = () => {
+      setIsDragging(false);
+      setDragX(0);
+    };
 
-.dark-theme .search-icon,
-.dark-theme .filter-header {
-  color: var(--accent-color-dark);
-}
+    document.addEventListener('mouseup', cleanup);
+    return () => {
+      document.removeEventListener('mouseup', cleanup);
+    };
+  }, []);
 
-.dark-theme .search-wrapper input {
-  background: var(--toggle-bg-dark);
-  border-color: var(--orbit-color-dark);
-  color: var(--text-color-dark);
-}
+  const getVisibleCards = () => {
+    const numProjects = filteredProjects.length;
+  if (numProjects === 0) {
+    return []; // Return empty array if no projects match the filter
+  }
 
-.dark-theme .search-wrapper input:focus {
-  box-shadow: 0 0 15px rgba(255, 152, 0, 0.3);
-}
+  if (numProjects === 1) {
+    return [{
+      project: filteredProjects[0],
+      position: 0 // Only center position is needed
+    }];
+  }
 
-.dark-theme .filter-btn {
-  background: var(--toggle-bg-dark);
-  border-color: var(--orbit-color-dark);
-  color: var(--text-color-dark);
-}
+  if (numProjects === 2) {
+    return [
+      {
+        project: filteredProjects[activeIndex],
+        position: 0 // Center position
+      },
+      {
+        project: filteredProjects[(activeIndex + 1) % 2], // The other project will be positioned according to current activeIndex
+        position: activeIndex === 0 ? 1 : -1
+      }
+    ];
+  }
 
-.dark-theme .filter-btn:hover,
-.dark-theme .filter-btn.active {
-  background: var(--accent-color-dark);
-  color: black;
-}
+  // For three or more projects, your original logic is fine:
+  const cards = [];
+  for (let i = -1; i <= 1; i++) {
+    let index = activeIndex + i;
+    if (index < 0) index = numProjects - 1;
+    if (index >= numProjects) index = 0;
+    cards.push({
+      project: filteredProjects[index],
+      position: i
+    });
+  }
+  return cards;
+};
 
-.dark-theme .skill-card {
-  background: var(--toggle-bg-dark);
-  border-color: var(--orbit-color-dark);
-}
+  return (
+    <section id="projects" className="projects-section">
+      <h2 className="section-title">Projects</h2>
+      <div className="filter-container">
+        <div className="filter-dropdown">
+          <button id="filterBtn" className="filter-btn">
+            <span>Filter by Technology</span>
+            <svg
+              className="filter-icon"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M3 6h18M6 12h12m-9 6h6"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+            </svg>
+          </button>
+          <div id="filterDropdown" className="filter-dropdown-content">
+            <a
+              href="#projects"
+              data-filter="all"
+              className={activeFilter === "all" ? "active" : ""}
+              onClick={() => handleFilterClick("all")}
+            >
+              All
+            </a>
+            <a
+              href="#projects"
+              data-filter="python"
+              className={activeFilter === "python" ? "active" : ""}
+              onClick={() => handleFilterClick("python")}
+            >
+              Python
+            </a>
+            <a
+              href="#projects"
+              data-filter="tabi"
+              className={activeFilter === "tabi" ? "active" : ""}
+              onClick={() => handleFilterClick("tabi")}
+            >
+              Power BI/Tableau
+            </a>
+            <a
+              href="#projects"
+              data-filter="bases"
+              className={activeFilter === "bases" ? "active" : ""}
+              onClick={() => handleFilterClick("bases")}
+            >
+              MySQL/MariaDB
+            </a>
+            <a
+              href="#projects"
+              data-filter="django"
+              className={activeFilter === "django" ? "active" : ""}
+              onClick={() => handleFilterClick("django")}
+            >
+              Django
+            </a>
+            <a
+              href="#projects"
+              data-filter="react"
+              className={activeFilter === "react" ? "active" : ""}
+              onClick={() => handleFilterClick("react")}
+            >
+              React
+            </a>
+          </div>
+        </div>
+      </div>
 
-.dark-theme .skill-card:hover {
-  box-shadow: 0 15px 30px rgba(255, 152, 0, 0.2);
-}
+      <div className="carousel-container">
+        <button className="carousel-button prev" onClick={prevSlide}>
+          &#8249;
+        </button>
+        <div 
+          ref={trackRef}
+          className={`carousel-track ${isDragging ? 'dragging' : ''}`}
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseUp}
+        >
+          {getVisibleCards().map(({ project, position }) => (
+            <div
+              className={`project-card carousel-card position-${position}`}
+              key={project.id}
+              style={{
+                transform: `
+                  ${position === 0 
+                    ? `translateX(${dragX}px) translateY(-20px)` 
+                    : position === 1 
+                    ? `translateX(calc(100% + 2rem + ${dragX}px)) translateY(0) rotateY(-10deg)` 
+                    : `translateX(calc(-100% - 2rem + ${dragX}px)) translateY(0) rotateY(10deg)`
+                  }
+                `
+              }}
+            >
+              {project.githubLink && (
+                <a
+                  href={project.githubLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="github-link"
+                >
+                  <img
+                    src={githubLogo}
+                    alt="GitHub Repo"
+                    className="github-logo"
+                  />
+                </a>
+              )}
+              <h3 className="project-title">{project.title}</h3>
+              <p className="project-short-description">
+                {project.shortDescription}
+              </p>
+              <div className="project-technologies">
+                {project.technologies.map((tech) => (
+                  <span key={tech} className="tech">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+              <button className="view-button" onClick={() => openModal(project)}>
+                View
+              </button>
+            </div>
+          ))}
+        </div>
+        <button className="carousel-button next" onClick={nextSlide}>
+          &#8250;
+        </button>
+      </div>
 
-.dark-theme .skill-icon {
-  color: var(--accent-color-dark);
-}
+      {selectedProject && (
+        <ProjectModal project={selectedProject} onClose={closeModal} />
+      )}
+    </section>
+  );
+};
 
-.dark-theme .skill-category,
-.dark-theme .level-text {
-  background: rgba(255, 152, 0, 0.2);
-}
-
-.dark-theme .project-tag {
-  background-color: var(--project-tag-bg-dark);
-  color: var(--project-tag-text-dark);
-}
-
-.dark-theme .project-tag:hover {
-  background-color: var(--project-tag-bg-hover-dark);
-  color: var(--project-tag-text-hover-dark);
-}
-
-.dark-theme .scroll-to-top {
-  background-color: var(--accent-color-dark);
-  color: black;
-}
-
-.skills-control-panel {
-display: flex;
-flex-direction: column;
-gap: 2rem;
-margin-bottom: 3rem;
-}
-
-.search-wrapper {
-position: relative;
-max-width: 600px;
-margin: 0 auto;
-}
-
-.search-icon {
-position: absolute;
-left: 15px;
-top: 50%;
-transform: translateY(-50%);
-color: var(--accent-color-light);
-z-index: 10;
-}
-
-.search-wrapper input {
-padding: 15px 15px 15px 50px;
-background: var(--toggle-bg-light);
-border: 2px solid var(--orbit-color-light);
-border-radius: 30px;
-color: var(--text-color-light);
-font-size: 1rem;
-transition: all 0.3s ease;
-}
-
-.search-wrapper input:focus {
-outline: none;
-box-shadow: 0 0 15px rgba(0, 74, 173, 0.3);
-}
-
-.filter-section {
-display: flex;
-flex-direction: column;
-align-items: center;
-gap: 1rem;
-}
-
-.filter-header {
-display: flex;
-align-items: center;
-gap: 0.5rem;
-color: var(--accent-color-light);
-font-weight: bold;
-}
-
-.filter-buttons {
-display: flex;
-flex-wrap: wrap;
-justify-content: center;
-gap: 1rem;
-}
-
-.filter-btn {
-display: flex;
-align-items: center;
-gap: 0.5rem;
-padding: 10px 15px;
-background: var(--toggle-bg-light);
-border: 2px solid var(--orbit-color-light);
-border-radius: 25px;
-color: var(--text-color-light);
-cursor: pointer;
-transition: all 0.3s ease;
-}
-
-.filter-btn:hover,
-.filter-btn.active {
-background: var(--accent-color-light);
-color: white;
-}
-
-.skills-showcase {
-display: grid;
-gap: 2rem;
-}
-
-.grid-view {
-grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-}
-
-.skill-card {
-background: var(--toggle-bg-light);
-border: 2px solid var(--orbit-color-light);
-border-radius: 15px;
-padding: 1.5rem;
-display: flex;
-flex-direction: column;
-gap: 1rem;
-transition: all 0.3s ease;
-}
-
-.skill-card:hover {
-transform: translateY(-10px);
-box-shadow: 0 15px 30px rgba(0, 74, 173, 0.2);
-}
-
-.skill-card-header {
-display: flex;
-flex-direction: column;
-align-items: center;
-gap: 1rem;
-text-align: center;
-}
-
-.skill-icon {
-font-size: 3rem;
-color: var(--accent-color-light);
-}
-
-.skill-category {
-background: rgba(0, 74, 173, 0.2);
-padding: 5px 10px;
-border-radius: 15px;
-font-size: 0.8rem;
-}
-
-.skill-card-details {
-display: flex;
-flex-direction: column;
-}
-
-.skill-projects {
-margin-top: 1rem;
-}
-
-.project-tags {
-display: flex;
-flex-wrap: wrap;
-gap: 0.5rem;
-margin-top: 0.5rem;
-}
-
-.project-tag {
-background-color: var(--project-tag-bg-light);
-color: var(--project-tag-text-light);
-padding: 5px 10px;
-border-radius: 15px;
-font-size: 0.7rem;
-text-decoration: none;
-transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.project-tag:hover {
-background-color: var(--project-tag-bg-hover-light);
-color: var(--project-tag-text-hover-light);
-}
-
-.skill-level,
-.skill-detail {
-display: flex;
-justify-content: space-between;
-align-items: center;
-margin-bottom: 1rem;
-}
-
-.level-text {
-background: rgba(0, 74, 173, 0.2);
-padding: 5px 10px;
-border-radius: 15px;
-font-size: 0.8rem;
-}
-
-.skill-other {
-margin-top: 1rem;
-}
-
-.skill-other h4 {
-margin-bottom: 0.5rem;
-}
-
-.skill-level {
-gap: 0.5rem;
-}
-
-.scroll-to-top-container {
-display: flex;
-justify-content: center;
-margin-top: 2rem;
-}
-
-.scroll-to-top {
-background-color: var(--accent-color-light);
-color: white;
-border: none;
-border-radius: 50%;
-padding: 0.8rem 1rem;
-display: flex;
-align-items: center;
-justify-content: center;
-cursor: pointer;
-opacity: 0.8;
-transition: all 0.3s ease;
-}
-
-.scroll-to-top:hover {
-opacity: 1;
-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.scroll-to-top svg {
-font-size: 1.5rem;
-}
+export default Projects;
 --------------------
-File Path: C:\Users\admin\Desktop\portfolio\my-react-portfolio\src\components\Welcome\Welcome.css
-File Name: Welcome.css
+File Path: C:\Users\admin\Desktop\portfolio\my-react-portfolio\src\components\Projects\projectsData.jsx
+File Name: projectsData.jsx
 Code:
-/* Welcome Section */
-.welcome-section {
-  position: relative;
-  min-height: 100vh;
-  overflow: hidden;
-  background: var(--bg-color-light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.dark-theme .welcome-section {
-  background: var(--bg-color-dark);
-}
+import jobSearch1 from "../assets/Job_Search/Job_Search_1.png";
+import jobSearch2 from "../assets/Job_Search/Job_Search_2.png";
+import jobSearch3 from "../assets/Job_Search/Job_Search_3.png";
 
-/* Background Initials */
-.bg-initials {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100%;
-  background-image: url("/SP.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0.05;
-  filter: blur(10px);
-  pointer-events: none;
-  z-index: -1;
-  transition: transform 0.5s ease-in-out;
-}
 
-/* Intro Content */
-.intro-content {
-  position: relative;
-  z-index: 3;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 3rem;
-  justify-content: space-around;
-}
 
-/* Orbit System */
-.orbit-system {
-  position: relative;
-  width: 350px;
-  height: 350px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  perspective: 1000px;
-  transition: transform 0.5s ease;
-}
-
-.profile-orbit {
-  position: absolute;
-  border: 2px dashed var(--orbit-color-light);
-  border-radius: 50%;
-  transform-style: preserve-3d;
-}
-.dark-theme .profile-orbit {
-  border-color: var(--orbit-color-dark);
-}
-
-.orbit-one {
-  width: 100%;
-  height: 100%;
-  animation: orbit-one-anim 20s linear infinite;
-}
-
-.orbit-two {
-  width: 85%;
-  height: 85%;
-  top: 7.5%;
-  left: 7.5%;
-  animation: orbit-two-anim 15s linear infinite;
-}
-
-.orbit-three {
-  width: 70%;
-  height: 70%;
-  top: 15%;
-  left: 15%;
-  animation: orbit-three-anim 10s linear infinite;
-}
-
-/* Rotating Circles */
-.orbit-circle {
-  position: absolute;
-  width: 15px;
-  height: 15px;
-  background-color: var(--accent-color-light);
-  border-radius: 50%;
-  box-shadow: 0 0 10px var(--accent-color-light);
-  animation: orbit-circle-anim 10s linear infinite;
-}
-.dark-theme .orbit-circle {
-  background-color: var(--accent-color-dark);
-  box-shadow: 0 0 10px var(--accent-color-dark);
-}
-
-.circle-one {
-  top: 0;
-  left: 50%;
-  transform-origin: 50% 150px;
-  animation-duration: 10s;
-}
-
-.circle-two {
-  top: 50%;
-  right: 0;
-  transform-origin: -150px 50%;
-  animation-duration: 15s;
-}
-
-.circle-three {
-  bottom: 0;
-  left: 50%;
-  transform-origin: 50% -150px;
-  animation-duration: 20s;
-}
-
-#orbit-glow {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle at center,
-    var(--accent-color-light),
-    transparent 60%
-  );
-  opacity: 0;
-  pointer-events: none;
-  animation: glow-pulse 3s infinite ease-in-out;
-}
-.dark-theme #orbit-glow {
-  background: radial-gradient(
-    circle at center,
-    var(--accent-color-dark),
-    transparent 60%
-  );
-}
-
-.central-logo {
-  width: 120px;
-  height: 120px;
-  position: relative;
-  z-index: 4;
-  animation: pulse 2s ease-in-out infinite;
-  background-color: var(--accent-color-light);
-  border-radius: 50%;
-  padding: 10px;
-  box-shadow: 0 0 15px var(--accent-color-light);
-}
-.dark-theme .central-logo {
-  background-color: var(--accent-color-dark);
-  box-shadow: 0 0 15px var(--accent-color-dark);
-}
-
-.profile-logo {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-/* Name and Tagline */
-.name-title {
-  animation: fadeInUp 1.5s ease-out forwards;
-  color: var(--text-color-light);
-  text-shadow: none;
-  text-align: left;
-  margin-right: 5rem;
-}
-.dark-theme .name-title {
-  color: var(--text-color-dark);
-}
-
-.name {
-  font-size: 3.5rem;
-  margin: 0 0 10px 0;
-  font-weight: 900;
-  letter-spacing: 2px;
-  background: linear-gradient(
-    90deg,
-    var(--accent-color-light),
-    var(--orbit-color-hover-light)
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  line-height: 1.2;
-  animation: shimmer 3s infinite alternate;
-}
-.dark-theme .name {
-  background: linear-gradient(
-    90deg,
-    var(--accent-color-dark),
-    var(--orbit-color-hover-dark)
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  /* Remove the text-shadow in dark mode */
-  text-shadow: none; 
-}
-
-.tagline-wrapper {
-  position: relative;
-  margin-top: 0.5rem;
-  padding: 0.3rem 0.6rem;
-  overflow: hidden;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-.dark-theme .tagline-wrapper {
-  background: rgba(0, 0, 0, 0.1);
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-}
-
-.tagline {
-    /* Font Improvements */
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: var(--accent-color-light);
-    text-shadow: 0 0 5px var(--accent-color-light);
-    animation: fadeIn 1s ease-in-out forwards;
-}
-
-.dark-theme .tagline {
-    color: var(--accent-color-dark);
-    text-shadow: 0 0 5px var(--accent-color-dark);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .intro-content {
-    flex-direction: column;
-    align-items: center;
-  }
-  .name-title {
-    text-align: center;
-    margin: 0;
-  }
-  .name {
-    font-size: 3rem;
-  }
-  .tagline {
-    font-size: 1.4rem;
-  }
-  .orbit-system {
-    width: 250px;
-    height: 250px;
-  }
-  .central-logo {
-    width: 80px;
-    height: 80px;
-  }
-}
-
-/* Animations */
-@keyframes orbit-one-anim {
-  0% {
-    transform: rotateZ(0deg) rotateX(60deg) rotateY(-20deg) translateX(0) translateY(0);
-  }
-  50% {
-    transform: rotateZ(180deg) rotateX(60deg) rotateY(-20deg) translateX(5px) translateY(5px);
-  }
-  100% {
-    transform: rotateZ(360deg) rotateX(60deg) rotateY(-20deg) translateX(0) translateY(0);
-  }
-}
-
-@keyframes orbit-two-anim {
-  0% {
-    transform: rotateZ(0deg) rotateX(45deg) rotateY(10deg) translateX(0) translateY(0);
-  }
-  50% {
-    transform: rotateZ(-180deg) rotateX(45deg) rotateY(10deg) translateX(-5px) translateY(-5px);
-  }
-  100% {
-    transform: rotateZ(-360deg) rotateX(45deg) rotateY(10deg) translateX(0) translateY(0);
-  }
-}
-
-@keyframes orbit-three-anim {
-  0% {
-    transform: rotateZ(0deg) rotateX(15deg) rotateY(-45deg) translateX(0) translateY(0);
-  }
-  50% {
-    transform: rotateZ(180deg) rotateX(15deg) rotateY(-45deg) translateX(5px) translateY(-5px);
-  }
-  100% {
-    transform: rotateZ(360deg) rotateX(15deg) rotateY(-45deg) translateX(0) translateY(0);
-  }
-}
-
-@keyframes orbit-circle-anim {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes glow-pulse {
-  0%, 100% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 0.5;
-  }
-}
-
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-}
-
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: 0%;
-  }
-  100% {
-    background-position: 200%;
-  }
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
+const projectsData = [
+    {
+      id: 'k-line-data-analysis',
+      title: 'K-line Data Analysis',
+      shortDescription: 'Financial data analysis using Python',
+      description:
+        'This project focuses on analyzing financial K-line data using Python libraries like Pandas, NumPy, Matplotlib, and mplfinance. It involves data cleaning, statistical analysis, and visualization to derive meaningful insights from K-line charts (candlestick charts).',
+      technologies: ['Python', 'Pandas', 'NumPy', 'Matplotlib', 'mplfinance'],
+      githubLink: 'https://github.com/SosoPkhakadze/K-line-Data-Analysis',
+      filter: ['python']
+    },
+    {
+      id: 'search-products',
+      title: 'Search Products',
+      shortDescription: 'E-commerce product search application',
+      description:
+        'Developed a web application for searching products from an e-commerce platform. The project uses web scraping techniques (likely with libraries like BeautifulSoup) to extract product information and provide search functionality.',
+      technologies: ['Python', 'Web Scraping', 'BeautifulSoup'],
+      githubLink: 'https://github.com/SosoPkhakadze/Search_Products',
+      filter: ['python', 'bases']
+    },
+    {
+      id: 'weather-forecast',
+      title: 'Weather Forecast',
+      shortDescription: 'Location-based weather app with Django',
+      description:
+        'A Django-based weather forecast application that utilizes the OpenWeatherMap API to fetch and display current weather data based on user location or a specified city. It includes backend functionality to handle API requests and a frontend to present the weather information.',
+      technologies: ['Django', 'Python', 'OpenWeatherMap API'],
+      githubLink: 'https://github.com/SosoPkhakadze/Weather-forecast',
+      filter: ['django', 'python']
+    },
+    {
+      id: 'job-aggregator',
+      title: 'Job Aggregator Website',
+      shortDescription: 'Full-stack job search platform',
+      description:
+        'Developed a full-stack web application utilizing Django for backend and React for frontend, enabling users to search for job listings based on title and location. Integrated with an external API to fetch real-time job data. Implemented features for displaying search results and viewing detailed job information.',
+      technologies: ['React', 'Django', 'Python'],
+      githubLink: 'https://github.com/SosoPkhakadze/Job_Search',
+      filter: ['react', 'django', 'python'],
+      images: [jobSearch1, jobSearch2, jobSearch3]
+    },
+    {
+      id: 'image-resizing',
+      title: 'Image Resizing & Interpolation',
+      shortDescription: 'Algorithmic image manipulation',
+      description:
+        'Built an image resizing application from scratch using bilinear and bicubic interpolation techniques without relying on built-in libraries. This project demonstrates fundamentals of image processing and displays results through Matplotlib for visualization.',
+      technologies: ['Python', 'Matplotlib'],
+      filter: ['python']
+    },
+    {
+      id: 'price-comparison',
+      title: 'Price Comparison',
+      shortDescription: 'Real-time price tracking web app',
+      description:
+        'Developed a price comparison web application using Django, integrating scraping scripts for major e-commerce websites like Amazon, eBay, Walmart, Target, Etsy, and Wayfair. Implemented sorting functionality to display search results from cheapest to most expensive.',
+      technologies: ['Python', 'Django', 'BeautifulSoup'],
+      filter: ['django', 'python', 'bases']
+    },
+    {
+      id: 'sales-dashboard',
+      title: 'Sales Dashboard',
+      shortDescription: 'Data-driven sales insights with Power BI',
+      description:
+        'Developed an advanced sales dashboard using Power BI, leveraging data from SQL databases. Demonstrated expertise in data cleaning, exploratory data analysis, and predictive modeling to uncover actionable insights driving business decisions.',
+      technologies: ['Power BI', 'SQL'],
+      filter: ['tabi']
+    },
+    {
+      id: 'data-analysis-dashboard',
+      title: 'Data Analysis Dashboard',
+      shortDescription: 'Restaurant performance analysis with Power BI',
+      description:
+        'Designed a comprehensive data analysis dashboard for a Pizza Restaurant using Power BI and MariaDB, delivering key performance indicators and actionable insights, facilitating strategic decision-making and business optimization.',
+      technologies: ['Power BI', 'MariaDB'],
+      filter: ['tabi', 'bases']
+    },
+    {
+      id: 'covid-insight-analysis',
+      title: 'COVID Insight Analysis Dashboard',
+      shortDescription: 'Public health data exploration with Power BI',
+      description:
+        'Leveraged Power BI to analyze COVID-19 data, providing insights into virus spread, vaccination rates, and their impact on public health and the economy. Integrated diverse data sources, crafted interactive visualizations, enabling users to discern trends for informed decision-making.',
+      technologies: ['Power BI'],
+      filter: ['tabi']
+    },
+    {
+      id: 'user-requirements-analysis',
+      title: 'User Requirements Analysis Dashboard',
+      shortDescription: 'Tableau dashboard for user insights',
+      description:
+        'Developed a comprehensive Tableau dashboard project by analyzing user requirements, creating mockups, and deciding on chart types. Built the data model, prepared the data source, and created various charts. Designed the layout container and constructed the dashboard to deliver insightful visualizations.',
+      technologies: ['Tableau'],
+      filter: ['tabi']
+    },
+  ];
+  
+  export default projectsData;
 --------------------
