@@ -1,12 +1,13 @@
 // Welcome.jsx
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Welcome.css";
 import { ReactTyped } from "react-typed";
 
 const Welcome = () => {
   const orbitSystemRef = useRef(null);
   const bgInitialsRef = useRef(null);
-  const googleDriveViewLink = "https://drive.google.com/file/d/1aPTjBjA0IFDHReC43O7b_oeHsKYFDAF7/view?usp=sharing";
+  const [showModal, setShowModal] = useState(false); // State to control modal visibility
+  const pdfPath = `${import.meta.env.BASE_URL}Soso Pkhakarde CV.pdf`;  // Correct path
 
   useEffect(() => {
     const orbitSystem = orbitSystemRef.current;
@@ -42,6 +43,9 @@ const Welcome = () => {
     };
   }, []);
 
+    const openModal = () => setShowModal(true);
+    const closeModal = () => setShowModal(false);
+
   return (
     <section id="welcome" className="welcome-section">
       {/* Background Initials */}
@@ -50,8 +54,6 @@ const Welcome = () => {
       {/* Intro Content with Transparent Card */}
       <div className="intro-content">
         <div className="transparent-card">
-          {" "}
-          {/* Add the transparent card container */}
           {/* Orbit System */}
           <div className="orbit-system" ref={orbitSystemRef}>
             {/* Orbits */}
@@ -93,18 +95,37 @@ const Welcome = () => {
                 className="tagline"
               />
             </div>
-            {/* Download Resume Button */}
-            <a
-              href={googleDriveViewLink}
-              target="_blank" // Crucial: Opens in a new tab/window
-              rel="noopener noreferrer"  // Good practice for security
-              className="download-button"
-            >
+            {/* View Resume Button */}
+            <button onClick={openModal} className="download-button">
               View Resume
-            </a>
+            </button>
+
           </div>
         </div>
       </div>
+          {/* PDF Modal */}
+          {showModal && (
+              <div className="modal-backdrop" onClick={closeModal}>
+                  <div className="resume-modal-content" onClick={(e) => e.stopPropagation()}>  {/* Prevent modal from closing when clicking inside */}
+                      <span className="close-button" onClick={closeModal}>×</span>
+                      <object data={pdfPath} type="application/pdf" width="100%" height="100%">
+                        <p>
+                            It appears you don't have a PDF plugin for this browser.
+                            No problem... you can <a href={pdfPath}>click here to
+                            download the PDF file.</a>
+                        </p>
+                      </object>
+                  </div>
+              </div>
+          )}
+
+        {/* Fallback for no JavaScript */}
+        <noscript>
+            <p>
+                Please enable JavaScript to view this website properly.  You can view my resume <a href={pdfPath} target="_blank" rel="noopener noreferrer">here</a>.
+            </p>
+        </noscript>
+
     </section>
   );
 };
