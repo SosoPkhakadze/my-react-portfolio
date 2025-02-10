@@ -20,9 +20,22 @@ import TikTokReport2 from "../assets/TikTokReport/TikTokReport_2.png";
 import salesDashboard1 from "../assets/Sales_Dashboard/Sales_Dashboard_1.jpg";
 import salesDashboard2 from "../assets/Sales_Dashboard/Sales_Dashboard_2.jpg";
 
+import browseRepos1 from "../assets/Browse_Repos/Browse-Repos_1"
+import browseRepos2 from "../assets/Browse_Repos/Browse-Repos_2"
 
 
 const projectsData = [
+  {
+    id: 'github-repo-browser',
+    title: 'GitHub Repository Browser',
+    shortDescription: 'OAuth-powered GitHub repository viewer',
+    description:
+      'A Flask-based web application that enables GitHub users to authenticate and browse their repositories. Features include technology-based filtering, responsive design, and secure OAuth integration.',
+    technologies: ['Python', 'Flask', 'GitHub API', 'OAuth'],
+    githubLink: 'https://github.com/SosoPkhakadze/Github-repository-browsing',
+    filter: ['python', 'flask'],
+    images: [browseRepos1, browseRepos2]
+  },
     {
       id: 'k-line-data-analysis',
       title: 'K-line Data Analysis',
