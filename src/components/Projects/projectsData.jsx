@@ -3,12 +3,11 @@ import jobSearch2 from "../assets/Job_Search/Job_Search_2.png";
 import jobSearch3 from "../assets/Job_Search/Job_Search_3.png";
 
 
-import productSearch1 from "../assets/Product_Search/Product_Search_1.png"
-import productSearch2 from "../assets/Product_Search/Product_Search_2.png"
+import productSearch1 from "../assets/Product_Search/Product_Search_1.png";
+import productSearch2 from "../assets/Product_Search/Product_Search_2.png";
 
 import weather1 from "../assets/Weather/Weather_1.png";
 import weather2 from "../assets/Weather/Weather_2.png";
-
 
 import kLine1 from "../assets/K-Line/K-Line_1.png";
 import kLine2 from "../assets/K-Line/K-Line_2.png";
@@ -20,8 +19,8 @@ import TikTokReport2 from "../assets/TikTokReport/TikTokReport_2.png";
 import salesDashboard1 from "../assets/Sales_Dashboard/Sales_Dashboard_1.jpg";
 import salesDashboard2 from "../assets/Sales_Dashboard/Sales_Dashboard_2.jpg";
 
-import browseRepos1 from "../assets/Browse_Repos/Browse-Repos_1"
-import browseRepos2 from "../assets/Browse_Repos/Browse-Repos_2"
+import browseRepos1 from "../assets/Browse_Repos/Browse-Repos_1.png";
+import browseRepos2 from "../assets/Browse_Repos/Browse-Repos_2.png";
 
 
 const projectsData = [
