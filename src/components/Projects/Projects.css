@@ -309,7 +309,6 @@
 /* Update project card styles */
 .project-card {
   min-width: 300px;
-  height: 215px;
   margin: 0;
   background: rgba(255, 255, 255, 0.25);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
